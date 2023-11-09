@@ -1,0 +1,41 @@
+#Ativa o modulo Rewrite que faz a reecrita da URL
+RewriteEngine On
+
+
+
+
+#RewriteCond: Define uma condição para uma regra.
+#REQUEST_FILENAME: É o caminho completo do diretório que atende ao request original, tomando por base o filesystem da maquina, e não relativo à hospedagem.
+#RewriteCond %{REQUEST_FILENAME} -d: Informa que será criada uma condição a ser aplicada ao nome do diretório requisitado. A " ! " é o sinal de negação e " -d " pede para verificar a exixtencia de um diretório físico. Ex.: CONDIÇÃO = SE ARQUIVO_REQUISITADO NÃO EXISTE COMO DIRETÓRIO FISICAMENTE.   
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+#RewriteCond %{REQUEST_FILENAME} -f: Informa que será criada uma condição a ser aplicada ao nome do arquivo requisitado. A " ! " é o sinal de negação e " -f " pede para verificar a exixtencia de um arquivo físico. Ex.: CONDIÇÃO = SE ARQUIVO_REQUISITADO NÃO EXISTE FISICAMENTE. 
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+
+
+#RewriteCond %{REQUEST_FILENAME} -l: Informa que será criada uma condição a ser aplicada ao nome do link simbólico requisitado. A " ! " é o sinal de negação e " -f " pede para verificar a exixtencia de um link simbólico.
+RewriteCond %{REQUEST_FILENAME} !-l
+
+
+
+
+#RewriteRule: Faz a reecrita da URL 
+#O Cracter " ^ " indica o início e " $ " indica o fim.
+#(.+) Pega todo o conteudo da URL
+# index.php?params=$1 indica para substitiur a requisição, redirecionando o fluxo para index.php e colocando-a inteiramente como parâmentro.
+#Ex.: index.php?url=blog/index
+#QSA significa que se houver uma string de consulta passada com a URL original, ela será anezada a URL ela será anexada a reescrita
+#Ex.: blog?situacao=1 será reescrita como index.php?url=blog&p=situacao
+#O sinalizador [L] faz mod_rewrite com que o processamento do conjunto de regras seja interrompido
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+
+
+
+#index.php?url=users/index
+#index.php?url=users/index&id=2&sit=2
+#http://localhost/kwservice/adm/view-users/index?id=2&sit=2

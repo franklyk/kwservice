@@ -9,6 +9,7 @@
     <?php 
         require "./Core/ConfigController.php";
         $home = new ConfigController();
+        $home->loadPage();
     ?>
 </body>
 </html>

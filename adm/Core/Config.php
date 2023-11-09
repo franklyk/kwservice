@@ -5,8 +5,8 @@
     {
         protected function configAdm()
         {
-            define('URL', 'http://localhost/adm/');
-            define('URLADM', 'http://localhost/adm/users');
+            define('URL', 'http://localhost/kwservice/');
+            define('URLADM', 'http://localhost/kwservice/adm/');
 
             define('CONTROLLER', 'Login');
             define('METODO', 'index');
