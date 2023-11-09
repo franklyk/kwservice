@@ -11,6 +11,7 @@
         private string $urlMetodo;
         private string $urlParameter;
         private string $classLoad;
+        private array $format;
 
 
         public function __construct()
@@ -19,6 +20,7 @@
             if(!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))){
                 $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
                 var_dump($this->url);
+                $this->clearUrl();
                 $this->urlArray = explode("/", $this->url);
                 var_dump($this->urlArray);
 
@@ -46,7 +48,25 @@
             echo "Metodo: {$this->urlMetodo} <br>";
             echo "Parametro: {$this->urlParameter} <br>";
         }
-        public function loadPage()
+
+        private function clearUrl(): void
+        {
+            //Eliminar as tags
+            $this->url = strip_tags($this->url);
+
+            //Elimina espaços em branco
+            $this->url = trim($this->url);
+
+            //Elimina a barra no final da url
+            $this->url = rtrim($this->url, "/"); 
+
+            //Substitui Caracteres especiais
+            $this->format['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:.,\\\'<>°ºª ';
+            $this->format['b'] = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr-------------------------------------------------------------------------------------------------';
+            $this->url = strtr(utf8_decode($this->url), utf8_decode($this->format['a']), $this->format['b']);
+        }
+
+        public function loadPage(): void
         {
             echo "Carregar Página: {$this->urlController} <br>";
 
