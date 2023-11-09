@@ -1,5 +1,7 @@
 <?php 
-    require "./Core/Config.php";
+    // require "./Core/Config.php";
+
+    namespace Core;
 
     class ConfigController extends Config
     {
@@ -8,6 +10,7 @@
         private string $urlController;
         private string $urlMetodo;
         private string $urlParameter;
+        private string $classLoad;
 
 
         public function __construct()
@@ -35,7 +38,7 @@
                     $this->urlParameter = "";
                 }
             }else{
-                $this->urlController = CONTROLLEERRO;
+                $this->urlController = CONTROLLER;
                 $this->urlMetodo = METODO;
                 $this->urlParameter = "";
             }
@@ -45,13 +48,21 @@
         }
         public function loadPage()
         {
-            require "./app/adms/Controller/Login.php";
-            $login = new Login();
-            $login->index();
+            echo "Carregar Página: {$this->urlController} <br>";
 
-            require "./app/adms/Controller/Users.php";
-            $users = new Users();
-            $users->index();
+            $this->urlController = ucwords($this->urlController);
+            echo "Carregar Página Corrigida: {$this->urlController} <br>";
+            $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
+            $classePage = new $this->classLoad();
+            $classePage-> {$this->urlMetodo}();
+
+            // require "./app/adms/Controller/Login.php";
+            // $login = new \App\adms\Controllers\Login();
+            // $login->index();
+
+            // require "./app/adms/Controller/Users.php";
+            // $users = new \App\adms\Controllers\Users();
+            // $users->index();
         }
     }
 

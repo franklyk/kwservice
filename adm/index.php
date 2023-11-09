@@ -7,8 +7,10 @@
 </head>
 <body>
     <?php 
-        require "./Core/ConfigController.php";
-        $home = new ConfigController();
+        // require "./Core/ConfigController.php";
+        require './vendor/autoload.php';
+
+        $home = new Core\ConfigController();
         $home->loadPage();
     ?>
 </body>

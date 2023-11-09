@@ -1,0 +1,17 @@
+{
+    "description": "Projeto ADM KWService",
+    "authors": [
+        {
+            "name": "Franklin da Silva Batista",
+            "email": "frsbatist@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "App\\": "app",
+            "Adms\\": "app/adms"
+        }
+    },
+    "require": {}
+}
