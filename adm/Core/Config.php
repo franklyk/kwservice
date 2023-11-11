@@ -15,6 +15,8 @@
             define('METODO', 'index');
             define('CONTROLLEERRO', 'Erro');
 
+            define('EMAILADM', 'contato@kwservice.com');
+
         }
     }
 ?>

@@ -3,18 +3,37 @@
     namespace Core;
 
     /**
-     * Crregar as páginas da View
+     * Carregar as páginas da View
      * 
      * @author Franklin (" klyk ") <frsbatist@gmail.com>
      */
     class ConfigView
     {
-        public function __construct(private string $nameView)
+
+        /**
+         * Recebe o endereço da VIEW e os dados
+         *
+         * @param string $nameView Endereço da VIEW que deve ser carregada 
+         * @param array|string|null $data Dados que a VIEW deve receber 
+         */
+        public function __construct(private string $nameView, private array|string|null $data)
         {
         }
-        public function loadView(): void
+
+
+        /**
+         * Carregar a VIEW
+         * Verificar se o arquivo existe, e carregar caso exista, não existindo apresenta a mensagem de erro
+         *
+         * @return void
+         */
+        public function loadView():void
         {
-            var_dump($this->nameView);
+            if(file_exists('app/' .$this->nameView . '.php')){
+                include 'app/' .$this->nameView . '.php';
+            }else {
+                die("Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM);
+            }
         }
     }
 

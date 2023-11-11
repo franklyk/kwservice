@@ -1,5 +1,7 @@
 <?php
-    echo "Página visualizar usuário! <br>";
+    echo "VIEW - Página visualizar usuário! <br>";
+
+    var_dump($this->data);
 
 
 
