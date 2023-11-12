@@ -21,7 +21,7 @@
 
             $this->data = [];
 
-            echo "Pagina visualizar usuarios <br>";
+            // echo "Pagina visualizar usuarios <br>";
 
             $loadView = new \Core\ConfigView("adms/Views/users/viewUser", $this->data);
             $loadView->loadView();

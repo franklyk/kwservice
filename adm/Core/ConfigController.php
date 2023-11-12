@@ -1,5 +1,4 @@
 <?php 
-    // require "./Core/Config.php";
 
     namespace Core;
 
@@ -8,6 +7,8 @@
      * Recebe a URL e manipula
      * Carrega a CONTROLLER
      * @author FRANKLIN(" KLYK ") <frsbatist@gmail.com>
+     * 
+     * Segue o link para a PSR-4
      * @link https://www.php-fig.org/psr/
      * @link https://github.com/php-fig/fig/standart/blob/master/proposed/phpdoc.md
      * @link https://github.com/php-fig/fig/standart/blob/master/proposed/phpdoc-tags.md
@@ -44,11 +45,11 @@
             $this->configAdm();
             if(!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))){
                 $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
-                var_dump($this->url);
+                // var_dump($this->url);
                 $this->clearUrl();
                 $this->urlArray = explode("/", $this->url);
-                var_dump($this->urlArray);
-
+                // var_dump($this->urlArray);
+                //Verificar a URL Digitada pelo usuario, se for nullo valerá o padrão
                 if(isset($this->urlArray[0])){
                     $this->urlController = $this->slugController($this->urlArray[0]);
                 }else{
@@ -69,9 +70,9 @@
                 $this->urlMetodo = $this->slugMetodo(METODO);
                 $this->urlParameter = "";
             }
-            echo "Controller: {$this->urlController} <br> ";
-            echo "Metodo: {$this->urlMetodo} <br>";
-            echo "Parametro: {$this->urlParameter} <br>";
+            // echo "Controller: {$this->urlController} <br> ";
+            // echo "Metodo: {$this->urlMetodo} <br>";
+            // echo "Parametro: {$this->urlParameter} <br>";
         }
 
         /**
@@ -116,7 +117,7 @@
             //Retira o espaço em branco
             $this->urlSlugController = str_replace(" ", "", $this->urlSlugController);
 
-            var_dump($this->urlSlugController);
+            // var_dump($this->urlSlugController);
             return $this->urlSlugController;
         }
 
@@ -133,7 +134,7 @@
             $this->$urlSlugMetodo = $this->slugController($urlSlugMetodo);
             //Converter para minúscula a primeira letra
             $this->$urlSlugMetodo = lcfirst($this->$urlSlugMetodo);
-            var_dump($this->$urlSlugMetodo);
+            // var_dump($this->$urlSlugMetodo);
             return $this->$urlSlugMetodo;
         }
 
@@ -145,9 +146,9 @@
          */
         public function loadPage(): void
         {
-            echo "Carregar Página: {$this->urlController} <br>";
+            // echo "Carregar Página: {$this->urlController} <br>";
 
-            echo "Carregar Página Corrigida: {$this->urlController} <br>";
+            // echo "Carregar Página Corrigida: {$this->urlController} <br>";
             $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
             $classePage = new $this->classLoad();
             $classePage-> {$this->urlMetodo}();

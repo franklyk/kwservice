@@ -15,6 +15,13 @@
             define('METODO', 'index');
             define('CONTROLLEERRO', 'Erro');
 
+            define('HOST', 'localhost');
+            define('USER', 'root');
+            define('PASS', '');
+            define('DBNAME', 'kwservice');
+            define('PORT', 3306);
+
+
             define('EMAILADM', 'contato@kwservice.com');
 
         }
