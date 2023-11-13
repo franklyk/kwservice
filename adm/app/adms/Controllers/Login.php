@@ -27,6 +27,12 @@
             if(!empty($this->dataform['SandLogin'])){
                 $valLogin = new \App\adms\Models\AdmsLogin();
                 $valLogin->login($this->dataform);
+
+                //Recebe os dados que vêm da AdmsLogin
+                if($valLogin->getResult()){
+                    $urlRedirect = URLADM . "dashboard/index";
+                    header("Location: $urlRedirect");
+                }
                 $this->data['form'] = $this->dataform;
 
             }

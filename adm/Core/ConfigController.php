@@ -53,7 +53,7 @@
                 if(isset($this->urlArray[0])){
                     $this->urlController = $this->slugController($this->urlArray[0]);
                 }else{
-                    $this->urlController =  $this->slugController(CONTROLLER);
+                    $this->urlController =  CONTROLLER;
                 }
                 if(isset($this->urlArray[1])){
                     $this->urlMetodo = $this->slugMetodo($this->urlArray[1]);
@@ -66,7 +66,7 @@
                     $this->urlParameter = "";
                 }
             }else{
-                $this->urlController = $this->slugController(CONTROLLEERRO);
+                $this->urlController = $this->slugController(CONTROLLER);
                 $this->urlMetodo = $this->slugMetodo(METODO);
                 $this->urlParameter = "";
             }
@@ -146,12 +146,15 @@
          */
         public function loadPage(): void
         {
+
+            $loadPgAdm = new \Core\CarregarPgAdm();
+            $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
             // echo "Carregar Página: {$this->urlController} <br>";
 
             // echo "Carregar Página Corrigida: {$this->urlController} <br>";
-            $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
-            $classePage = new $this->classLoad();
-            $classePage-> {$this->urlMetodo}();
+            // $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
+            // $classePage = new $this->classLoad();
+            // $classePage-> {$this->urlMetodo}();
 
             // $login = new \App\adms\Controllers\Login();
             // $login->index();

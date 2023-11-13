@@ -34,7 +34,9 @@
         protected function connectDB(): object
         {
             try{
-                //Conexão com a porta
+
+                //Conexão com a porta (Testes revelaram que a conexão com a porta foi recusada no WAMP-SERVER, ainda não há respostas sobre conexões em hospedagens e não foi testado no XAMPP)
+
                 // $this->connect = new PDO("mysql:host={$this->host};port{$this->port};dbname=". $this->dbname,  $this->user, $this->pass);
 
 
@@ -44,7 +46,7 @@
                 return $this->connect;
             }
             catch(PDOException $err){
-
+                //Encerra o precesso e emite a mensagem de erro
                 die("Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM);
             }
         }
