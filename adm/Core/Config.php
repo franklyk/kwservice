@@ -11,9 +11,9 @@
             define('URL', 'http://localhost/kwservice/');
             define('URLADM', 'http://localhost/kwservice/adm/');
 
-            define('CONTROLLER', 'login');
+            define('CONTROLLER', 'Login');
             define('METODO', 'index');
-            define('CONTROLLERERRO', 'Erro');
+            define('CONTROLLERERRO', 'Login');
 
             define('HOST', 'localhost');
             define('USER', 'root');

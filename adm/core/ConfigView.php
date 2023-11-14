@@ -32,7 +32,7 @@
             if(file_exists('app/' .$this->nameView . '.php')){
                 include 'app/' .$this->nameView . '.php';
             }else {
-                die("Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM);
+                die("Erro: 002 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM);
             }
         }
     }

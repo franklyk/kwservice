@@ -24,7 +24,7 @@
             echo "Pagina Dashboard <br>";
 
             $this->data = " Bem Vindo ";
-            $loadView = new \Core\ConfigView("adms/Views/dashborad/dashborad", $this->data);
+            $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
             $loadView->loadView();
         }
     }

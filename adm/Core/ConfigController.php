@@ -30,9 +30,9 @@
         /** @var array $format Recebe o array de caracteres especias que deve ser subistitudo */
         private array $format;
         /** @var string $urlSlugController Recebe o controller tratado */
-        private string $urlSlugController;
+        public string $urlSlugController;
         /** @var string $urlSlugMetodo Recebe o método tratado */
-        private string $urlSlugMetodo;
+        public string $urlSlugMetodo;
 
 
         
@@ -66,7 +66,7 @@
                     $this->urlParameter = "";
                 }
             }else{
-                $this->urlController = $this->slugController(CONTROLLER);
+                $this->urlController = $this->slugController(CONTROLLERERRO);
                 $this->urlMetodo = $this->slugMetodo(METODO);
                 $this->urlParameter = "";
             }
