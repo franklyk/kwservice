@@ -21,10 +21,12 @@
         */
         public function index(): void
         {
+            //Recebe os dados que vêm do formulário
             $this->dataform = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-
+            //verifica se o butão submit foi clicado
             if(!empty($this->dataform['SandLogin'])){
+                // var_dump($this->dataform);
                 $valLogin = new \App\adms\Models\AdmsLogin();
                 $valLogin->login($this->dataform);
 
@@ -32,16 +34,16 @@
                 if($valLogin->getResult()){
                     $urlRedirect = URLADM . "dashboard/index";
                     header("Location: $urlRedirect");
+                }else{
+                    $this->data['form'] = $this->dataform;
                 }
-                $this->data['form'] = $this->dataform;
 
             }
 
-
             // $this->data = null;
 
-         $loadView = new \Core\ConfigView("adms/Views/login/login", $this->data);
-         $loadView->loadView();
+            $loadView = new \Core\ConfigView("adms/Views/login/login", $this->data);
+            $loadView->loadView();
         }
     }
 

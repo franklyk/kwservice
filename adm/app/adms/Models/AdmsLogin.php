@@ -27,7 +27,7 @@
             $this->conn = $this->connectDB();
 
 
-            $query_val_login = "SELECT id, name, nickname, password, image FROM adms_users WHERE user=:user LIMIT 1";
+            $query_val_login = "SELECT id, name, nickname, email, password, image FROM adms_users WHERE user=:user LIMIT 1";
             $result_val_login = $this->conn->prepare($query_val_login);
             $result_val_login->bindParam(':user', $this->data['user'], PDO::PARAM_STR);
             $result_val_login->execute();
@@ -50,6 +50,7 @@
                 $_SESSION['user_id'] = $this->resultBD['id'];
                 $_SESSION['user_name'] = $this->resultBD['name'];
                 $_SESSION['user_nickname'] = $this->resultBD['nickname'];
+                $_SESSION['user_email'] = $this->resultBD['email'];
                 $_SESSION['user_image'] = $this->resultBD['image'];
                 $this->result = true;
                 // echo $_SESSION['msg'];

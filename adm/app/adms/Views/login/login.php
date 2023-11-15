@@ -29,7 +29,7 @@
     <?php 
     //$password - mantém os dados na INPUT password
         $password = "";
-        if(isset($valorForm['password'])){
+        if(!empty($valorForm['password'])){
             $password = $valorForm['password'];}
     ?>
     <label for="">Senha</label><br>
@@ -39,7 +39,10 @@
 
     <button type="submit" name="SandLogin" id="SandLogin" value="Acessar">Acessar</button>
 </form>
-<br>
-<br>
+
+<p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a></p>
+
+
+
 <p>Usuário: contato@kwservice.com </p>
 <p>Senha: 123456a</p>
