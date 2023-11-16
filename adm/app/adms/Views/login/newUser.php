@@ -27,7 +27,7 @@
         }
     ?>
     <label for="">Nome: </label><br>
-    <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php echo $name ?>"> <br><br>
+    <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php echo $name ?>" required> <br><br>
 
     <?php 
     //$user - mantém os dados na INPUT user
@@ -37,7 +37,7 @@
         }
     ?>
     <label for="">E-mail: </label><br>
-    <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail" value="<?php echo $email ?>"> <br><br>
+    <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail" value="<?php echo $email ?>" required> <br><br>
 
 
     <?php 
@@ -47,7 +47,7 @@
             $password = $valorForm['password'];}
     ?>
     <label for="">Senha</label><br>
-    <input type="password" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>">
+    <input type="password" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>" required>
 
     <br><br>
 
