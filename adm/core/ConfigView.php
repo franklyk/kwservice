@@ -30,7 +30,9 @@
         public function loadView():void
         {
             if(file_exists('app/' .$this->nameView . '.php')){
+                include 'app/adms/Views/include/head.php';
                 include 'app/' .$this->nameView . '.php';
+                include 'app/adms/Views/include/footer.php';
             }else {
                 die("Erro: 002 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM);
             }

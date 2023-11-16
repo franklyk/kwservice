@@ -15,9 +15,10 @@
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
     }
-
 ?>
-<form action="" method="post">
+<span id="msg"></span>
+
+<form action="" method="post" id="form-new-user">
     <?php 
     //$user - mantém os dados na INPUT user
         $name = "";
@@ -48,10 +49,9 @@
     <label for="">Senha</label><br>
     <input type="password" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>">
 
-
     <br><br>
 
-    <button type="submit" name="SandNewUser" value="SandNewUser">Cadastrar</button>
+    <button type="submit" name="SandNewUser" value="Cadastrar">Cadastrar</button>
 
 </form>
 

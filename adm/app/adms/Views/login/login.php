@@ -16,8 +16,12 @@
         unset($_SESSION['msg']);
     }
 
+    
 ?>
-<form action="" method="post">
+     
+<span id="msg"></span>
+
+<form action="" method="post" id="form-login">
     <?php 
     //$user - mantém os dados na INPUT user
         $user = "";
