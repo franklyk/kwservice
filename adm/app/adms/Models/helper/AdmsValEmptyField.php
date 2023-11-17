@@ -5,9 +5,6 @@
     class AdmsValEmptyField
     {
         private array|null $data;
-        private object $conn;
-        /** @var $resultadoBD Recebe o valor retornado do banco de dados*/
-        private $resultBD;
         private bool $result;
 
         function getResult(){

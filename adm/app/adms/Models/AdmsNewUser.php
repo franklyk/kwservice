@@ -32,25 +32,44 @@
             $valEmptyField->valField($this->data);
             if($valEmptyField->getResult()){
                 //iNSTANCIAR O MÉTOOD QUANDO A CLASSE É ABSTRATA. A CLASSE ADMSLOGIN É FILHA DA CLASSE ADMSCONN.
-    
-                $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
-
-                $this->data['user'] = $this->data['email'];
-                $this->data['created'] = date("Y-m-d H:i:s");
-
-                // var_dump($this->data);
-                //Instancia a classe AdmsCreate
-                $createUser = new \App\adms\Models\helper\AdmsCreate();
-                $createUser->exeCreate("adms_users", $this->data);
-                //Verifica se os dados foram inseridos e emite uma mensagem
-                if($createUser->getResult()){
-                    $_SESSION['msg'] = "<p style= 'color:#0f0;'>Usuário cadastrado com sucesso!</p>";
-                    $this->result = true;
-                }else{
-                    $_SESSION['msg'] = "<p style= 'color:#f00;'>Usuário não cadastrado com sucesso!</p>";
-                    $this->result = false;  
-                }
+                $this->valInput();
+               
             }else{
+                $this->result = false;  
+            }
+        }
+
+        private function valInput(): void
+        {
+            $valEmail = new \App\adms\Models\helper\AdmsValEmail();
+            $valEmail->validateEmail($this->data['email']);
+
+            $valEmailSingle = new \App\adms\Models\helper\AdmsValEmailSingle();
+            $valEmailSingle->validateEmailSingle($this->data['email']);
+
+            if($valEmail->getResult() and ($valEmailSingle->getResult())){
+                $this->add();
+            }else{
+                $this->result = false;
+            }
+        }
+        private function add(): void
+        {
+            $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+
+            $this->data['user'] = $this->data['email'];
+            $this->data['created'] = date("Y-m-d H:i:s");
+
+            // var_dump($this->data);
+            //Instancia a classe AdmsCreate
+            $createUser = new \App\adms\Models\helper\AdmsCreate();
+            $createUser->exeCreate("adms_users", $this->data);
+            //Verifica se os dados foram inseridos e emite uma mensagem
+            if($createUser->getResult()){
+                $_SESSION['msg'] = "<p style= 'color:#0f0;'>Usuário cadastrado com sucesso!</p>";
+                $this->result = true;
+            }else{
+                $_SESSION['msg'] = "<p style= 'color:#f00;'>Usuário não cadastrado com sucesso!</p>";
                 $this->result = false;  
             }
         }

@@ -2,14 +2,10 @@
 
     namespace App\adms\Models;
 
-    use App\adms\Models\helper\AdmsConn;
-    use PDO;
-
-    class AdmsLogin extends AdmsConn
+    class AdmsLogin
     {
         private array|null $data;
-        private object $conn;
-        /** @var $resultadoBD Recebe o valor retornado do banco de dados*/
+        /** @var $resultBD Recebe o valor retornado do banco de dados*/
         private $resultBD;
         private $result;
 
@@ -20,59 +16,38 @@
         public function login(array $data = null)
         {
             $this->data = $data;
-            var_dump($this->data);
+            // var_dump($this->data);
 
 
             $viewUser = new \App\adms\Models\helper\AdmsRead();
-            $viewUser->exeRead("adms_users", "WHERE user = :user LIMIT :limit", "user={$this->data['user']} & limit=1");
+            //Retorna todas as colunas 
+            // $viewUser->exeRead("adms_users", "WHERE user = :user LIMIT :limit", "user={$this->data['user']} & limit=1");
+
+            //Retorna somente as colunas indicadas
+            $viewUser->fullRead("SELECT id, name, nickname, email, password, image FROM adms_users WHERE user = :user LIMIT :limit", "user={$this->data['user']}&limit=1");
+            var_dump($viewUser);
 
 
             $this->resultBD = $viewUser->getResult();
             if($this->resultBD){
-                // var_dump($this->resultBD); 
                 $this->valPassword();
             }else{
                 $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro: Usuario e/ou Senha incoretos!</p>";
                 $this->result = false;
             }
-
-            //iNSTANCIAR O MÉTOOD QUANDO A CLASSE É ABSTRATA. A CLASSE ADMSLOGIN É FILHA DA CLASSE ADMSCONN.
-            
-            /*$this->conn = $this->connectDB();
-
-
-            $query_val_login = "SELECT id, name, nickname, email, password, image FROM adms_users WHERE user=:user LIMIT 1";
-            $result_val_login = $this->conn->prepare($query_val_login);
-            $result_val_login->bindParam(':user', $this->data['user'], PDO::PARAM_STR);
-            $result_val_login->execute();
-
-            $this->resultBD = $result_val_login->fetch();
-            if($this->resultBD){
-                // var_dump($this->resultBD);
-                $this->valPassword();
-            }else{
-                // $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro: Usuário não encontrado!</p>";
-                $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro: Usuario e/ou Senha incoretos!</p>";
-                $this->result = false;
-                // echo $_SESSION['msg'];
-            }*/
         }
         private function valPassword()
         {
             if(password_verify($this->data['password'], $this->resultBD[0]['password'])){
-                // $_SESSION['msg'] = "<p style= 'color: #0f0;'>Login realizado com sucesso!</p>";
                 $_SESSION['user_id'] = $this->resultBD[0]['id'];
                 $_SESSION['user_name'] = $this->resultBD[0]['name'];
                 $_SESSION['user_nickname'] = $this->resultBD[0]['nickname'];
                 $_SESSION['user_email'] = $this->resultBD[0]['email'];
                 $_SESSION['user_image'] = $this->resultBD[0]['image'];
                 $this->result = true;
-                // echo $_SESSION['msg'];
             }else{
-                // $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro: Senha incorreta!</p>";
                 $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro: Usuario e/ou Senha incoretos!</p>";
                 $this->result = false;
-                // echo $_SESSION['msg'];
             }
         }
     }
