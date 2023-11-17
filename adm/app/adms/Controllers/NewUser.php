@@ -27,7 +27,7 @@
 
             //verifica se o butão submit foi clicado
             if(!empty($this->formData["SandNewUser"])){
-
+                //Destroi a posiçao do botao submit
                 unset($this->formData["SandNewUser"]);
                 // var_dump($this->formData);
                 //Envia os dados do formulário para a AdmsnewUser

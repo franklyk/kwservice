@@ -1,6 +1,7 @@
 <?php 
     session_start();
     ob_start();
+    date_default_timezone_set("America/Sao_Paulo");
 
     //Carregaro Composer
     require './vendor/autoload.php';

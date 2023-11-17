@@ -5,12 +5,18 @@
     use App\adms\Models\helper\AdmsConn;
     use PDO;
 
+    /**
+     * Pagina para cadastrar novo usuario
+     */
     class AdmsNewUser extends AdmsConn
     {
+        /** @var array|null $data Recebe os dados inseridos*/
         private array|null $data;
+        /** @var array|null $conn Cria a conexao com o banco de dados */
         private object $conn;
         /** @var $resultadoBD Recebe o valor retornado do banco de dados*/
         private $resultBD;
+        /** @var array|null $result Recebe o valor da operaçao*/
         private $result;
 
         function getResult(){
@@ -20,7 +26,7 @@
         public function create(array $data = null)
         {
             $this->data = $data;
-            var_dump($this->data);
+            // var_dump($this->data);
 
             $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
             $valEmptyField->valField($this->data);
@@ -32,59 +38,21 @@
                 $this->data['user'] = $this->data['email'];
                 $this->data['created'] = date("Y-m-d H:i:s");
 
-                var_dump($this->data);
-
+                // var_dump($this->data);
+                //Instancia a classe AdmsCreate
                 $createUser = new \App\adms\Models\helper\AdmsCreate();
                 $createUser->exeCreate("adms_users", $this->data);
-
-                $this->result = false;  
-
-    
+                //Verifica se os dados foram inseridos e emite uma mensagem
+                if($createUser->getResult()){
+                    $_SESSION['msg'] = "<p style= 'color:#0f0;'>Usuário cadastrado com sucesso!</p>";
+                    $this->result = true;
+                }else{
+                    $_SESSION['msg'] = "<p style= 'color:#f00;'>Usuário não cadastrado com sucesso!</p>";
+                    $this->result = false;  
+                }
             }else{
                 $this->result = false;  
             }
-
-
         }
-        // public function create(array $data = null)
-        // {
-        //     $this->data = $data;
-        //     // var_dump($this->data);
-
-        //     $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
-        //     $valEmptyField->valField($this->data);
-        //     if($valEmptyField->getResult()){
-        //         //iNSTANCIAR O MÉTOOD QUANDO A CLASSE É ABSTRATA. A CLASSE ADMSLOGIN É FILHA DA CLASSE ADMSCONN.
-                
-        //         $this->conn = $this->connectDB();
-    
-        //         $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
-        //         // var_dump($this->data);
-    
-        //         $query_new_user = "INSERT INTO adms_users (name, email, user, password, created) VALUES(:name, :email, :user, :password, NOW())";
-        //         $add_new_user = $this->conn->prepare($query_new_user);
-        //         $add_new_user->bindParam(":name", $this->data['name'], PDO::PARAM_STR);
-        //         $add_new_user->bindParam(":email", $this->data['email'], PDO::PARAM_STR);
-        //         $add_new_user->bindParam(":user", $this->data['email'], PDO::PARAM_STR);
-        //         $add_new_user->bindParam(":password", $this->data['password'], PDO::PARAM_STR);
-    
-        //         $add_new_user->execute();
-    
-        //         //Verifica se os dados foram inseridos corretamente no banco de dados e envia uma mensagem
-        //         if($add_new_user->rowCount()){
-        //             $_SESSION['msg'] = "<p style= 'color:#0f0;'>Usuário cadastrado com sucesso!</p>";
-        //             $this->result = true;
-        //         }else{
-        //             $_SESSION['msg'] = "<p style= 'color:#f00;'>Usuário não cadastrado com sucesso!</p>";
-        //             $this->result = false;  
-        //         }
-        //     }else{
-        //         $this->result = false;  
-        //     }
-
-
-        // }
-
     }
-
 ?>
