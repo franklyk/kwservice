@@ -1,7 +1,7 @@
 <?php 
 
     namespace App\adms\Models\helper;
-
+use PDO;
 use PDOException;
     /**
      * Create genérico para insersao no banco de dados
