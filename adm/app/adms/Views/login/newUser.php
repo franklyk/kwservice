@@ -47,7 +47,7 @@
             $password = $valorForm['password'];}
     ?>
     <label for="">Senha</label><br>
-    <input type="password" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>" required>
+    <input type="text" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>" required>
 
     <br><br>
 
