@@ -50,7 +50,7 @@
             if(preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9-@#$%;*]{6,}$/', $this->password)){
                 $this->result = true;
             }else{
-                $_SESSION['msg'] = "<p style='color:#f00;'>Erro: A senha deve conter letras e números!</p>";
+                $_SESSION['msg'] = "<p style='color:#f00;'>Erro: A senha deve conter letras e números ou carcteres como '@ # $ % ; *'!</p>";
                 $this->result = false;
             }
         }

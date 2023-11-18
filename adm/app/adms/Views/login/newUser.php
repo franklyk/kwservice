@@ -23,7 +23,7 @@
     //$user - mantém os dados na INPUT user
         $name = "";
         if(isset($valorForm['name'])){
-            $user = $valorForm['name'];
+            $name = $valorForm['name'];
         }
     ?>
     <label for="">Nome: </label><br>
