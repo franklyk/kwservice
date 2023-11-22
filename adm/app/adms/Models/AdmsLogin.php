@@ -7,6 +7,7 @@
         private array|null $data;
         /** @var $resultBD Recebe o valor retornado do banco de dados*/
         private $resultBD;
+        /** @var  $result Recebe true quando o processo for executado com sucesso e false quando ouver erro*/
         private $result;
 
         function getResult(){

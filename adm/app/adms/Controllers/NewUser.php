@@ -12,7 +12,7 @@
         private array|string|null $data = [];
   
         /** @var array $dataform Recebe os dados do Formulário */
-        private array|null $formData;
+        private array|null $dataForm;
 
         /**
         * Instanciar a classe responsável em carregar a View e enviar os dados para a View
@@ -22,17 +22,18 @@
         public function index(): void
         {
             //Recebe os dados que vêm do formulário
-            $this->formData = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+            $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 
             //verifica se o butão submit foi clicado
-            if(!empty($this->formData["SandNewUser"])){
+            if(!empty($this->dataForm["SandNewUser"])){
+                
                 //Destroi a posiçao do botao submit
-                unset($this->formData["SandNewUser"]);
-                // var_dump($this->formData);
+                unset($this->dataForm["SandNewUser"]);
+
                 //Envia os dados do formulário para a AdmsnewUser
                 $createNewUser = new \App\adms\Models\AdmsNewUser();
-                $createNewUser->create($this->formData);
+                $createNewUser->create($this->dataForm);
 
                 //Recebe os dados que vêm da AdmsLogin
                 if($createNewUser->getResult()){
@@ -40,7 +41,7 @@
                     header("Location: $urlRedirect");
                 }else{
                     // Mantém os dados no formulário se não for redirecinado
-                    $this->data['form'] = $this->formData;
+                    $this->data['form'] = $this->dataForm;
                     $this->viewNewUser();
                 }
             }else{

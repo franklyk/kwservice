@@ -3,7 +3,7 @@
     ob_start();
     date_default_timezone_set("America/Sao_Paulo");
 
-    //Carregaro Composer
+    //Carregar o Composer
     require './vendor/autoload.php';
 
     //Instanciar a classe ConfigController, Responsável em tratar a URL      
