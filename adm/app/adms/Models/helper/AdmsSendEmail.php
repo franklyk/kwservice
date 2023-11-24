@@ -66,7 +66,7 @@ class AdmsSendEmail
         $confEmail = new \App\adms\Models\helper\AdmsRead();
         $confEmail->fullRead("SELECT name, email, host, username, password, smtpsecure, port FROM adms_confs_emails WHERE id =:id LIMIT :limit", "id={$this->optionConfEmail}&limit=1");
         $this->resultBd = $confEmail->getResult();
-        var_dump($this->resultBd);
+        // var_dump($this->resultBd);
         if($this->resultBd){
             $this->dataInfoEmail['host'] = $this->resultBd[0]['host'];
             $this->dataInfoEmail['fromEmail'] = $this->resultBd[0]['email'];
