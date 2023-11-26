@@ -120,8 +120,7 @@ class AdmsNewUser
         $this->contentEmailText();
 
         $sendEmail = new \App\adms\Models\helper\AdmsSendEmail();
-        $sendEmail->sendEmail($this->emailData, 2);
-
+        $sendEmail->sendEmail($this->emailData, 3);
         if ($sendEmail->getResult()) {
             $_SESSION['msg'] = "<p style='color: green;'>Usuário cadastrado com sucesso. Acesse a sua caixa de entrada para confimar o e-mail!</p>";
             $this->result = true;

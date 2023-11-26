@@ -70,14 +70,13 @@ class AdmsConfEmail extends helper\AdmsConn
         $conf_email = null;
         $adms_sits_user_id = 1;
 
-        $query_ativar_user = "UPDATE adms_users SET conf_email =:conf_email, adms_sits_user_id =:adms_sits_user_id, modified = NOW() WHERE id=:id LIMIT 1";
+        $query_activate_user = "UPDATE adms_users SET conf_email =:conf_email, adms_sits_user_id =:adms_sits_user_id, modified = NOW() WHERE id=:id LIMIT 1";
 
-        $activate_email = $this->connectDB()->prepare($query_ativar_user);
+        $activate_email = $this->connectDB()->prepare($query_activate_user);
         $activate_email->bindParam(':conf_email', $conf_email);
         $activate_email->bindParam(':adms_sits_user_id', $adms_sits_user_id);
         $activate_email->bindParam(':id', $this->resultBd[0]['id']);
         $activate_email->execute();
-        var_dump($activate_email);
 
         if ($activate_email->rowCount()) {
             $_SESSION['msg'] = "<p style='color: #0f0;'>E-mail ativado com sucesso!</p>";

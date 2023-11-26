@@ -83,7 +83,7 @@ use App\adms\Controllers\NewUser;
 
         private function pgPublic():void
         {
-            $this->listPgPublic = ["Login", "Erro", "Logout", "NewUser", "ConfEmail"];
+            $this->listPgPublic = ["Login", "Erro", "Logout", "NewUser", "ConfEmail", "NewConfEmail"];
 
             if(in_array($this->urlController, $this->listPgPublic)){
                 $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;

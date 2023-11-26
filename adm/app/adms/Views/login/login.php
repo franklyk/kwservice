@@ -46,7 +46,11 @@
 
 <p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a></p>
 
+<p><a href="http://localhost/kwservice/adm/new-conf-email/index">Confirmar Email</a></p>
+
 
 
 <p>Usuário: contato@kwservice.com </p>
 <p>Senha: 123456a</p>
+
+
