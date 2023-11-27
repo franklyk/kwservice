@@ -27,7 +27,7 @@
         }
     ?>
     <label for="">E-mail: </label><br>
-    <input type="text" name="email" id="email" placeholder="Digite o seu e-mail" value="<?php echo $email ?>" required> 
+    <input type="text" name="email" id="email" placeholder="Digite o seu e-mail" value="<?php echo $email ?>"> 
 
     <br><br>
 
