@@ -17,7 +17,7 @@ class AdmsNewConfEmail extends AdmsConn
     private array|null $data;
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
-    private bool $result;
+    private string|null|bool $result;
 
     /** @var array|null $resultBd Recebe os registros do banco de dados */
     private array|null $resultBd;
@@ -30,10 +30,11 @@ class AdmsNewConfEmail extends AdmsConn
 
     private string $url;
 
-
-
     /** @var array $emailData Recebe dados do conteúdo do e-mail */
     private array $emailData;
+
+    private array $dataSave;
+    
 
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
@@ -82,9 +83,20 @@ class AdmsNewConfEmail extends AdmsConn
     private function valConfEmail(): void
     {
         if ((empty($this->resultBd[0]['conf_email'])) or ($this->resultBd[0]['conf_email'] == NULL)) {
-            $conf_email = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id'], PASSWORD_DEFAULT);
+            $this->dataSave['conf_email'] = password_hash(date("Y-m-d H:i:s") . $this->resultBd[0]['id'], PASSWORD_DEFAULT);
+            
+            $upNewConfEmail = new \App\adms\Models\helper\AdmsUpdate();
+            $upNewConfEmail->exeUpdate("adms_users", $this->dataSave, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
 
-            $query_activate_user = "UPDATE adms_users 
+            if($upNewConfEmail->getResult()){
+                $this->resultBd[0]['conf_email'] = $this->dataSave['conf_email'];
+                $this->sendEmail();
+            }else{
+                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Link não enviado, tente novamente!</p>";
+                $this->result = false;
+            }
+
+            /*$query_activate_user = "UPDATE adms_users 
                             SET conf_email=:conf_email, 
                             modified = NOW()
                             WHERE id=:id
@@ -101,9 +113,11 @@ class AdmsNewConfEmail extends AdmsConn
             } else {
                 $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Link não enviado, tente novamente!</p>";
                 $this->result = false;
-            }
+            }*/
+            // $this->result = false;
         } else {
             $this->sendEmail();
+            /*$this->result = false;*/
         }
     }
 
@@ -129,7 +143,7 @@ class AdmsNewConfEmail extends AdmsConn
         $this->firstName = $name[0];
 
         $this->emailData['toEmail'] = $this->data['email'];
-        $this->emailData['toName'] = $this->data['name'];
+        $this->emailData['toName'] = $this->resultBd[0]['name'];
         $this->emailData['subject'] = "Confirma sua conta";
         $this->url = URLADM . "conf-email/index?key=" . $this->resultBd[0]['conf_email'];
 
