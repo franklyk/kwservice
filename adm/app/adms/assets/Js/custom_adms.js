@@ -105,3 +105,20 @@ if (formNewConfEmail) {
     }
     )
 }
+
+
+const formRecoverPass = document.getElementById("form-recover-pass");
+if (formRecoverPass) {
+    formRecoverPass.addEventListener("submit", async (e) => {
+        //Recebe o valor do campo E-MAIL
+        var email = document.querySelector('#email').value;
+        if (email === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo E-mail!</p>";
+
+            return;
+        }
+    }
+    )
+}

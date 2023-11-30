@@ -46,7 +46,7 @@
 
 <p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a></p>
 
-<p><a href="http://localhost/kwservice/adm/new-conf-email/index">Confirmar Email</a></p>
+<p><a href="<?php echo URLADM ?>new-conf-email/index">Confirmar Email</a> - <a href="<?php echo URLADM ?>recover-password/index">Esqueceu a senha?</a></p>
 
 
 
