@@ -115,7 +115,7 @@ class AdmsRecoverPass
 
         $this->emailData['toEmail'] = $this->data['email'];
         $this->emailData['toName'] = $this->resultBd[0]['name'];
-<<<<<<< HEAD
+
         $this->emailData['subject'] = "Recuparar a senha! ";
         $this->url = URLADM . "update-password/index?key=" . $this->resultBd[0]['recover_password'];
 
@@ -132,21 +132,12 @@ class AdmsRecoverPass
         <br>
         "
         ;
-=======
-        $this->emailData['subject'] = "Recupara senha! ";
-        $this->url = URLADM . "update_password/index?key=" . $this->resultBd[0]['recover_password'];
 
-        $this->emailData['contentHtml'] = "Prezado(a) {$this->firstName}<br><br>";
-        $this->emailData['contentHtml'] .= "Agradecemos a sua solicitação de cadastro em nosso site!<br><br>";
-        $this->emailData['contentHtml'] .= "Para que possamos liberar o seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicanco no link abaixo: <br><br>";
-        $this->emailData['contentHtml'] .= "<a href='{$this->url}'>{$this->url}</a><br><br>";
-        $this->emailData['contentHtml'] .= "Esta mensagem foi enviada a você pela empresa XXX.<br>Você está recebendo porque está cadastrado no banco de dados da empresa XXX. Nenhum e-mail enviado pela empresa XXX tem arquivos anexados ou solicita o preenchimento de senhas e informações cadastrais.<br><br>";
->>>>>>> 1ebb21a97e10742749e7950cb5ef40e259103698
     }
 
     private function emailText(): void
     {
-<<<<<<< HEAD
+
         $this->emailData['contentText'] = "KWService.com\n\n";
         $this->emailData['contentText'] = "Prezado(a) {$this->firstName}\n\n";
         $this->emailData['contentText'] .= "Você solicitou a alteração de sua senha!\n\n";
@@ -158,12 +149,6 @@ class AdmsRecoverPass
         \n\n
         Atenciosamente  suporte@kwservice.com
         \n\n";
-=======
-        $this->emailData['contentText'] = "Prezado(a) {$this->firstName}\n\n";
-        $this->emailData['contentText'] .= "Agradecemos a sua solicitação de cadastro em nosso site!\n\n";
-        $this->emailData['contentText'] .= "Para que possamos liberar o seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicanco no link abaixo: \n\n";
-        $this->emailData['contentText'] .=  $this->url . "\n\n";
-        $this->emailData['contentText'] .= "Esta mensagem foi enviada a você pela empresa XXX.\nVocê está recebendo porque está cadastrado no banco de dados da empresa XXX. Nenhum e-mail enviado pela empresa XXX tem arquivos anexados ou solicita o preenchimento de senhas e informações cadastrais.\n\n";
->>>>>>> 1ebb21a97e10742749e7950cb5ef40e259103698
+
     }
 }
