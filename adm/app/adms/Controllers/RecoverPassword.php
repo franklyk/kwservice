@@ -1,0 +1,53 @@
+<?php
+
+namespace App\adms\Controllers;
+
+/**
+ * Controller da página de Recuperar senha
+ * 
+ * @author Franklin (" KLYK ") <frsbatist@gmail.com>
+ *
+ * @return void
+ */
+
+class RecoverPassword
+{
+    /** @var array|string|null $data Recebe os dados que serão enviados para a VIEW */
+    private array|string|null $data = [];
+
+    /** @var array $dataform Recebe os dados do Formulário */
+    private array|null $dataForm;
+
+    /**
+     * Instanciar a classe responsável em carregar a View e enviar os dados para a View
+     *
+     * @return void
+     */
+    public function index(): void
+    {
+        $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        if (!empty($this->dataForm['SandRecoverPass'])) {
+            unset($this->dataForm['SandRecoverPass']);
+            $this->viewRecoverPass();
+
+            $recoverPass = new \App\adms\Models\AdmsRecoverPass();
+            $recoverPass->recoverPassword($this->dataForm);
+
+
+            if($recoverPass->getResult()){
+                $urlRedirect = URLADM . "login/index";
+                header("Location: $urlRedirect");
+            } else {
+                $this->data["form"] =$this->dataForm;
+                $this->viewRecoverPass();
+            }
+        } else {
+            $this->viewRecoverPass();
+        }
+    }
+    private function viewRecoverPass(): void
+    {
+        $loadView = new \Core\ConfigView("adms/Views/login/recoverPassword", $this->data);
+        $loadView->loadView();
+    }
+}

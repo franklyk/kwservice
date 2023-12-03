@@ -2,13 +2,11 @@
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
     }
-    
-    //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
+
 ?>
 
+<h1>KWService</h1>
 <h1>Area Restrita</h1>
 <?php 
     if(isset($_SESSION['msg'])){
@@ -44,13 +42,8 @@
     <button type="submit" name="SandLogin" id="SandLogin" value="Acessar">Acessar</button>
 </form>
 
-<p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a></p>
-
-<p><a href="http://localhost/kwservice/adm/new-conf-email/index">Confirmar Email</a></p>
+<p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a> - <a href="<?php echo URLADM ?>recover-password/index">Esqueceu a senha?</a></p>
 
 
-
-<p>Usuário: contato@kwservice.com </p>
-<p>Senha: 123456a</p>
 
 

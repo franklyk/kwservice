@@ -147,19 +147,40 @@ class AdmsNewConfEmail extends AdmsConn
         $this->emailData['subject'] = "Confirma sua conta";
         $this->url = URLADM . "conf-email/index?key=" . $this->resultBd[0]['conf_email'];
 
-        $this->emailData['contentHtml'] = "Prezado(a) {$this->firstName}<br><br>";
-        $this->emailData['contentHtml'] .= "Agradecemos a sua solicitação de cadastro em nosso site!<br><br>";
-        $this->emailData['contentHtml'] .= "Para que possamos liberar o seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicanco no link abaixo: <br><br>";
-        $this->emailData['contentHtml'] .= "<a href='{$this->url}'>{$this->url}</a><br><br>";
-        $this->emailData['contentHtml'] .= "Esta mensagem foi enviada a você pela empresa XXX.<br>Você está recebendo porque está cadastrado no banco de dados da empresa XXX. Nenhum e-mail enviado pela empresa XXX tem arquivos anexados ou solicita o preenchimento de senhas e informações cadastrais.<br><br>";
+        $this->emailData['contentHtml'] = "<h1 style='color:tomato;'>KWService</h1> <br><br>";
+        $this->emailData['contentHtml'] = "Olá {$this->firstName}! <br><br>";
+        $this->emailData['contentHtml'] = "Bem Vindo à KWService.com <br><br>";
+        $this->emailData['contentHtml'] .= "É um prazer ter você conosco!<br><br>";
+        $this->emailData['contentHtml'] .= "Para que possamos liberar o seu cadastro em nosso sistema, solicitamos a confirmação do e-mail. clique no link abaixo: <br><br>";
+        $this->emailData['contentHtml'] .= "<a href='{$this->url}'>Acessar</a> <br><br>";
+        $this->emailData['contentHtml'] .= "Lembre-se de não compartilhar os seus dados.
+        <br>
+        Informamos que não enviamos mensagens pedindo que informe suas credenciais ou que faça qualquer confirmação de senha.
+        <br>
+        Em caso de dúvida entre em contatos conosco.
+        <br>
+        Atenciosamente suporte@kwservice.com
+        <br><br>
+        
+        ";
     }
 
     private function emailText(): void
     {
-        $this->emailData['contentText'] = "Prezado(a) {$this->firstName}\n\n";
-        $this->emailData['contentText'] .= "Agradecemos a sua solicitação de cadastro em nosso site!\n\n";
-        $this->emailData['contentText'] .= "Para que possamos liberar o seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicanco no link abaixo: \n\n";
+
+        $this->emailData['contentText'] = "Olá {$this->firstName}\n\n";
+        $this->emailData['contentText'] = "Bem Vindo à KWService.com \n\n";
+        $this->emailData['contentText'] .= "É um prazer ter você conosco!\n\n";
+        $this->emailData['contentText'] .= "Para que possamos liberar o seu cadastro em nosso sistema, copie o link abaixo e cole no navegador para acessar: \n\n";
         $this->emailData['contentText'] .=  $this->url . "\n\n";
-        $this->emailData['contentText'] .= "Esta mensagem foi enviada a você pela empresa XXX.\nVocê está recebendo porque está cadastrado no banco de dados da empresa XXX. Nenhum e-mail enviado pela empresa XXX tem arquivos anexados ou solicita o preenchimento de senhas e informações cadastrais.\n\n";
+        $this->emailData['contentText'] .= "Lembre-se de não compartilhar os seus dados.\n
+        Informamos que não enviamos mensagens pedindo que informe suas credenciais ou que faça qualquer confirmação de senha.
+        \n\n
+        Em caso de dúvida entre em contatos conosco.
+        \n\n
+        Atenciosamente suporte@kwservice.com
+        \n\n
+
+        ";
     }
 }

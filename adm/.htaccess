@@ -1,6 +1,18 @@
 #Ativa o modulo Rewrite que faz a reecrita da URL
 RewriteEngine On
 
+Options All -Indexes
+
+
+# ROUTER WWW Redirect.
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ROUTER HTTPS Redirect
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 
 
 
@@ -39,3 +51,9 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 #index.php?url=users/index
 #index.php?url=users/index&id=2&sit=2
 #http://localhost/kwservice/adm/view-users/index?id=2&sit=2
+
+
+<Files 403.shtml>
+    Order allow,deny
+    Allow from all
+</Files>
