@@ -4,7 +4,13 @@
         $valorForm = $this->data['form'];
         // var_dump($this->data['form']);
     }
+<<<<<<< HEAD
 
+=======
+    
+    //Criptografar a senha
+    //echo password_hash("123456a", PASSWORD_DEFAULT);
+>>>>>>> 1ebb21a97e10742749e7950cb5ef40e259103698
 ?>
 
 <h1>Recuperar senha</h1>
@@ -29,7 +35,11 @@
 
     <br><br>
 
+<<<<<<< HEAD
     <button type="submit" name="SandRecoverPass" value="Enviar">Enviar</button>
+=======
+    <button type="submit" name="SandRecoverPass" value="Recuperar">Recuperar</button>
+>>>>>>> 1ebb21a97e10742749e7950cb5ef40e259103698
 
 </form>
 

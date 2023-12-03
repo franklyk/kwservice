@@ -42,7 +42,13 @@
     <button type="submit" name="SandLogin" id="SandLogin" value="Acessar">Acessar</button>
 </form>
 
+<<<<<<< HEAD
 <p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a> - <a href="<?php echo URLADM ?>recover-password/index">Esqueceu a senha?</a></p>
+=======
+<p><a href="<?php echo URLADM ?>new-user/index">Cadastrar</a></p>
+
+<p><a href="<?php echo URLADM ?>new-conf-email/index">Confirmar Email</a> - <a href="<?php echo URLADM ?>recover-password/index">Esqueceu a senha?</a></p>
+>>>>>>> 1ebb21a97e10742749e7950cb5ef40e259103698
 
 
 
