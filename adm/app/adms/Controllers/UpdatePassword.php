@@ -59,7 +59,7 @@ class UpdatePassword
             $upPassword = new \App\adms\Models\AdmsUpdatePassword();
             $upPassword->editPassword($this->dataForm);
 
-            if ($this->$upPassword->getResult()){
+            if ($upPassword->getResult()){
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
             }else{
@@ -68,7 +68,6 @@ class UpdatePassword
 
             $this->viewUpdatePassword();
         }else{
-            echo "mensagem de erro";
 
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");

@@ -26,8 +26,8 @@
             $name = $valorForm['name'];
         }
     ?>
-    <label for="">Nome: </label><br>
-    <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php echo $name ?>" required> <br><br>
+    <label for="name">Nome: </label><br>
+    <input type="text" name="name" id="name" placeholder="Digite o nome completo" autocomplete="on" value="<?php echo $name ?>" required> <br><br>
 
     <?php 
     //$user - mantém os dados na INPUT user
@@ -36,8 +36,8 @@
             $email = $valorForm['email'];
         }
     ?>
-    <label for="">E-mail: </label><br>
-    <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail" value="<?php echo $email ?>" required> <br><br>
+    <label for="email">E-mail: </label><br>
+    <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on" value="<?php echo $email ?>" required> <br><br>
 
 
     <?php 
@@ -46,10 +46,11 @@
         if(isset($valorForm['password'])){
             $password = $valorForm['password'];}
     ?>
-    <label for="">Senha</label><br>
-    <input type="text" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>" required>
+    <label for="password">Senha</label><br>
+    <input type="text" name="password" id="password" placeholder="Digite a Senha" onkeyup="passwordStrength()" autocomplete="on" value="<?php echo $password ?>" required>
+    <span id="msgViewStrength"><br><br></span>
 
-    <br><br>
+    
 
     <button type="submit" name="SandNewUser" value="Cadastrar">Cadastrar</button>
 

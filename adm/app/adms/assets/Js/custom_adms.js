@@ -1,9 +1,47 @@
 // window.alert ("carregou");
+
+//Calcular a forca da senha
+function passwordStrength(){
+    var password = document.getElementById("password").value;
+    console.log(password);
+    var strength = 0;
+
+    if((password.length >= 6) && (password.length <= 7)){
+        strength += 10;
+    }else if(password.length > 7){
+        strength += 25;
+    }
+    if((password.length >= 6) && (password.match(/[a-z]+/))){
+        strength += 10;
+    }
+    if((password.length >= 7) && (password.match(/[A-Z]+/))){
+        strength += 20;
+    }
+    if((password.length >= 8) && (password.match(/[@#$%;*]+/))){
+        strength += 25;
+    }
+    if(password.match(/[1-9]+\1{1,}/)){
+        strength -= 25;
+    }
+
+    viewStrength(strength);
+}
+function viewStrength(strength){
+    if(strength < 30){
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#f00;'>Senha Fraca!</p>";
+    }else if((strength >= 30) && (strength < 50)){
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#ff8c00;'>Senha Média!</p>";
+    }else if((strength >= 50) && (strength < 70)){
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#7cfc00;'>Senha Boa!</p>";
+    }else if(strength >= 70){
+        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#008000;'>Senha Forte!</p>";
+    }else{
+        document.getElementById("msgViewStrength").innerHTML = "";
+    }
+}
 const formNewUser = document.getElementById("form-new-user");
 if (formNewUser) {
     formNewUser.addEventListener("submit", async (e) => {
-
-        // document.getElementById("msg").innerHTML = "<p style='color: #0f0;'>Usuário cadastrado com sucesso!</p>";
 
         //Recebe o valor do campo NAME
         var name = document.querySelector('#name').value;
@@ -116,6 +154,22 @@ if (formRecoverPass) {
             e.preventDefault();
 
             document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo E-mail!</p>";
+
+            return;
+        }
+    }
+    )
+}
+
+const formUpdatePass = document.getElementById("form-update-pass");
+if (formUpdatePass) {
+    formUpdatePass.addEventListener("submit", async (e) => {
+        //Recebe o valor do campo E-MAIL
+        var email = document.querySelector('#password').value;
+        if (email === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Senha!</p>";
 
             return;
         }

@@ -27,7 +27,7 @@
             $user = $valorForm['user'];}
     ?>
     <label for="">Usuário</label><br>
-    <input type="text" name="user" id="user" placeholder="Digite o usuário" value="<?php echo $user ?>"> <br><br>
+    <input type="text" name="user" id="user" placeholder="Digite o usuário" autocomplete="on" value="<?php echo $user ?>" required> <br><br>
     <?php 
     //$password - mantém os dados na INPUT password
         $password = "";
@@ -35,7 +35,7 @@
             $password = $valorForm['password'];}
     ?>
     <label for="">Senha</label><br>
-    <input type="text" name="password" id="password" placeholder="Digite a Senha" value="<?php echo $password ?>">
+    <input type="text" name="password" id="password" placeholder="Digite a Senha" autocomplete="on" value="<?php echo $password ?>" required>
     <br><br>
 
 

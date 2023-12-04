@@ -58,7 +58,7 @@ class AdmsUpdatePassword
     public function editPassword(array $data = null): void
     {
         $this->data = $data;
-        var_dump($this->data);
+        
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {
