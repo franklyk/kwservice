@@ -21,11 +21,10 @@
          */
         public function index():void
         {
-            // echo "Pagina de Erro <br>";
 
             $this->data = "<p style='color:#f00;'>Página não encontrada!</p>";
             $loadView = new \Core\ConfigView("adms/Views/erro/erro", $this->data);
-            $loadView->loadView();
+            $loadView->loadViewLogin();
         }
     }
 

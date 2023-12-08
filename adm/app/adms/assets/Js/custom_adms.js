@@ -1,5 +1,8 @@
 // window.alert ("carregou");
-
+//Permitir o retorno do navegador aoformulário após erro
+if(window.history.replaceState){
+    window.history.replaceState(null, null, window.location.href);
+} 
 //Calcular a forca da senha
 function passwordStrength(){
     var password = document.getElementById("password").value;

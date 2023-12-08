@@ -22,6 +22,7 @@ class NewConfEmail
 
     /**
      * Instanciar a classe responsável em carregar a View e enviar os dados para a View
+     * Responsável por reenviar o email de confirmação
      *
      * @return void
      */
@@ -45,10 +46,16 @@ class NewConfEmail
 
     }
 
+
+    /**
+     * Responsável por carregar a view
+     *
+     * @return void
+     */
     private function viewNewConfEmail(): void
     {
        $loadView = new \Core\ConfigView("adms/Views/login/newConfEmail", $this->data);
-       $loadView->loadView();
+       $loadView->loadViewLogin();
     }
 
     

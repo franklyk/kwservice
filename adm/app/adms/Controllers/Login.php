@@ -26,7 +26,6 @@
 
             //verifica se o butão submit foi clicado
             if(!empty($this->dataform['SandLogin'])){
-                // var_dump($this->dataform);
                 $valLogin = new \App\adms\Models\AdmsLogin();
                 $valLogin->login($this->dataform);
 
@@ -43,7 +42,7 @@
             // $this->data = null;
 
             $loadView = new \Core\ConfigView("adms/Views/login/login", $this->data);
-            $loadView->loadView();
+            $loadView->loadViewLogin();
         }
     }
 

@@ -70,9 +70,7 @@
                 $this->urlMetodo = $this->slugMetodo(METODO);
                 $this->urlParameter = "";
             }
-            // echo "Controller: {$this->urlController} <br> ";
-            // echo "Metodo: {$this->urlMetodo} <br>";
-            // echo "Parametro: {$this->urlParameter} <br>";
+
         }
 
         /**
@@ -149,15 +147,6 @@
 
             $loadPgAdm = new \Core\CarregarPgAdm();
             $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
-            // echo "Carregar Página: {$this->urlController} <br>";
-
-            // echo "Carregar Página Corrigida: {$this->urlController} <br>";
-            // $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
-            // $classePage = new $this->classLoad();
-            // $classePage-> {$this->urlMetodo}();
-
-            // $login = new \App\adms\Controllers\Login();
-            // $login->index();
         }
     }
 

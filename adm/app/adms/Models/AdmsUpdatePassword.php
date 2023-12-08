@@ -98,7 +98,5 @@ class AdmsUpdatePassword
             $_SESSION['msg'] = "<p style='color: green;'>Senha não atualizada com sucesso!</p>";
             $this->result = false;
         }
-
-
     }
 }

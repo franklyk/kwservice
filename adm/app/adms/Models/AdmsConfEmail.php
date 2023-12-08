@@ -15,6 +15,7 @@ class AdmsConfEmail extends helper\AdmsConn
     /** @var string $key Recebe a chave para confirmar o cadastro */
     private string $key;
 
+    private array $dataSave;
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result;
@@ -67,18 +68,15 @@ class AdmsConfEmail extends helper\AdmsConn
 
     private function updateSitUser(): void
     {
-        $conf_email = null;
-        $adms_sits_user_id = 1;
+        $this->dataSave['conf_email'] = null;
+        $this->dataSave['adms_sits_user_id'] = 1;
+        $this->dataSave['modified'] = date("Y-m-d H:i:s");
 
-        $query_activate_user = "UPDATE adms_users SET conf_email =:conf_email, adms_sits_user_id =:adms_sits_user_id, modified = NOW() WHERE id=:id LIMIT 1";
+        $upConfEmail = new \App\adms\Models\helper\AdmsUpdate();
+        $upConfEmail->exeUpdate("adms_users", $this->dataSave, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
 
-        $activate_email = $this->connectDB()->prepare($query_activate_user);
-        $activate_email->bindParam(':conf_email', $conf_email);
-        $activate_email->bindParam(':adms_sits_user_id', $adms_sits_user_id);
-        $activate_email->bindParam(':id', $this->resultBd[0]['id']);
-        $activate_email->execute();
 
-        if ($activate_email->rowCount()) {
+        if ($upConfEmail->getResult()) {
             $_SESSION['msg'] = "<p style='color: #0f0;'>E-mail ativado com sucesso!</p>";
             $this->result = true;
         } else {

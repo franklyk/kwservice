@@ -21,8 +21,6 @@
 
 
             $viewUser = new \App\adms\Models\helper\AdmsRead();
-            //Retorna todas as colunas 
-            // $viewUser->exeRead("adms_users", "WHERE user = :user LIMIT :limit", "user={$this->data['user']} & limit=1");
 
             //Retorna somente as colunas indicadas
             $viewUser->fullRead("SELECT id, name, nickname, email, password, image, adms_sits_user_id FROM adms_users WHERE user = :user OR email = :email LIMIT :limit", "user={$this->data['user']}&email={$this->data['user']}&limit=1");

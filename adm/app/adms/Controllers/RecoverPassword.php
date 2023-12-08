@@ -33,7 +33,10 @@ class RecoverPassword
             $recoverPass = new \App\adms\Models\AdmsRecoverPass();
             $recoverPass->recoverPassword($this->dataForm);
 
-
+            /**
+             * Se o processo for concluido fará o redirecionamento caso contrário 
+             * manterá os dados no formulário
+             */
             if($recoverPass->getResult()){
                 $urlRedirect = URLADM . "login/index";
                 header("Location: $urlRedirect");
@@ -45,9 +48,15 @@ class RecoverPassword
             $this->viewRecoverPass();
         }
     }
+
+    /**
+     * Carregar a view
+     *
+     * @return void
+     */
     private function viewRecoverPass(): void
     {
         $loadView = new \Core\ConfigView("adms/Views/login/recoverPassword", $this->data);
-        $loadView->loadView();
+        $loadView->loadViewLogin();
     }
 }

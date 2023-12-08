@@ -17,13 +17,13 @@ class ConfEmail
 
     /**
      * Instanciar a classe responsável em carregar a View e enviar os dados para a View
+     * Confirmação de email cadastrado
      *
      * @return void
      */
     public function index(): void
     {
         $this->key = filter_input(INPUT_GET, "key", FILTER_DEFAULT);
-        // echo "Chave {$this->key} <br>";
 
         if (!empty($this->key)) {
             $this->valkey();
@@ -33,12 +33,15 @@ class ConfEmail
             header("Location: $urlRedirect");
         }
     }
-
+    /**
+     * Método para validação da chave que confirma o email cadastrado
+     *
+     * @return void
+     */
     public function valkey(): void
     {
         $confEmail = new \App\adms\Models\AdmsConfEmail();
         $confEmail->confEmail($this->key);
-        // echo $this->key;
 
         if($confEmail->getResult()){
             $urlRedirect = URLADM . "login/index";

@@ -56,7 +56,7 @@
         private function viewNewUser() :void
         {
             $loadView = new \Core\ConfigView("adms/Views/login/newUser", $this->data);
-            $loadView->loadView();
+            $loadView->loadViewLogin();
             
         }
     }

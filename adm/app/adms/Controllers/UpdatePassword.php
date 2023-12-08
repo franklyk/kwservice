@@ -28,7 +28,9 @@ class UpdatePassword
      */
     public function index(): void
     {
-
+        /**
+         * Recebe a chave de confirmação para cadastrar a nova senha
+         */
         $this->key = filter_input(INPUT_GET, "key", FILTER_DEFAULT);
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -77,6 +79,6 @@ class UpdatePassword
     private function viewUpdatePassword(): void
     {
         $loadView = new \Core\ConfigView("adms/Views/login/updatePassword", $this->data);
-        $loadView->loadView();
+        $loadView->loadViewLogin();
     }
 }
