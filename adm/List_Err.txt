@@ -3,3 +3,4 @@
 003 - CarregarPgAdm.php - Erro ao carregar a classe
 004 - CarregarPgAdm.php - Erro ao carregar o Metodo
 005 - ConfigView.php - Erro ao carregar a VIEW Login
+006 - AdmsViewUsers - Usuario não encontrado

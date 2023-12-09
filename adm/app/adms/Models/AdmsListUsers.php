@@ -3,7 +3,7 @@
 namespace App\adms\Models;
 
 /**
- * Cadastrar o usuário no banco de dados
+ * Listar os usuários do banco de dados
  *
  * @author Franklin
  */
@@ -12,7 +12,7 @@ class AdmsListUsers
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result;
 
-    /** @var array|null $resultBD Recebe o valor retornado do banco de dados*/
+    /** @var array|null $resultBD Recebe os valores retornados do banco de dados*/
     private array|null $resultBd;
    
     /**
@@ -24,7 +24,7 @@ class AdmsListUsers
     }
     
     /**
-     * Undocumented function
+     * Retorna os registros vindos do banco de dados
      *
      * @return array|null
      */
@@ -36,7 +36,7 @@ class AdmsListUsers
     public function listUsers(): void
     {
         $listUsers = new \App\adms\Models\helper\AdmsRead();
-        $listUsers->fullRead("SELECT id, name, email FROM adms_users");
+        $listUsers->fullRead("SELECT id, name, email FROM adms_users ORDER BY id DESC");
 
         $this->resultBd = $listUsers->getResult();
 
