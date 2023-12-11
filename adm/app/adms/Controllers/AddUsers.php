@@ -2,11 +2,11 @@
 
     namespace App\adms\Controllers;
     /**
-     * Controller da página cadastrar usuário
+     * Controller da página cadastrar novo usuário
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */
-    class NewUser
+    class AddUsers
     {
         /** @var array|string|null $data Recebe os dados que serão enviados para a VIEW */
         private array|string|null $data = [];
@@ -26,37 +26,33 @@
 
 
             //verifica se o butão submit foi clicado
-            if(!empty($this->dataForm["SandNewUser"])){
-                
+            if(!empty($this->dataForm["SendAddUser"])){
+                // var_dump($this->dataForm);
                 //Destroi a posiçao do botao submit
-                unset($this->dataForm["SandNewUser"]);
+                unset($this->dataForm["SendAddUser"]);
 
                 //Envia os dados do formulário para a AdmsnewUser
-                $createNewUser = new \App\adms\Models\AdmsNewUser();
-                $createNewUser->create($this->dataForm);
+                $createUser = new \App\adms\Models\AdmsAddUsers();
+                $createUser->create($this->dataForm);
 
                 //Recebe os dados que vêm da AdmsLogin
-                if($createNewUser->getResult()){
-                    $urlRedirect = URLADM ;
+                if($createUser->getResult()){
+                    $urlRedirect = URLADM . "list-users/index";
                     header("Location: $urlRedirect");
                 }else{
                     // Mantém os dados no formulário se não for redirecinado
                     $this->data['form'] = $this->dataForm;
-                    $this->viewNewUser();
+                    $this->viewAddUser();
                 }
             }else{
                 //Carrega a view
-                $this->viewNewUser();
+                $this->viewAddUser();
             }
-
-
-            // $this->data = null;
-
         }
-        private function viewNewUser() :void
+        private function viewAddUser() :void
         {
-            $loadView = new \Core\ConfigView("adms/Views/login/newUser", $this->data);
-            $loadView->loadViewLogin();
+            $loadView = new \Core\ConfigView("adms/Views/users/addUser", $this->data);
+            $loadView->loadView();
             
         }
     }

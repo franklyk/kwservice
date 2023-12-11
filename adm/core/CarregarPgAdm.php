@@ -93,7 +93,7 @@
 
         private function pgPrivate():void
         {
-            $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers"];
+            $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers"];
 
             if(in_array($this->urlController, $this->listPgPrivate)){
                 $this->verifyLogin();

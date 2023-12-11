@@ -41,7 +41,14 @@ class AdmsViewUsers
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id, name, nickname, email, user, image, adms_sits_user_id, created, modified  FROM adms_users WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewUser->fullRead("SELECT usr.id, usr.name AS name_user, usr.nickname, usr.email, usr.user, usr.image, usr.created, usr.modified, 
+                                                    sit.name AS name_sit,
+                                                    col.color
+                                                    FROM adms_users AS usr 
+                                                    INNER JOIN adms_sits_users AS sit ON sit.id=usr.adms_sits_user_id 
+                                                    INNER JOIN adms_color AS col ON col.id=sit.adms_color_id 
+                                                    WHERE usr.id=:id 
+                                                    LIMIT :limit", "id={$this->id}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {

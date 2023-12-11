@@ -1,10 +1,13 @@
 <?php
     echo "<h2>Listar Usuários</h2>";
 
+    echo "<a href='".URLADM."add-users/index'>Cadastrar</a><br><br>";
+
     if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
     }
+    
     foreach($this->data['listUsers'] as $user){
         // var_dump($user);
 

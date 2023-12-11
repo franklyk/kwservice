@@ -9,7 +9,7 @@
     //echo password_hash("123456a", PASSWORD_DEFAULT);
 ?>
 
-<h1>Novo Usuario</h1>
+<h1>Cadastrar Usuario</h1>
 <?php 
     if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];
@@ -18,7 +18,7 @@
 ?>
 <span id="msg"></span>
 
-<form action="" method="post" id="form-new-user">
+<form action="" method="post" id="form-add-user">
     <?php 
     //$user - mantém os dados na INPUT user
         $name = "";
@@ -27,7 +27,8 @@
         }
     ?>
     <label for="name">Nome: </label><br>
-    <input type="text" name="name" id="name" placeholder="Digite o nome completo" autocomplete="on" value="<?php echo $name ?>" required> <br><br>
+    <input type="text" name="name" id="name" placeholder="Digite o nome completo" autocomplete="on"
+        value="<?php echo $name ?>" required> <br><br>
 
     <?php 
     //$user - mantém os dados na INPUT user
@@ -37,7 +38,19 @@
         }
     ?>
     <label for="email">E-mail: </label><br>
-    <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on" value="<?php echo $email ?>" required> <br><br>
+    <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on"
+        value="<?php echo $email ?>" required> <br><br>
+
+    <?php 
+//$user - mantém os dados na INPUT user
+    $user = "";
+    if(isset($valorForm['user'])){
+        $user = $valorForm['user'];
+    }
+?>
+    <label for="user">Usuário: </label><br>
+    <input type="text" name="user" id="user" placeholder="Usuário para acesso ao Adm" autocomplete="on"
+        value="<?php echo $user ?>" required> <br><br>
 
 
     <?php 
@@ -47,12 +60,13 @@
             $password = $valorForm['password'];}
     ?>
     <label for="password">Senha</label><br>
-    <input type="text" name="password" id="password" placeholder="Digite a Senha" onkeyup="passwordStrength()" autocomplete="on" value="<?php echo $password ?>" required>
+    <input type="text" name="password" id="password" placeholder="Digite a Senha" onkeyup="passwordStrength()"
+        autocomplete="on" value="<?php echo $password ?>" required>
     <span id="msgViewStrength"><br><br></span>
 
-    
 
-    <button type="submit" name="SandNewUser" value="Cadastrar">Cadastrar</button>
+
+    <button type="submit" name="SendAddUser" value="Cadastrar">Cadastrar</button>
 
 </form>
 
