@@ -251,4 +251,39 @@ if (formAddUser) {
     })
 
 }
+const formEditUser = document.getElementById("form-edit-user");
+if (formEditUser) {
+    formEditUser.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Nome</p>";
+
+            return;
+        }
+        //Recebe o valor do campo E-MAIL
+        var email = document.querySelector('#email').value;
+        if (email === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo E-mail!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Usuário
+        var user = document.querySelector('#user').value;
+        if (user === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Usuário!</p>";
+
+            return;
+        }
+
+    })
+
+}
     

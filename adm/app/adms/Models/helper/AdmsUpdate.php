@@ -53,7 +53,7 @@ class AdmsUpdate extends AdmsConn
     private function exeReplaceValues(): void
     {
         foreach ($this->data as $key => $value) {
-            var_dump($key);
+            // var_dump($key);
             $values[] = $key . "=:" . $key;
         }
         // var_dump($values);

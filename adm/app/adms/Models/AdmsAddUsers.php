@@ -68,7 +68,7 @@ class AdmsAddUsers
         $valPassword->validatePassword($this->data['password']);
 
         $valUserSingleLogin = new \App\adms\Models\helper\AdmsValUserSingle();
-        $valUserSingleLogin->validateUserSingleLogin($this->data['user']);
+        $valUserSingleLogin->validateUserSingle($this->data['user']);
 
         if (($valEmail->getResult()) and ($valEmailSingle->getResult()) and ($valPassword->getResult()) and ($valUserSingleLogin->getResult())) {
             $this->add();

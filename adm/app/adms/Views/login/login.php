@@ -26,7 +26,7 @@
         if(isset($valorForm['user'])){
             $user = $valorForm['user'];}
     ?>
-    <label for="user">Usuário</label><br>
+    <label for="user"><strong>Usuário</strong>: <span style="color:#f00;">*</span></label><br>
     <input type="text" name="user" id="user" placeholder="Digite o usuário" autocomplete="on" value="<?php echo $user ?>" required> <br><br>
     <?php 
     //$password - mantém os dados na INPUT password
@@ -34,9 +34,11 @@
         if(!empty($valorForm['password'])){
             $password = $valorForm['password'];}
     ?>
-    <label for="password">Senha</label><br>
+    <label for="password"><strong>Senha</strong>: <span style="color:#f00;">*</span></label><br>
     <input type="text" name="password" id="password" placeholder="Digite a Senha" autocomplete="on" value="<?php echo $password ?>" required>
     <br><br>
+
+    <span style="color:#f00;">* Campo Obrigatório!</span> <br><br>
 
 
     <button type="submit" name="SandLogin" id="SandLogin" value="Acessar">Acessar</button>

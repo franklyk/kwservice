@@ -26,7 +26,7 @@
             $name = $valorForm['name'];
         }
     ?>
-    <label for="name">Nome: </label><br>
+    <label for="name"><strong>Nome:</strong> <span style="color:#f00;">*</span> </label><br>
     <input type="text" name="name" id="name" placeholder="Digite o nome completo" autocomplete="on"
         value="<?php echo $name ?>" required> <br><br>
 
@@ -37,7 +37,7 @@
             $email = $valorForm['email'];
         }
     ?>
-    <label for="email">E-mail: </label><br>
+    <label for="email"><strong>E-mail: </strong><span style="color:#f00;">*</span> </label><br>
     <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on"
         value="<?php echo $email ?>" required> <br><br>
 
@@ -48,7 +48,7 @@
         $user = $valorForm['user'];
     }
 ?>
-    <label for="user">Usuário: </label><br>
+    <label for="user"><strong>Usuário:</strong> <span style="color:#f00;">*</span> </label><br>
     <input type="text" name="user" id="user" placeholder="Usuário para acesso ao Adm" autocomplete="on"
         value="<?php echo $user ?>" required> <br><br>
 
@@ -59,15 +59,13 @@
         if(isset($valorForm['password'])){
             $password = $valorForm['password'];}
     ?>
-    <label for="password">Senha</label><br>
+    <label for="password"><strong>Senha:</strong> <span style="color:#f00;">*</span></label><br>
     <input type="text" name="password" id="password" placeholder="Digite a Senha" onkeyup="passwordStrength()"
         autocomplete="on" value="<?php echo $password ?>" required>
     <span id="msgViewStrength"><br><br></span>
 
+    <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
 
-
-    <button type="submit" name="SendAddUser" value="Cadastrar">Cadastrar</button>
+    <button type="submit" name="SendAddUser" value="Cadastrar"><strong>Cadastrar</strong></button>
 
 </form>
-
-<p><a href=" <?php echo URLADM ?>">Clique aqui</a> para acessar</p>

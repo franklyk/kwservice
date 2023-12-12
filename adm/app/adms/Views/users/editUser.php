@@ -16,7 +16,15 @@
 ?>
 
 <h1>Editar Usuario</h1>
+
+
 <?php 
+echo "<a href='".URLADM."list-users/index'>Listar</a><br>";
+if(isset($valorForm['id'])){
+    echo "<a href='".URLADM."view-users/index/" . $valorForm['id'] . "'>Visualizar</a><br><br>";
+}
+
+
     if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
@@ -24,7 +32,17 @@
 ?>
 <span id="msg"></span>
 
-<form action="" method="post" id="form-add-user">
+<form action="" method="post" id="form-edit-user">
+
+    <?php 
+    //$user - mantém os dados na INPUT user
+        $id = "";
+        if(isset($valorForm['id'])){
+            $id = $valorForm['id'];
+        }
+    ?>
+    <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
+
     <?php 
     //$user - mantém os dados na INPUT user
         $name = "";
@@ -32,7 +50,7 @@
             $name = $valorForm['name'];
         }
     ?>
-    <label for="name">Nome: </label><br>
+    <label for="name"><strong>Nome:</strong> <span style="color:#f00;">*</span> </label><br>
     <input type="text" name="name" id="name" placeholder="Digite o nome completo" autocomplete="on"
         value="<?php echo $name ?>" required> <br><br>
 
@@ -43,9 +61,9 @@
             $nickname = $valorForm['nickname'];
         }
     ?>
-    <label for="name">Apelido: </label><br>
+    <label for="name"><strong>Apelido:</strong> </label><br>
     <input type="text" name="nickname" id="nickname" placeholder="Digite o seu apelido" autocomplete="on"
-        value="<?php echo $nickname ?>" required> <br><br>
+        value="<?php echo $nickname ?>"> <br><br>
 
     <?php 
     //$user - mantém os dados na INPUT user
@@ -54,8 +72,8 @@
             $email = $valorForm['email'];
         }
     ?>
-    <label for="email">E-mail: </label><br>
-    <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on"
+    <label for="email"><strong>E-mail:</strong> <span style="color:#f00;">*</span> </label><br>
+    <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on"
         value="<?php echo $email ?>" required> <br><br>
 
     <?php 
@@ -65,14 +83,12 @@
         $user = $valorForm['user'];
     }
 ?>
-    <label for="user">Usuário: </label><br>
+    <label for="user"><strong>Usuário:</strong> <span style="color:#f00;">*</span></label><br>
     <input type="text" name="user" id="user" placeholder="Usuário para acesso ao Adm" autocomplete="on"
         value="<?php echo $user ?>" required> <br><br>
 
+    <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
 
-
-    <button type="submit" name="SendAddUser" value="Cadastrar">Cadastrar</button>
+    <button type="submit" name="SendEditUser" value="Salvar"><strong>Salvar</strong></button>
 
 </form>
-
-<p><a href=" <?php echo URLADM ?>">Clique aqui</a> para acessar</p>
