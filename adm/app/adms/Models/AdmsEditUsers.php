@@ -11,6 +11,9 @@ class AdmsEditUsers
 {
     /** @var array|null $data Recebe as informações do formulário */
     private array|null $data;
+    
+    /** @var array|null $dataExitVal Recebe os campos que devem ser tirados da validação */
+    private array|null $dataExitVal;
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result = false;
@@ -61,8 +64,8 @@ class AdmsEditUsers
     public function update(array $data = null):void
     {
         $this->data = $data;
-        // var_dump($this->data);
-        $this->data = $data;
+        $this->dataExitVal['nickname'] = $this->data['nickname'];
+        unset($this->data['nickname']);
 
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
@@ -94,7 +97,10 @@ class AdmsEditUsers
     private function edit(): void
     {
         $this->data['modified'] = date("Y-m-d H:i:s");
-        // var_dump($this->data);
+
+        $this->data['nickname'] = $this->dataExitVal['nickname'];
+        
+        $this->result = false;
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
