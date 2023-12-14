@@ -12,8 +12,8 @@ class AdmsEditUsersImage
     /** @var array|null $data Recebe as informações do formulário */
     private array|null $data;
     
-    /** @var array|null $dataExitVal Recebe os campos que devem ser tirados da validação */
-    private array|null $dataExitVal;
+    /** @var array|null $dataImage Recebe os dados da imagem */
+    private array|null $dataImage;
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result = false;
@@ -23,7 +23,12 @@ class AdmsEditUsersImage
 
     /** @var array|string|null $id Recebe o id do registro */
     private int|string|null $id;
+    
+    /** @var string $delImg Recebe o endereço da imagem que deve ser excluida */
+    private string $delImg;
 
+    /** @var string $directory Recebe o endereço de upload da imagem */
+    private string $directory;
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
      */
@@ -41,8 +46,9 @@ class AdmsEditUsersImage
     {
         return $this->resultBd;
     }
+    
 
-    public function viewUser(int $id): void
+    public function viewUser(int $id): bool
     {
         $this->id = $id;
 
@@ -56,9 +62,11 @@ class AdmsEditUsersImage
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {
             $this->result = true;
+            return true;
         } else {
             $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro 006: Usuário não encontrado!</p>";
             $this->result = false;
+            return false;
         }
     }
 
@@ -66,53 +74,91 @@ class AdmsEditUsersImage
     {
         $this->data = $data;
 
-        var_dump($this->data);
-        $this->result = false;
 
+        $this->dataImage = $this->data['new_image'];
+        unset($this->data['new_image']);
 
-        /*$valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {
-            $this->valInput();
+            if(!empty($this->dataImage['name'])){
+                $this->valInput();
+            
+            }else{
+            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Necessário selecionar uma imagem!</p>";
+            $this->result = false;
+            }
+            
         } else {
             $this->result = false;
-        }*/
+        }
     }
+    /**
+     * Verificar se existe o usuario com o ID recebido
+     * 
+     * Retorna false se for houver algum erro
+     * 
+     *
+     * @return void
+     */
     private function valInput(): void
     {
-        $valEmail = new \App\adms\Models\helper\AdmsValEmail();
-        $valEmail->validateEmail($this->data['email']);
+        if($this->viewUser($this->data['id'])){
+            $this->result = false;
+            $this->upload();
 
-        $valEmailSingle= new \App\adms\Models\helper\AdmsValEmailSingle();
-        $valEmailSingle->validateEmailSingle($this->data['email'], true, $this->data['id'],);
+        }else{
+            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
+            $this->result = false;
 
-        $valUserSingle = new \App\adms\Models\helper\AdmsValUserSingle();
-        $valUserSingle->validateUserSingle($this->data['user'], true, $this->data['id']);
+        }
+    }
 
+    private function upload(): void
+    {
+        $this->directory = "app/adms/assets/images/users/" . $this->data['id'] . "/";
 
-        if ($valEmail->getResult() and ($valEmailSingle->getResult()) and ($valUserSingle->getResult())) {
+        if((!file_exists($this->directory)) and (!is_dir($this->directory))){
+            mkdir($this->directory);
+        }
+
+        if(move_uploaded_file($this->dataImage['tmp_name'], $this->directory . $this->dataImage['name'])){
             $this->edit();
-        } else {
+
+        }else{
+            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Upload da imagem não realizado com sucesso!</p>";
             $this->result = false;
         }
     }
 
     private function edit(): void
     {
+        $this->data['image'] = $this->dataImage['name'];
         $this->data['modified'] = date("Y-m-d H:i:s");
 
-        $this->data['nickname'] = $this->dataExitVal['nickname'];
         
         $this->result = false;
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: green;'>Usuário editado com sucesso!</p>";
-            $this->result = true;
+            $this->deleteImage(); 
         }else{
             $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
             $this->result = false;
         }
+    }
+
+    private function deleteImage(): void
+    {
+        if(((!empty($this->resultBd[0]['image'])) or ($this->resultBd[0]['image'] != null)) and ($this->resultBd[0]['image'] != $this->data['image'])){
+            $this->delImg = "app/adms/assets/images/users/" . $this->data['id'] . "/" .$this->resultBd[0]['image'];
+    
+            if(file_exists($this->delImg)){
+                unlink($this->delImg);
+            }
+        }
+        $_SESSION['msg'] = "<p style='color: green;'>Imagem editada com sucesso!</p>";
+        $this->result = false;
     }
 }
