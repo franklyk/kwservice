@@ -74,9 +74,10 @@ class AdmsEditUsersImage
     {
         $this->data = $data;
 
-
         $this->dataImage = $this->data['new_image'];
         unset($this->data['new_image']);
+
+
 
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
@@ -103,12 +104,13 @@ class AdmsEditUsersImage
      */
     private function valInput(): void
     {
-        if($this->viewUser($this->data['id'])){
+        $valExtImg = new \App\adms\Models\helper\AdmsValExtImage();
+        $valExtImg->validateExtImg($this->dataImage['type']);
+        if(($this->viewUser($this->data['id'])) and ($valExtImg->getResult())){
             $this->result = false;
             $this->upload();
 
         }else{
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
             $this->result = false;
 
         }
@@ -159,6 +161,6 @@ class AdmsEditUsersImage
             }
         }
         $_SESSION['msg'] = "<p style='color: green;'>Imagem editada com sucesso!</p>";
-        $this->result = false;
+        $this->result = true;
     }
 }
