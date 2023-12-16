@@ -26,6 +26,9 @@ class AdmsEditUsersImage
     
     /** @var string $delImg Recebe o endereço da imagem que deve ser excluida */
     private string $delImg;
+    
+    /** @var string $nameImg Recebe o SLUG/NOME da imagem */
+    private string $nameImg;
 
     /** @var string $directory Recebe o endereço de upload da imagem */
     private string $directory;
@@ -118,13 +121,18 @@ class AdmsEditUsersImage
 
     private function upload(): void
     {
+
+        $slugImg = new \App\adms\Models\helper\AdmsSlug();
+        $this->nameImg = $slugImg->slug($this->dataImage['name']);
+        
+
         $this->directory = "app/adms/assets/images/users/" . $this->data['id'] . "/";
 
         if((!file_exists($this->directory)) and (!is_dir($this->directory))){
             mkdir($this->directory);
         }
 
-        if(move_uploaded_file($this->dataImage['tmp_name'], $this->directory . $this->dataImage['name'])){
+        if(move_uploaded_file($this->dataImage['tmp_name'], $this->directory . $this->nameImg)){
             $this->edit();
 
         }else{
@@ -135,7 +143,7 @@ class AdmsEditUsersImage
 
     private function edit(): void
     {
-        $this->data['image'] = $this->dataImage['name'];
+        $this->data['image'] = $this->nameImg;
         $this->data['modified'] = date("Y-m-d H:i:s");
 
         
@@ -153,7 +161,7 @@ class AdmsEditUsersImage
 
     private function deleteImage(): void
     {
-        if(((!empty($this->resultBd[0]['image'])) or ($this->resultBd[0]['image'] != null)) and ($this->resultBd[0]['image'] != $this->data['image'])){
+        if(((!empty($this->resultBd[0]['image'])) or ($this->resultBd[0]['image'] != null)) and ($this->resultBd[0]['image'] != $this->nameImg)){
             $this->delImg = "app/adms/assets/images/users/" . $this->data['id'] . "/" .$this->resultBd[0]['image'];
     
             if(file_exists($this->delImg)){
