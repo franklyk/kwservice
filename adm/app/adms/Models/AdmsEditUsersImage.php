@@ -128,17 +128,26 @@ class AdmsEditUsersImage
 
         $this->directory = "app/adms/assets/images/users/" . $this->data['id'] . "/";
 
-        if((!file_exists($this->directory)) and (!is_dir($this->directory))){
-            mkdir($this->directory);
-        }
+        $uploadImg = new \App\adms\Models\helper\AdmsUpload();
+        $uploadImg->upload($this->directory, $this->dataImage['tmp_name'], $this->nameImg);
 
-        if(move_uploaded_file($this->dataImage['tmp_name'], $this->directory . $this->nameImg)){
+        if($uploadImg->getResult()){
             $this->edit();
-
         }else{
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Upload da imagem não realizado com sucesso!</p>";
             $this->result = false;
         }
+
+        // if((!file_exists($this->directory)) and (!is_dir($this->directory))){
+        //     mkdir($this->directory);
+        // }
+
+        // if(move_uploaded_file($this->dataImage['tmp_name'], $this->directory . $this->nameImg)){
+        //     $this->edit();
+
+        // }else{
+        //     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Upload da imagem não realizado com sucesso!</p>";
+        //     $this->result = false;
+        // }
     }
 
     private function edit(): void
