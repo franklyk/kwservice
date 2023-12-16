@@ -52,6 +52,22 @@
     <input type="text" name="user" id="user" placeholder="Usuário para acesso ao Adm" autocomplete="on"
         value="<?php echo $user ?>" required> <br><br>
 
+    <label for="user"><strong>Situção:</strong> <span style="color:#f00;">*</span> </label><br>
+    <select name="adms_sits_user_id" id="adms_sits_user_id">
+        <option value="">Selecione</option>
+        <?php 
+        foreach($this->data['select']['sit'] as $sit){
+            extract($sit);
+            if((isset($valorForm['adms_sits_user_id']))and ($valorForm['adms_sits_user_id'] == $id_sit)){
+                echo "<option value='$id_sit' selected>$name_sit</option>";
+            }else{
+                echo "<option value='$id_sit'>$name_sit</option>";
+            }
+        }
+        ?>
+    </select><br><br>
+
+
 
     <?php 
     //$password - mantém os dados na INPUT password
