@@ -15,6 +15,8 @@ class AdmsEditUsers
     /** @var array|null $dataExitVal Recebe os campos que devem ser tirados da validação */
     private array|null $dataExitVal;
 
+    private array $listRegistryAdd;
+
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result = false;
 
@@ -47,7 +49,7 @@ class AdmsEditUsers
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id, name, nickname, email, user
+        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id
                                                     FROM adms_users
                                                     WHERE id=:id 
                                                     LIMIT :limit", "id={$this->id}&limit=1");
@@ -111,5 +113,20 @@ class AdmsEditUsers
             $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
             $this->result = false;
         }
+    }
+
+    public function listSelect(): array
+    {
+        $list = new \App\adms\Models\helper\AdmsRead();
+        $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
+        $registry['sit'] = $list->getResult();
+        
+        // $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
+        // $registry['color'] = $list->getResult();
+
+        // $this->listRegistryAdd = ['sit' => $registry['sit'], 'color' => $registry['color']];
+        $this->listRegistryAdd = ['sit' => $registry['sit']];
+
+        return $this->listRegistryAdd;
     }
 }

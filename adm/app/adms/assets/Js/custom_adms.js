@@ -212,6 +212,15 @@ if (formAddUser) {
 
             return;
         }
+        //Recebe o valor do campo Usuário
+        var adms_sits_user_id = document.querySelector('#adms_sits_user_id').value;
+        if (adms_sits_user_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Situação!</p>";
+
+            return;
+        }
         //Recebe o valor do campo SENHA
         var password = document.querySelector('#password').value;
         if (password === "") {
@@ -282,7 +291,16 @@ if (formEditUser) {
 
             return;
         }
+        
+        //Recebe o valor do campo Usuário
+        var adms_sits_user_id = document.querySelector('#adms_sits_user_id').value;
+        if (adms_sits_user_id === "") {
+            e.preventDefault();
 
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Situação!</p>";
+
+            return;
+        }
     })
 
 }

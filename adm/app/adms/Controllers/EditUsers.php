@@ -48,6 +48,9 @@
         }
         private function viewEditUser() :void
         {
+            $listSelect = new \App\adms\Models\AdmsEditUsers();
+            $this->data['select'] = $listSelect->listSelect();
+            
             $loadView = new \Core\ConfigView("adms/Views/users/editUser", $this->data);
             $loadView->loadView();
             
