@@ -23,7 +23,8 @@
         echo "Nome: $name <br>";
         echo "E-mail: $email <br>";
         echo "<a href='".URLADM."view-users/index/$id'>Visualizar</a><br>";
-        echo "<a href='".URLADM."edit-users/index/$id'>Editar</a><br><br>";
+        echo "<a href='".URLADM."edit-users/index/$id'>Editar</a><br>";
+        echo "<a href='".URLADM."delete-users/index/$id'>Apagar</a><br><br>";
         echo "<hr>";
     }
 ?>
