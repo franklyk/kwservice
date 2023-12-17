@@ -43,7 +43,7 @@ if(isset($valorForm['id'])){
     ?>
     <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
 
-    <label for="image"><strong>Imagem:</strong> <span style="color:#f00;">*</span> </label>
+    <label for="image"><strong>Imagem<span style="color:#f00;">*</span>  300x300:</strong> </label>
     <input type="file" name="new_image" id="new_image"> <br><br>
 
     

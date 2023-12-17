@@ -20,7 +20,6 @@
         {
             $this->text = $text;
 
-            var_dump($this->text);
 
             //Substitui Caracteres especiais
             $this->format['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:,\\\'<>°ºª';
@@ -31,7 +30,6 @@
             $this->text = str_replace(array('_____', '____','___', '__'), '_', $this->text);
             $this->text = strtolower($this->text);
 
-            var_dump($this->text);
 
             return $this->text;
         }
