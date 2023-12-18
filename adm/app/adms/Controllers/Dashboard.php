@@ -21,7 +21,6 @@
          */
         public function index():void
         {
-            echo "Pagina Dashboard <br>";
 
             $this->data = " Bem Vindo ";
             $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
