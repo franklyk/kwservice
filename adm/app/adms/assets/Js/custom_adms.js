@@ -402,3 +402,46 @@ if (formEditProfile) {
     })
 
 }
+const formEditProfPass = document.getElementById("form-edit-prof-pass");
+if (formEditProfPass) {
+    formEditProfPass.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo SENHA
+        var password = document.querySelector('#password').value;
+        if (password === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Senha!</p>";
+
+            return;
+        }
+        //Verifica se o campo SENHA possui 6 caracteres
+        if (password.length < 6) {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: A Senha deve conter (NO MÍNIMO) 6 caracteres!</p>";
+
+            return;
+        }
+
+        //Verifica se o campo SENHA não possui núeros repetidos
+        if (password.match(/([1-9]+)\1{1,}/)) {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: A Senha não deve ter números repetidos!</p>";
+
+            return;
+        }
+
+        //Verifica se o campo SENHA possui letras
+        if (!password.match(/[A-Za-z]/)) {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: A Senha deve conter pelo menos uma letra!</p>";
+
+            return;
+        }
+
+    })
+
+}
