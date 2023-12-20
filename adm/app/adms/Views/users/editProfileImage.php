@@ -15,10 +15,9 @@
 
 ?>
 
-<h1>Editar Senha</h1>
+<h1>Editar Imagem</h1>
 
-
-<?php 
+<?php
 
 echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
 
@@ -30,23 +29,15 @@ echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
 ?>
 <span id="msg"></span>
 
-<form action="" method="post" id="form-edit-prof-pass">
+<form action="" method="post" id="form-edit-prof-img" enctype="multipart/form-data">
 
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $password = "";
-        if(isset($valorForm['password'])){
-            $password = $valorForm['password'];
-        }
-    ?>
-    <label for="password"><strong>Senha:</strong> <span style="color:#f00;">*</span> </label><br>
-    <input type="password" name="password" id="password" placeholder="Digite a nova senha" onkeyup="passwordStrength()"
-        autocomplete="on" value="<?php echo $password ?>" required> 
 
-    <span id="msgViewStrength"><br><br></span>
+    <label for="image"><strong>Imagem<span style="color:#f00;">*</span>  300x300:</strong> </label>
+    <input type="file" name="new_image" id="new_image"> <br><br>
 
+    
     <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
 
-    <button type="submit" name="SendEditProfPass" value="Salvar"><strong>Salvar</strong></button>
+    <button type="submit" name="SendEditProfImage" value="Salvar"><strong>Salvar</strong></button>
 
 </form>
