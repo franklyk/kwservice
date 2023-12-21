@@ -474,61 +474,7 @@ if (formEditProfPass) {
 
 }
 
-// const formEditUserPass = document.getElementById("form-edit-user-pass");
-// if (formEditUserPass) {
-//     formEditUserPass.addEventListener("submit", async (e) => {
 
-//         //Recebe o valor do campo NAME
-//         var password = document.querySelector('#password').value;
-//         if (password === "") {
-//             e.preventDefault();
-
-//             document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Senha</p>";
-
-//             return;
-//         }
-//         //Recebe o valor do campo SENHA
-//         var password = document.querySelector('#password').value;
-//         if (password === "") {
-//             e.preventDefault();
-
-//             document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário preencher campo Senha!</p>";
-
-//             return;
-//         }
-//         //Verifica se o campo SENHA possui 6 caracteres
-//         if (password.length < 6) {
-//             e.preventDefault();
-
-//             document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: A Senha deve conter (NO MÍNIMO) 6 caracteres!</p>";
-
-//             return;
-//         }
-
-//         //Verifica se o campo SENHA não possui núeros repetidos
-//         if (password.match(/([1-9]+)\1{1,}/)) {
-//             e.preventDefault();
-
-//             document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: A Senha não deve ter números repetidos!</p>";
-
-//             return;
-//         }
-
-//         //Verifica se o campo SENHA possui letras
-//         if (!password.match(/[A-Za-z]/)) {
-//             e.preventDefault();
-
-//             document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: A Senha deve conter pelo menos uma letra!</p>";
-
-//             return;
-//         }else{
-//             document.getElementById("msg").innerHTML = "<p></p>";
-//             return
-//         }
-
-//     })
-
-// }
 const formEditUserfImg = document.getElementById("form-edit-user-image");
 if (formEditUserfImg) {
     formEditUserfImg.addEventListener("submit", async (e) => {
@@ -582,7 +528,22 @@ function inputFileValImg(){
         document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Necessário selecionar uma imagem JPG ou PNG</p>";
         return;
     }else{
+        previewImage(new_image)
         document.getElementById("msg").innerHTML = "<p></p>";
         return
     }
+}
+
+function previewImage(new_image){
+    if((new_image.files) && (new_image.files[0])){
+        //new FileReader() Serve para ler o conteúdo do arquivo
+        var reader = new FileReader();
+        // onload (Dispara quando qualquer elemento tiver sido carregado)
+        reader.onload = function(e){
+            document.getElementById('preview-img').innerHTML = "<img src='"+ e.target.result +"' alt='imagem'style='width: 100px;'>"
+        }
+
+    }
+    // readAsDataUrl - Retorna os dados do formato blob com uma URL de dados - Blob representa um arquivo
+    reader.readAsDataURL(new_image.files[0]);
 }

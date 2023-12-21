@@ -37,6 +37,18 @@ echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
 
     <label for="new_image"><strong>Imagem<span style="color:#f00;">*</span> 300x300:</strong> </label>
     <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required> <br><br>
+    <?php 
+        if((!empty($valorForm['image'])) and (file_exists("app/adms/assets/images/users/" . $_SESSION['user_id'] ."/" . $valorForm['image']))){
+            $old_image = URLADM . "app/adms/assets/images/users/" . $_SESSION['user_id'] . "/" . $valorForm['image'];
+        }else{
+            $old_image = URLADM . "app/adms/assets/images/users/usuário.png";
+        }
+    ?>
+    <span id="preview-img">
+        <img src="<?php echo $old_image ?>" alt="imagem" style="width: 100px; height: 100px;">
+    </span>
+    <br><br>
+
 
 
     <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>

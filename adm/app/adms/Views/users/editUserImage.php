@@ -12,7 +12,6 @@
     //Criptografar a senha
     //echo password_hash("123456a", PASSWORD_DEFAULT);
     // var_dump($this->data['form']);
-
 ?>
 
 <h1>Editar Imagem</h1>
@@ -45,6 +44,17 @@ if(isset($valorForm['id'])){
 
     <label for="image"><strong>Imagem<span style="color:#f00;">*</span>  300x300:</strong> </label>
     <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required> <br><br>
+    <?php 
+        if((!empty($valorForm['image'])) and (file_exists("app/adms/assets/images/users/" . $valorForm['id'] ."/" . $valorForm['image']))){
+            $old_image = URLADM . "app/adms/assets/images/users/" . $valorForm['id'] . "/" . $valorForm['image'];
+        }else{
+            $old_image = URLADM . "app/adms/assets/images/users/usuário.png";
+        }
+    ?>
+    <span id="preview-img">
+        <img src="<?php echo $old_image ?>" alt="imagem" style="width: 100px; height: 100px;">
+    </span>
+    <br><br>
 
     
     <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
