@@ -22,6 +22,9 @@
 echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
 
 
+
+
+
     if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
@@ -32,10 +35,10 @@ echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
 <form action="" method="post" id="form-edit-prof-img" enctype="multipart/form-data">
 
 
-    <label for="image"><strong>Imagem<span style="color:#f00;">*</span>  300x300:</strong> </label>
-    <input type="file" name="new_image" id="new_image"> <br><br>
+    <label for="new_image"><strong>Imagem<span style="color:#f00;">*</span> 300x300:</strong> </label>
+    <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required> <br><br>
 
-    
+
     <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
 
     <button type="submit" name="SendEditProfImage" value="Salvar"><strong>Salvar</strong></button>

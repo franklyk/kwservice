@@ -27,4 +27,3 @@
         }
     }
 ?>
-<!-- Consolas, 'Courier New', monospace -->

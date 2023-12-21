@@ -35,7 +35,7 @@
             $password = $valorForm['password'];}
     ?>
     <label for="password"><strong>Senha</strong>: <span style="color:#f00;">*</span></label><br>
-    <input type="text" name="password" id="password" placeholder="Digite a Senha" autocomplete="on" value="<?php echo $password ?>" required>
+    <input type="password" name="password" id="password" placeholder="Digite a Senha" autocomplete="on" value="<?php echo $password ?>" required>
     <br><br>
 
     <span style="color:#f00;">* Campo Obrigatório!</span> <br><br>

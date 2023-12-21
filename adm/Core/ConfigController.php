@@ -90,10 +90,13 @@
             //Elimina a barra no final da url
             $this->url = rtrim($this->url, "/"); 
 
-            //Substitui Caracteres especiais
+            // //Substitui Caracteres especiais
             $this->format['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:.,\\\'<>°ºª ';
             $this->format['b'] = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr-------------------------------------------------------------------------------------------------';
-            $this->url = strtr(utf8_decode($this->url), utf8_decode($this->format['a']), $this->format['b']);
+            
+            $this->url = strtr((utf8_decode($this->url)), utf8_decode($this->format['a']), $this->format['b']);
+           
+            
         }
 
         /**

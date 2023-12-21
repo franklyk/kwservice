@@ -32,7 +32,7 @@ if(isset($valorForm['id'])){
 ?>
 <span id="msg"></span>
 
-<form action="" method="post" id="form-edit-user" enctype="multipart/form-data">
+<form action="" method="post" id="form-edit-user-image" enctype="multipart/form-data">
 
     <?php 
     //$user - mantém os dados na INPUT user
@@ -44,7 +44,7 @@ if(isset($valorForm['id'])){
     <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
 
     <label for="image"><strong>Imagem<span style="color:#f00;">*</span>  300x300:</strong> </label>
-    <input type="file" name="new_image" id="new_image"> <br><br>
+    <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required> <br><br>
 
     
     <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
