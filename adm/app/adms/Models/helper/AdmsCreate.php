@@ -1,6 +1,13 @@
 <?php 
 
     namespace App\adms\Models\helper;
+
+    if(!defined('KLKSK8')){
+        $urlRedirect = "http://localhost/kwservice/adm/login/index";
+        header("Location: $urlRedirect");
+        die("Erro: Página não encontrada!<br>");
+    }
+    
 use PDO;
 use PDOException;
     /**

@@ -3,6 +3,8 @@
     ob_start();
     date_default_timezone_set("America/Sao_Paulo");
 
+    define('KLKSK8', true);
+
     //Carregar o Composer
     require './vendor/autoload.php';
 

@@ -2,6 +2,13 @@
 
 namespace App\adms\Models;
 
+if(!defined('KLKSK8')){
+    $urlRedirect = "http://localhost/kwservice/adm/login/index";
+    header("Location: $urlRedirect");
+    die("Erro: Página não encontrada!<br>");
+}
+
+
 /**
  * Editar a senha do perfil do usuário
  *

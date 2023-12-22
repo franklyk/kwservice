@@ -1,6 +1,7 @@
 #Ativa o modulo Rewrite que faz a reecrita da URL
 RewriteEngine On
 
+#Bloquear a opção listar os arquivos do diretório 
 Options All -Indexes
 
 
@@ -45,15 +46,16 @@ RewriteCond %{REQUEST_FILENAME} !-l
 #O sinalizador [L] faz mod_rewrite com que o processamento do conjunto de regras seja interrompido
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
-
-
-
 #index.php?url=users/index
 #index.php?url=users/index&id=2&sit=2
 #http://localhost/kwservice/adm/view-users/index?id=2&sit=2
+
+# Quando houver o erro 403 redirecionar o usuario 
+ErrorDocument 403 http://localhost/kwservice/adm/login/index
 
 
 <Files 403.shtml>
     Order allow,deny
     Allow from all
 </Files>
+

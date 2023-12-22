@@ -1,4 +1,11 @@
 <?php 
+
+    if(!defined('KLKSK8')){
+        $urlRedirect = "http://localhost/kwservice/adm/login/index";
+        header("Location: $urlRedirect");
+        die("Erro: Página não encontrada!<br>");
+    }
+    
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
