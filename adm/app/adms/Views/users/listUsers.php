@@ -17,7 +17,7 @@
     
     
     foreach($this->data['listUsers'] as $user){
-        var_dump($user);
+        // var_dump($user);
 
         //Modo Extenso de consultar os dados
         // echo "ID:" . $user['id'] . "<br>";
