@@ -63,7 +63,7 @@ class AdmsEditUsersPassword
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
             $this->result = false;
         }
     }
@@ -109,10 +109,10 @@ class AdmsEditUsersPassword
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: green;'>A senha do usuário editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #051;'>A senha do usuário foi editada com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro:A senha do usuário não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro:A senha do usuário não foi editada com sucesso!</p>";
             $this->result = false;
         }
     }

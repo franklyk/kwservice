@@ -61,7 +61,7 @@ class AdmsViewUsers
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
             $this->result = false;
         }
     }

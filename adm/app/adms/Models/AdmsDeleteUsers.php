@@ -50,10 +50,10 @@ class AdmsDeleteUsers
     
             if($deleteUser->getResult()){
                 $this->deleteImg();
-                $_SESSION['msg'] = "<p style='color:#0f0;'>Usuário apagado com sucesso!</p><br>";
+                $_SESSION['msg'] = "<p style='color:#051;'>Usuário apagado com sucesso!</p><br>";
                 $this->result = true;
             }else{
-                $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Usuário não apagado com sucesso!</p><br>";
+                $_SESSION['msg'] = "<p style='color:#640000;'>Erro: Usuário não apagado com sucesso!</p><br>";
                 $this->result = false;
             }
         }else{
@@ -76,7 +76,7 @@ class AdmsDeleteUsers
         if ($this->resultBd) {
             return true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
             return false;
         }
     }

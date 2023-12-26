@@ -35,7 +35,7 @@ class ConfEmail
         if (!empty($this->key)) {
             $this->valkey();
         } else {
-            $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Link inválido!</p><br>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Link inválido!</p><br>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }

@@ -108,10 +108,10 @@ class AdmsEditProfile
             $_SESSION['user_name'] = $this->data['name'];
             $_SESSION['user_nickname'] = $this->data['nickname'];
             $_SESSION['user_email'] = $this->data['email'];
-            $_SESSION['msg'] = "<p style='color: green;'>Perfil editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: 051;'>Perfil editado com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Perfil não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Perfil não editado com sucesso!</p>";
             $this->result = false;
         }
     }

@@ -63,16 +63,11 @@ class AdmsUpdate extends AdmsConn
             // var_dump($key);
             $values[] = $key . "=:" . $key;
         }
-        // var_dump($values);
 
         $values = implode(', ', $values);
 
-        // var_dump($values);
-
-
         $this->query = "UPDATE {$this->table} SET {$values} {$this->terms}";
 
-        // var_dump($this->query);
 
         $this->exeInstruction();
     }

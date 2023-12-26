@@ -114,10 +114,10 @@ class AdmsEditUsers
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: green;'>Usuário editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #051;'>Usuário editado com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Usuário não editado com sucesso!</p>";
             $this->result = false;
         }
     }

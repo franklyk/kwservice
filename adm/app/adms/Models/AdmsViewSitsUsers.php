@@ -10,17 +10,20 @@ if(!defined('KLKSK8')){
 
 
 /**
- * Visualizar o perfil do usuário
+ * Visualizar o usuário no banco de dados
  *
  * @author Franklin
  */
-class AdmsViewProfile
+class AdmsViewSitsUsers
 {
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result = false;
 
     /** @var array|null $resultBD Recebe o valor retornado do banco de dados*/
     private array|null $resultBd;
+
+    /** @var array|string|null $id Recebe o id do registro */
+    private int|string|null $id;
 
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
@@ -40,18 +43,25 @@ class AdmsViewProfile
         return $this->resultBd;
     }
 
-    public function viewProfile(): void
+    public function viewSitUser(int $id): void
     {
+        $this->id = $id;
+
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT name, nickname, email, image
-                                                    FROM adms_users WHERE id=:id 
-                                                    LIMIT :limit", "id=" . $_SESSION['user_id'] ."&limit=1");
+        $viewUser->fullRead(
+            "SELECT sit.id, sit.name, sit.created, sit.modified,
+                            col.color
+                            FROM adms_sits_users AS sit
+                            INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
+                            WHERE sit.id=:id
+                            LIMIT :limit",
+            "id={$this->id}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Situação não encontrada!</p>";
             $this->result = false;
         }
     }

@@ -14,7 +14,7 @@ if(!defined('KLKSK8')){
  *
  * @author Franklin <frsbatist@gmail.com>
  */
-class AdmsAddUsers
+class AdmsAddSitsUsers
 {
     /** @var array|null $data Recebe as informações do formulário */
     private array|null $data;
@@ -67,21 +67,11 @@ class AdmsAddUsers
      */
     private function valInput(): void
     {
-        $valEmail = new \App\adms\Models\helper\AdmsValEmail();
-        $valEmail->validateEmail($this->data['email']);
-
-        $valEmailSingle = new \App\adms\Models\helper\AdmsValEmailSingle();
-        $valEmailSingle->validateEmailSingle($this->data['email']);
-
-        $valPassword = new \App\adms\Models\helper\AdmsValPassword();
-        $valPassword->validatePassword($this->data['password']);
-
-        $valUserSingleLogin = new \App\adms\Models\helper\AdmsValUserSingle();
-        $valUserSingleLogin->validateUserSingle($this->data['user']);
-
-        if (($valEmail->getResult()) and ($valEmailSingle->getResult()) and ($valPassword->getResult()) and ($valUserSingleLogin->getResult())) {
+        $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
+        $valEmptyField->valField($this->data);
+        if($valEmptyField->getResult()){
             $this->add();
-        } else {
+        }else{
             $this->result = false;
         }
     }
@@ -95,18 +85,17 @@ class AdmsAddUsers
      */
     private function add(): void
     {
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
-        $this->data['conf_email'] = password_hash($this->data['password']. date("Y-m-d H-i-s"), PASSWORD_DEFAULT);
+        
         $this->data['created'] = date("Y-m-d H:i:s");
 
         $createUser = new \App\adms\Models\helper\AdmsCreate();
-        $createUser->exeCreate("adms_users", $this->data);
+        $createUser->exeCreate("adms_sits_users", $this->data);
 
         if ($createUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: #051;'>Usuário cadastrado com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #051;'>Situação cadastrada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #664400;'>Erro: Usuário não cadastrado com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Situação não cadastrada com sucesso!</p>";
             $this->result = false;
         }
     }
@@ -114,14 +103,10 @@ class AdmsAddUsers
     public function listSelect(): array
     {
         $list = new \App\adms\Models\helper\AdmsRead();
-        $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
-        $registry['sit'] = $list->getResult();
-        
-        // $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
-        // $registry['color'] = $list->getResult();
+        $list->fullRead("SELECT id AS id_col, name AS name_col FROM adms_color ORDER BY name  ASC");
+        $registry['col'] = $list->getResult();
 
-        // $this->listRegistryAdd = ['sit' => $registry['sit'], 'color' => $registry['color']];
-        $this->listRegistryAdd = ['sit' => $registry['sit']];
+        $this->listRegistryAdd = ['col' => $registry['col']];
 
         return $this->listRegistryAdd;
     }
