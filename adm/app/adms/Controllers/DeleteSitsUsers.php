@@ -29,8 +29,9 @@
             
             if (!empty($id)){
                 $this->id = (int) $id;
+
                 $deleteUser = new \App\adms\Models\AdmsDeleteSitsUsers();
-                $deleteUser->deleteUser($this->id);
+                $deleteUser->deleteSitsUser($this->id);
                 
             } else {
                 $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Necessário selecionar uma situação!</p><br>";

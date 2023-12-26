@@ -34,16 +34,15 @@ class AdmsDeleteSitsUsers
         return $this->result;
     }
 
-    public function deleteUser(int $id): void
+    public function deleteSitsUser(int $id): void
     {
         $this->id = (int) $id;
 
-        if($this->viewSitsUser()){
+        if(($this->viewSitsUser()) and ($this->checkStatusUser())){
             $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteSitUser->exeDelete("adms_sits_users", "WHERE id=:id", "id={$this->id}");
+            $deleteSitUser->exeDelete("adms_sits_users", "WHERE id =:id", "id={$this->id}");
     
             if($deleteSitUser->getResult()){
-                // $this->deleteImg();
                 $_SESSION['msg'] = "<p style='color:#051;'>Situação apagada com sucesso!</p><br>";
                 $this->result = true;
             }else{
@@ -71,6 +70,19 @@ class AdmsDeleteSitsUsers
         } else {
             $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
             return false;
+        }
+    }
+
+    private function checkStatusUser(): bool
+    {
+        $viewUserAdd = new \App\adms\Models\helper\AdmsRead();
+        $viewUserAdd->fullRead("SELECT id FROM adms_users WHERE adms_sits_user_id =:adms_sits_user_id LIMIT :limit", "adms_sits_user_id={$this->id}&limit=1");
+
+        if($viewUserAdd->getResult()){
+            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: Esta situação não pode ser apagada, existem usuários utilizando este ítem!</p>";
+            return false;
+        }else{
+            return true;
         }
     }
 

@@ -15,6 +15,7 @@
         unset($_SESSION['msg']);
     }
     
+    
     foreach($this->data['listUsers'] as $user){
         // var_dump($user);
 

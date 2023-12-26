@@ -13,7 +13,7 @@
     }
     
     //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
+    // echo password_hash("123456a", PASSWORD_DEFAULT);
 ?>
 
 <h1>Cadastrar Usuario</h1>
