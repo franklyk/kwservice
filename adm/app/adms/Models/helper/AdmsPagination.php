@@ -17,16 +17,37 @@ if(!defined('KLKSK8')){
  */
 class AdmsPagination
 {
+    /** * @var integer Recebe a página atual do usuário */
     private int $page;
+
+    /** * @var integer $limitResult Recebe o limite de registros que retorna do banco de dados*/
     private int $limitResult;
+
+    /** * @var integer $offset Recebe a quantidade de usuários que serão apresentados por página*/
     private int $offset;
+
+    /** * @var string $query Recebe a query de consulta no banco de dados*/
     private string $query;
+
+    /** * @var string|null $parseString Recebe os parametros de conversão para a query*/
     private string|null $parseString;
+
+    /** * @var array Recebe os registros que retornam do banco de dados*/
     private array $resultBd;
+
+    /** * @var string|null Recebe os parametros da paginação*/
     private string|null $result;
+
+    /** * @var integer $totalPages Recebe a quantidade total de páginas*/
     private int $totalPages;
+
+    /** * @var integer $maxLinks Recebe os links que seram usados para a paginação */
     private int $maxLinks = 2;
+
+    /** * @var string $link Recebe o endereço de redirecionamento da página*/
     private string $link;
+
+    /** * @var string|null $var Recebe parâmetros os opcionais para a paginação, não sendo obrigatório*/
     private string|null $var;
 
     function getOffset(): int
@@ -86,7 +107,7 @@ class AdmsPagination
     {
         $this->result = "<ul>";
 
-        $this->result .= "<li><a href='{$this->link}{$this->var}'>Primeira</a></li>";
+        $this->result .= "<li><a href='{$this->link}{$this->var}'>Início</a></li>";
 
         for($beforePage = $this->page - $this->maxLinks; $beforePage <= $this->page - 1; $beforePage ++){
             if($beforePage >= 1){
@@ -103,7 +124,7 @@ class AdmsPagination
 
         }
 
-        $this->result .= "<li><a href='{$this->link}/{$this->totalPages}{$this->var}'>Última</a></li>";
+        $this->result .= "<li><a href='{$this->link}/{$this->totalPages}{$this->var}'>Última Página</a></li>";
 
         $this->result .= "</ul>";
     }
