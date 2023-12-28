@@ -36,4 +36,8 @@
         echo "<a href='".URLADM."delete-users/index/$id'>Apagar</a><br><br>";
         echo "<hr>";
     }
+
+    echo $this->data['pagination'];
+    // var_dump($this->data['pagination']);
+
 ?>
