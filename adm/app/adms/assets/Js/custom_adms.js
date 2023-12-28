@@ -577,3 +577,33 @@ if (formSitUser) {
     })
 
 }
+const formColor = document.getElementById("form-color");
+if (formColor) {
+    formColor.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Nome</p>";
+
+            return;
+        }
+        
+        
+        //Recebe o valor do campo Usuário
+        var color= document.querySelector('#color').value;
+        if (color === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Cor!</p>";
+
+            return;
+        }else{
+            document.getElementById("msg").innerHTML = "<p></p>";
+            return
+        }
+    })
+
+}
