@@ -3,6 +3,17 @@
 if(window.history.replaceState){
     window.history.replaceState(null, null, window.location.href);
 } 
+
+function passwordEmpty(){
+    var password = document.querySelector('#password').value;
+        if (password === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+
+            return;
+        }
+}
 //Calcular a forca da senha
 function passwordStrength(){
     var password = document.getElementById("password").value;
@@ -47,7 +58,8 @@ function viewStrength(strength){
 const formNewUser = document.getElementById("form-new-user");
 if (formNewUser) {
     formNewUser.addEventListener("submit", async (e) => {
-
+        formNewUser.passwordEmpty();
+        
         //Recebe o valor do campo NAME
         var name = document.querySelector('#name').value;
         if (name === "") {
@@ -66,15 +78,15 @@ if (formNewUser) {
 
             return;
         }
-        //Recebe o valor do campo SENHA
-        var password = document.querySelector('#password').value;
-        if (password === "") {
-            e.preventDefault();
+        // //Recebe o valor do campo SENHA
+        // var password = document.querySelector('#password').value;
+        // if (password === "") {
+        //     e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+        //     document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
 
-            return;
-        }
+        //     return;
+        // }
         //Verifica se o campo SENHA possui 6 caracteres
         if (password.length < 6) {
             e.preventDefault();
@@ -603,6 +615,204 @@ if (formColor) {
         }else{
             document.getElementById("msg").innerHTML = "<p></p>";
             return
+        }
+    })
+
+}
+
+const formAddConfEmail = document.getElementById("form-add-conf-emails");
+if (formAddConfEmail) {
+    formAddConfEmail.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo Título
+        var title = document.querySelector('#title').value;
+        if (title === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Título</p>";
+
+            return;
+        }
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Name!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo E-MAIL
+        var email = document.querySelector('#email').value;
+        if (email === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo E-mail!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Host
+        var host = document.querySelector('#host').value;
+        if (host === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Host!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Usuário
+        var username = document.querySelector('#username').value;
+        if (username === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Usuário!</p>";
+
+            return;
+        }
+        
+        //Recebe o valor do campo SENHA
+        var password = document.querySelector('#password').value;
+        if (password === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+
+            return;
+        }
+        //Verifica se o campo SENHA possui 6 caracteres
+        if (password.length < 6) {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Erro: A Senha deve conter (NO MÍNIMO) 6 caracteres!</p>";
+
+            return;
+        }
+
+        //Verifica se o campo SENHA não possui núeros repetidos
+        if (password.match(/([1-9]+)\1{1,}/)) {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Erro: A Senha não deve ter números repetidos!</p>";
+
+            return;
+        }
+
+        //Verifica se o campo SENHA possui letras
+        if (!password.match(/[A-Za-z]/)) {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Erro: A Senha deve conter pelo menos uma letra!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Usuário
+        var smtpsecure = document.querySelector('#smtpsecure').value;
+        if (smtpsecure === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo SMTP!</p>";
+
+            return;
+        }
+        var port = document.querySelector('#port').value;
+        if (port === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Porta!</p>";
+
+            return;
+        }
+
+    })
+
+}
+
+
+
+const formEditConfEmails = document.getElementById("form-edit-conf-emails");
+if (formEditConfEmails) {
+    formEditConfEmails.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo Título
+        var title = document.querySelector('#title').value;
+        if (title === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Título</p>";
+
+            return;
+        }
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Name!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo E-MAIL
+        var email = document.querySelector('#email').value;
+        if (email === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo E-mail!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Host
+        var host = document.querySelector('#host').value;
+        if (host === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Host!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Usuário
+        var username = document.querySelector('#username').value;
+        if (username === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Usuário!</p>";
+
+            return;
+        }
+        
+        //Recebe o valor do campo Usuário
+        var smtpsecure = document.querySelector('#smtpsecure').value;
+        if (smtpsecure === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo SMTP!</p>";
+
+            return;
+        }
+        var port = document.querySelector('#port').value;
+        if (port === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Porta!</p>";
+
+            return;
+        }
+
+    })
+
+}
+
+const formEditConfEmailsPass = document.getElementById("form-edit-conf-email-pass");
+if (formEditConfEmailsPass) {
+    formEditConfEmailsPass.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo SENHA
+        var password = document.querySelector('#password').value;
+        if (password === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+
+            return;
         }
     })
 

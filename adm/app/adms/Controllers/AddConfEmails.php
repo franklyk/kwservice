@@ -13,7 +13,7 @@
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */
-    class AddSitsUsers
+    class AddConfEmails
     {
         /** @var array|string|null $data Recebe os dados que serão enviados para a VIEW */
         private array|string|null $data = [];
@@ -28,42 +28,39 @@
         */
         public function index(): void
         {
-            
             //Recebe os dados que vêm do formulário
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
             //verifica se o butão submit foi clicado
-            if(!empty($this->dataForm["SendAddSitUser"])){
+            if(!empty($this->dataForm["SendConfEmail"])){
                 // var_dump($this->dataForm);
                 //Destroi a posiçao do botao submit
-                unset($this->dataForm["SendAddSitUser"]);
-                // var_dump($this->dataForm);
+                unset($this->dataForm["SendConfEmail"]);
+                var_dump($this->dataForm);
 
 
                 //Envia os dados do formulário para a AdmsnewUser
-                $createSitUser = new \App\adms\Models\AdmsAddSitsUsers();
-                $createSitUser->create($this->dataForm);
+                $createEmail = new \App\adms\Models\AdmsAddConfEmail();
+                $createEmail->create($this->dataForm);
 
                 //Recebe os dados que vêm da AdmsLogin
-                if($createSitUser->getResult()){
-                    $urlRedirect = URLADM . "list_sits-users/index";
+                if($createEmail->getResult()){
+                    $urlRedirect = URLADM . "list-conf-emails/index";
                     header("Location: $urlRedirect");
                 }else{
                     // Mantém os dados no formulário se não for redirecinado
                     $this->data['form'] = $this->dataForm;
-                    $this->viewAddSitUser();
+                    $this->viewConfEmails();
                 }
             }else{
                 //Carrega a view
-                $this->viewAddSitUser();
+                $this->viewConfEmails();
             }
         }
-        private function viewAddSitUser() :void
+        private function viewConfEmails() :void
         {
-            $listSelect = new \App\adms\Models\AdmsAddSitsUsers();
-            $this->data['select'] = $listSelect->listSelect();
             
-            $loadView = new \Core\ConfigView("adms/Views/sitsUser/addSitsUser", $this->data);
+            $loadView = new \Core\ConfigView("adms/Views/confEmails/addConfEmails", $this->data);
             $loadView->loadView();
             
         }

@@ -14,7 +14,7 @@ if(!defined('KLKSK8')){
  *
  * @author Franklin
  */
-class AdmsEditUsersPassword
+class AdmsEditConfEmailsPassword
 {
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
@@ -47,21 +47,20 @@ class AdmsEditUsersPassword
         return $this->resultBd;
     }
 
-    public function viewUser(int $id): void
+    public function viewConfEmailsPassword(int $id): void
     {
         $this->id = $id;
 
-        $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id
-                                    FROM adms_users
+        $viewConfEmails = new \App\adms\Models\helper\AdmsRead();
+        $viewConfEmails->fullRead("SELECT id FROM adms_confs_emails
                                     WHERE id=:id 
                                     LIMIT :limit", "id={$this->id}&limit=1");
 
-        $this->resultBd = $viewUser->getResult();
+        $this->resultBd = $viewConfEmails->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Configuração não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -73,24 +72,6 @@ class AdmsEditUsersPassword
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {
-            $this->valInput();
-        } else {
-            $this->result = false;
-        }
-    }
-    /**
-     * Instanciar o helper "AdmsValPassword" para validar a senha
-     * 
-     * Retorna falso quando houver algum erro
-     *
-     * @return void
-     */
-    private function valInput(): void
-    {
-        $valPassword = new \App\adms\Models\helper\AdmsValPassword();
-        $valPassword->validatePassword($this->data['password']);
-
-        if ($valPassword->getResult()) {
             $this->edit();
         } else {
             $this->result = false;
@@ -100,17 +81,16 @@ class AdmsEditUsersPassword
     private function edit(): void
     {
         $this->data['modified'] = date("Y-m-d H:i:s");
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+        // $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
         
-        $this->result = false;
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
-        $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upUser->exeUpdate("adms_confs_emails", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: #051;'>A senha do usuário foi editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #051;'>A senha de configuração foi editada com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro:A senha do usuário não foi editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro:A senha de configuração não foi editada com sucesso!</p>";
             $this->result = false;
         }
     }

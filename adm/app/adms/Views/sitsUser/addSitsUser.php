@@ -21,7 +21,7 @@
 
 
 <?php
-    echo "<a href='".URLADM."list-users/index'>Listar</a><br><br>";
+    echo "<a href='".URLADM."list-sits-users/index'>Listar</a><br><br>";
     if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);

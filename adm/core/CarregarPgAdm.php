@@ -100,7 +100,7 @@
 
         private function pgPrivate():void
         {
-            $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword", "EditProfileImage", "ListSitsUsers", "ViewSitsUsers", "AddSitsUsers", "EditSitsUsers", "DeleteSitsUsers", "ListColors", "ViewColors","AddColors", "EditColors","DeleteColors"];
+            $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword", "EditProfileImage", "ListSitsUsers", "ViewSitsUsers", "AddSitsUsers", "EditSitsUsers", "DeleteSitsUsers", "ListColors", "ViewColors","AddColors", "EditColors","DeleteColors","ListConfEmails","ViewConfEmails","AddConfEmails","EditConfEmails", "EditConfEmailsPassword", "DeleteConfEmails"];
 
             if(in_array($this->urlController, $this->listPgPrivate)){
                 $this->verifyLogin();

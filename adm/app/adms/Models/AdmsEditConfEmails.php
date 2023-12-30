@@ -10,12 +10,14 @@ if(!defined('KLKSK8')){
 
 
 /**
- * Editar a senha do usuário no banco de dados
+ * Editar as configurações de e-mail no banco de dados
  *
  * @author Franklin
  */
-class AdmsEditUsersPassword
+class AdmsEditConfEmails
 {
+    /** @var array|null $data Recebe as informações do formulário */
+    private array|null $data;
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result = false;
@@ -25,9 +27,6 @@ class AdmsEditUsersPassword
 
     /** @var array|string|null $id Recebe o id do registro */
     private int|string|null $id;
-
-    /** @var array|null $data Recebe as informações do formulário */
-    private array|null $data;
 
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
@@ -47,21 +46,22 @@ class AdmsEditUsersPassword
         return $this->resultBd;
     }
 
-    public function viewUser(int $id): void
+    public function viewConfEmails(int $id): void
     {
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id
-                                    FROM adms_users
-                                    WHERE id=:id 
-                                    LIMIT :limit", "id={$this->id}&limit=1");
+        $viewUser->fullRead("SELECT id, title, name, email, host, username, password, smtpsecure,
+        port
+                                                    FROM adms_confs_emails
+                                                    WHERE id=:id 
+                                                    LIMIT :limit", "id={$this->id}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro 006: Configurações de e-mail não encontradas!</p>";
             $this->result = false;
         }
     }
@@ -69,48 +69,30 @@ class AdmsEditUsersPassword
     public function update(array $data = null):void
     {
         $this->data = $data;
+        
 
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {
-            $this->valInput();
-        } else {
-            $this->result = false;
-        }
-    }
-    /**
-     * Instanciar o helper "AdmsValPassword" para validar a senha
-     * 
-     * Retorna falso quando houver algum erro
-     *
-     * @return void
-     */
-    private function valInput(): void
-    {
-        $valPassword = new \App\adms\Models\helper\AdmsValPassword();
-        $valPassword->validatePassword($this->data['password']);
-
-        if ($valPassword->getResult()) {
             $this->edit();
         } else {
             $this->result = false;
         }
     }
+   
 
     private function edit(): void
     {
         $this->data['modified'] = date("Y-m-d H:i:s");
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
         
-        $this->result = false;
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
-        $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upUser->exeUpdate("adms_confs_emails", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: #051;'>A senha do usuário foi editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #051;'>Configurações de e-mail editadas com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro:A senha do usuário não foi editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Configurações de e-mail não editadas com sucesso!</p>";
             $this->result = false;
         }
     }
