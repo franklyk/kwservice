@@ -33,7 +33,12 @@
         echo "Situação: <span style='color: $color;'>$name_sit</span> <br>";
         echo "<a href='".URLADM."view-users/index/$id'>Visualizar</a><br>";
         echo "<a href='".URLADM."edit-users/index/$id'>Editar</a><br>";
-        echo "<a href='".URLADM."delete-users/index/$id'>Apagar</a><br><br>";
+        echo "<a href='".URLADM."delete-users/index/$id' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")'>Apagar</a><br>";
+        ?>
+
+        <!-- <a href="<?php /*echo URLADM . 'delete-users/index/' . $id*/ ?>"  onclick="return confirm('Tem certeza que deseja apagar este ítem?')">Apagar</a> <br> -->
+
+        <?php 
         echo "<hr>";
     }
 

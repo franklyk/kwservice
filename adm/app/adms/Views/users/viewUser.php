@@ -13,7 +13,7 @@
         echo "<a href='".URLADM."edit-users/index/" . $this->data['viewUser'][0]['id'] . "'>Editar</a><br>";
         echo "<a href='".URLADM."edit-users-password/index/" . $this->data['viewUser'][0]['id'] . "'>Editar Senha</a><br>";
         echo "<a href='".URLADM."edit-users-image/index/" . $this->data['viewUser'][0]['id'] . "'>Editar Imagem</a><br>";
-        echo "<a href='".URLADM."delete-users/index/" . $this->data['viewUser'][0]['id'] . "'>Apagar</a><br><br>";
+        echo "<a href='".URLADM."delete-users/index/" . $this->data['viewUser'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")>Apagar</a><br><br>";
     }
 
     if(isset($_SESSION['msg'])){

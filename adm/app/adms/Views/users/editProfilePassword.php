@@ -50,7 +50,7 @@ echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
     <input type="password" name="password" id="password" placeholder="Digite a nova senha" onkeyup="passwordStrength()"
         autocomplete="on" value="<?php echo $password ?>" required> 
 
-    <span id="msgViewStrength"><br><br></span>
+    <span id="msgViewStrength"><br><br></span>  
 
     <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
 

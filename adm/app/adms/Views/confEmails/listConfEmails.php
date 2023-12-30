@@ -26,7 +26,7 @@
         echo "E-mail: $email<br>";
         echo "<a href='".URLADM."view-conf-emails/index/$id'>Visualizar</a><br>";
         echo "<a href='".URLADM."edit-conf-emails/index/$id'>Editar</a><br>";
-        echo "<a href='".URLADM."delete-conf-emails/index/$id'>Apagar</a><br><br>";
+        echo "<a href='".URLADM."delete-conf-emails/index/$id' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")'>Apagar</a><br><br>";
         echo "<hr>";
     }
     echo $this->data['pagination'];

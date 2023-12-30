@@ -12,7 +12,7 @@
     if(!empty($this->data['viewConfEmails'])){
         echo "<a href='" . URLADM . "edit-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "'>Editar</a><br>";
         echo "<a href='" . URLADM . "edit-conf-emails-password/index/" . $this->data['viewConfEmails'][0]['id'] . "'>Editar Senha</a><br>";
-        echo "<a href='" . URLADM . "delete-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "'>Apagar</a><br><br>";
+        echo "<a href='" . URLADM . "delete-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")>Apagar</a><br><br>";
     }
 
     if(isset($_SESSION['msg'])){

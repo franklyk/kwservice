@@ -24,7 +24,7 @@
         echo "<div style='width:200px; height:30px; border:1px solid black; background-color:$color;'></div><br>";
         echo "<a href='".URLADM."view-colors/index/$id'>Visualizar</a><br>";
         echo "<a href='".URLADM."edit-colors/index/$id'>Editar</a><br>";
-        echo "<a href='".URLADM."delete-colors/index/$id'>Apagar</a><br><br>";
+        echo "<a href='".URLADM."delete-colors/index/$id ' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")'>Apagar</a><br><br>";
         echo "<hr>";
     }
     echo $this->data['pagination'];

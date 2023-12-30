@@ -22,7 +22,7 @@
         echo "Nome: <span style='color:$color;'>$name</span><br>";
         echo "<a href='".URLADM."view-sits-users/index/$id'>Visualizar</a><br>";
         echo "<a href='".URLADM."edit-sits-users/index/$id'>Editar</a><br>";
-        echo "<a href='".URLADM."delete-sits-users/index/$id'>Apagar</a><br><br>";
+        echo "<a href='".URLADM."delete-sits-users/index/$id' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")>Apagar</a><br><br>";
         echo "<hr>";
     }
     echo $this->data['pagination'];
