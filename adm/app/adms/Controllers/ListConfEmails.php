@@ -40,6 +40,9 @@
             }else{
                 $this->data['listConfEmails'] = [];
             }
+
+            $this->data['sidebarActive'] = 'listConfEmails';
+
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/confEmails/listConfEmails", $this->data);

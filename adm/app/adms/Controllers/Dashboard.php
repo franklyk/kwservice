@@ -29,9 +29,20 @@
         public function index():void
         {
 
-            $this->data = " Bem Vindo ";
-            $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
-            $loadView->loadView();
+            $countUsers = new \App\adms\Models\AdmsDashboard();
+        $countUsers->countUsers();
+        if ($countUsers->getResult()) {
+            // var_dump($countUsers->getResultBd());
+            $this->data['countUsers'] = $countUsers->getResultBd();
+        } else {
+            $this->data['countUsers'] = false;
+        }
+
+
+        $this->data['sidebarActive'] = "dashboard";
+
+        $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
+        $loadView->loadView();
         }
     }
 

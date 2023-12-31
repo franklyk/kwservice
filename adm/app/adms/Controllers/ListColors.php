@@ -40,6 +40,9 @@
             }else{
                 $this->data['listColors'] = [];
             }
+
+            $this->data['sidebarActive'] = 'listColors';
+
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/colors/listColors", $this->data);

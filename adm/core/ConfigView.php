@@ -38,6 +38,7 @@
         {
             if(file_exists('app/' .$this->nameView . '.php')){
                 include 'app/adms/Views/include/head.php';
+            include 'app/adms/Views/include/navbar.php';
                 include 'app/adms/Views/include/menu.php';
                 include 'app/' .$this->nameView . '.php';
                 include 'app/adms/Views/include/footer.php';
@@ -54,9 +55,9 @@
         public function loadViewLogin():void
         {
             if(file_exists('app/' .$this->nameView . '.php')){
-                include 'app/adms/Views/include/head.php';
+                include 'app/adms/Views/include/head_login.php';
                 include 'app/' .$this->nameView . '.php';
-                include 'app/adms/Views/include/footer.php';
+                include 'app/adms/Views/include/footer_login.php';
             }else {
                 die("Erro: 005 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM);
             }

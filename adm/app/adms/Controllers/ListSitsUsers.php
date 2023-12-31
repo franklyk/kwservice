@@ -40,6 +40,8 @@
             }else{
                 $this->data['listSitsUsers'] = [];
             }
+
+            $this->data['sidebarActive'] =  'listSitsUsers';
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/sitsUser/listSitsUsers", $this->data);
