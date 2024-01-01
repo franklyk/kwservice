@@ -37,6 +37,22 @@ body {
     background-color: var(--main-color);
 }
 
+.text-danger{
+    color: var(--danger-color);
+}
+
+.btn-complete{
+    /* border: 1px solid black; */
+    display: grid;
+    position: relative;
+}
+.btn-complete button{
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    width: 50%;
+}
+
 .navbar {
     color: var(--main-color);
     display: flex;
@@ -390,10 +406,11 @@ body {
 }
 
 .top-list .title-content {
-    float: left;
     color: var(--main-bg-color);
-    padding: 10px 16px;
+    float: left;
     font-size: 17px;
+    font-weight: bold;
+    padding: 10px 16px;
 }
 
 .top-list .top-list-right {

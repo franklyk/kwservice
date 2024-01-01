@@ -14,7 +14,7 @@ namespace App\adms\Views\login;
 <div class="container-login">
     <div class="wrapper-login">
         <div class="title">
-            <span>Area Restrita</span>
+            <span>Área Restrita</span>
         </div>
         <div class="msg-alert">
             <?php 
@@ -57,7 +57,7 @@ namespace App\adms\Views\login;
                     href="<?php echo URLADM; ?>recover-password/index">Esqueceu a Senha?</a>
             </div>
         </form>
-        Usuário: franklin1@email.com<br>
-        Senha: 123456a
+        <!-- Usuário: franklin1@email.com<br>
+        Senha: 123456a -->
     </div>
 </div>

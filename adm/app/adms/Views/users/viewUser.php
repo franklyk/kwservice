@@ -43,10 +43,10 @@
                 <span class="view-adm-title">Foto: </span>
                 <span class="view-adm-info">
                     <?php
-                            if ((!empty($image)) and (file_exists("app/adms/assets/image/users/$id/$image"))) {
-                                echo "<img src='" . URLADM . "app/adms/assets/image/users/$id/$image' width='100' height='100'><br><br>";
+                            if ((!empty($image)) and (file_exists("app/adms/assets/images/users/$id/$image"))) {
+                                echo "<img src='" . URLADM . "app/adms/assets/images/users/$id/$image' width='100' height='100'><br><br>";
                             } else {
-                                echo "<img src='" . URLADM . "app/adms/assets/image/users/icon_user.png' width='100' height='100'><br><br>";
+                                echo "<img src='" . URLADM . "app/adms/assets/images/users/usuario.png' width='100' height='100'><br><br>";
                             }
                             ?>
                 </span>
@@ -59,7 +59,7 @@
 
             <div class="view-det-adm">
                 <span class="view-adm-title">Nome: </span>
-                <span class="view-adm-info"><?php echo $name_usr; ?></span>
+                <span class="view-adm-info"><?php echo $name_user; ?></span>
             </div>
 
             <div class="view-det-adm">
