@@ -7,38 +7,55 @@
     }
     
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
-    if(isset($this->data['form'])){
+
+
+    if (isset($this->data['form'])) {
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
     }
-
-?>
-
-<h1>Recuperar senha</h1>
-<?php 
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
-?>
-<span id="msg"></span>
-
-<form action="" method="post" id="form-recover-pass">
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $email = "";
-        if(isset($valorForm['email'])){
-            $email = $valorForm['email'];
-        }
+    
     ?>
-    <label for="">E-mail: </label><br>
-    <input type="text" name="email" id="email" placeholder="Digite o seu e-mail" autocomplete="on" value="<?php echo $email ?>"> 
 
-    <br><br>
+<div class="container-login">
+    <div class="wrapper-login">
 
+        <div class="title">
+            <span>Recuperar Senha</span>
+        </div>
 
-    <button type="submit" name="SandRecoverPass" value="Enviar">Enviar</button>
+        <div class="msg-alert">
+            <?php
+                if (isset($_SESSION['msg'])) {
+                    echo "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                    unset($_SESSION['msg']);
+                } else {
+                    echo "<span id='msg'></span>";
+                }
+                ?>
 
-</form>
+        </div>
 
-<p><a href=" <?php echo URLADM; ?>">Clique aqui</a> para acessar</p>
+        <form method="POST" action="" id="form-recover-pass" class="form-login">
+
+            <?php
+                $email = "";
+                if (isset($valorForm['email'])) {
+                    $email = $valorForm['email'];
+                }
+                ?>
+            <div class="row">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" name="email" id="email" placeholder="Digite o seu e-mail"
+                    value="<?php echo $email; ?>" required>
+            </div>
+
+            <div class="row button">
+                <button type="submit" name="SendRecoverPass" value="Recuperar">Recuperar</button>
+            </div>
+
+            <div class="signup-link">
+                <a href="<?php echo URLADM; ?>">Clique aqui</a> para acessar
+            </div>
+
+        </form>
+    </div>
+</div>

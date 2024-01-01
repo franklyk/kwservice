@@ -32,7 +32,7 @@
             $this->dataform = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
             //verifica se o butão submit foi clicado
-            if(!empty($this->dataform['SandLogin'])){
+            if(!empty($this->dataform['SendLogin'])){
                 $valLogin = new \App\adms\Models\AdmsLogin();
                 $valLogin->login($this->dataform);
 

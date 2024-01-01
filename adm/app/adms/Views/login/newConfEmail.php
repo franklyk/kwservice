@@ -5,41 +5,55 @@
         header("Location: $urlRedirect");
         die("Erro: Página não encontrada!<br>");
     }
-    
+      
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
-    if(isset($this->data['form'])){
-        $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
-    }
-    
-    //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
+ 
+if (isset($this->data['form'])) {
+    $valorForm = $this->data['form'];
+}
 ?>
 
-<h1>Novo Link</h1>
-<?php 
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
-?>
-<span id="msg"></span>
+<div class="container-login">
+    <div class="wrapper-login">
 
-<form action="" method="post" id="form-new-conf-email">
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $email = "";
-        if(isset($valorForm['email'])){
-            $email = $valorForm['email'];
-        }
-    ?>
-    <label for="">E-mail: </label><br>
-    <input type="email" name="email" id="email" placeholder="Digite o seu e-mail" autocomplete="on" value="<?php echo $email ?>"> 
+        <div class="title">
+            <span>Novo Link</span>
+        </div>
 
-    <br><br>
+        <div class="msg-alert">
+            <?php
+                if (isset($_SESSION['msg'])) {
+                    echo "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                    unset($_SESSION['msg']);
+                } else {
+                    echo "<span id='msg'></span>";
+                }
+                ?>
 
-    <button type="submit" name="SandNewConfEmail" value="Enviar">Enviar</button>
+        </div>
 
-</form>
+        <form method="POST" action="" id="form-new-conf-email" class="form-login">
 
-<p><a href=" <?php echo URLADM ?>">Clique aqui</a> para acessar</p>
+            <?php
+            $email = "";
+            if (isset($valorForm['email'])) {
+                $email = $valorForm['email'];
+            }
+            ?>
+            <div class="row">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" name="email" id="email" placeholder="Digite o seu e-mail"
+                    value="<?php echo $email; ?>" required>
+            </div>
+
+            <div class="row button">
+                <button type="submit" name="SendNewConfEmail" value="Enviar">Enviar</button>
+            </div>
+
+            <div class="signup-link">
+                <a href="<?php echo URLADM; ?>">Clique aqui</a> para acessar
+            </div>
+
+        </form>
+    </div>
+</div>

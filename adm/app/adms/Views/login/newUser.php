@@ -9,58 +9,72 @@
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
-    }
-    
-    //Criptografar a senha
-    // echo password_hash("123456a", PASSWORD_DEFAULT);
-?>
-
-<h1>Novo Usuario</h1>
-<?php 
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
     }
 ?>
-<span id="msg"></span>
+<div class="container-login">
+    <div class="wrapper-login">
 
-<form action="" method="post" id="form-new-user">
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $name = "";
-        if(isset($valorForm['name'])){
-            $name = $valorForm['name'];
-        }
-    ?>
-    <label for="name"><strong>Nome</strong>: <span style="color:#f00;">*</span> </label>
-    <input type="text" name="name" id="name" placeholder="Digite o nome completo" autocomplete="on" value="<?php echo $name ?>" required> <br><br>
+        <div class="title">
+            <span>Novo Usuário</span>
+        </div>
+        <div class="msg-alert">
+            <?php 
+                if(isset($_SESSION['msg'])){
+                    echo "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                    unset($_SESSION['msg']);
+                }else{
+                    echo "<span id='msg'></span>";
+                }
+            ?>
+        </div>
+        <form method="POST" action="" id="form-new-user" class="form-login">
 
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $email = "";
-        if(isset($valorForm['email'])){
-            $email = $valorForm['email'];
-        }
-    ?>
-    <label for="email"><strong>E-mail</strong>: <span style="color:#f00;">*</span>  </label>
-    <input type="email" name="email" id="email" placeholder="Digite o seu melhor e-mail" autocomplete="on" value="<?php echo $email ?>" required> <br><br>
+            <?php
+            $name = "";
+            if (isset($valorForm['name'])) {
+                $name = $valorForm['name'];
+            }
+            ?>
+            <div class="row">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="name" id="name" placeholder="Digite o nome" value="<?php echo $name; ?>"
+                    required>
+            </div>
 
+            <?php
+            $email = "";
+            if (isset($valorForm['email'])) {
+                $email = $valorForm['email'];
+            }
+            ?>
+            <div class="row">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Digite o e-mail" value="<?php echo $email; ?>"
+                    required>
+            </div>
 
-    <?php 
-    //$password - mantém os dados na INPUT password
-        $password = "";
-        if(isset($valorForm['password'])){
-            $password = $valorForm['password'];}
-    ?>
-    <label for="password"><strong>Senha:</strong> <span style="color:#f00;">*</span> </label>
-    <input type="text" name="password" id="password" placeholder="Digite a Senha" onkeyup="passwordStrength()" autocomplete="on" value="<?php echo $password ?>">
-    <span id="msgViewStrength"><br><br></span>
+            <?php
+            $password = "";
+            if (isset($valorForm['password'])) {
+                $password = $valorForm['password'];
+            }
+            ?>
+            <div class="row">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Digite a senha"
+                    onkeyup="passwordStrength()" autocomplete="on" value="<?php echo $password; ?>" required>
+            </div>
 
-    <span style="color:#f00;">* Campo Obrigatório!</span> <br><br>
+            <span id="msgViewStrength"></span>
 
-    <button type="submit" name="SandNewUser" value="Cadastrar"><strong>Cadastrar</strong></button>
+            <div class="row button">
+                <button type="submit" name="SendNewUser" value="Cadastrar">Cadastrar</button>
+            </div>
 
-</form>
+            <div class="signup-link">
+                <a href="<?php echo URLADM; ?>">Clique aqui</a> para acessar
+            </div>
 
-<p><a href=" <?php echo URLADM ?>">Clique aqui</a> para acessar</p>
+        </form>
+    </div>
+</div>
