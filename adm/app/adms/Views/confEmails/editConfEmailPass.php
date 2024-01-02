@@ -21,50 +21,63 @@
     // var_dump($this->data['form']);
 
 ?>
+<!-- Inicio do conteudo do administrativo -->
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Editar Senha</span>
+            <div class="top-list-right">
+                <?php
+                echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>Listar</a> ";
+                if (isset($valorForm['id'])) {
+                    echo "<a href='" . URLADM . "view-conf-emails/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a> ";
+                    echo "<a href='" . URLADM . "edit-conf-emails/index/" . $valorForm['id'] . "' class='btn-warning'>Editar</a> ";
+                    echo "<a href='" . URLADM . "delete-conf-emails/index/" . $valorForm['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                }
+                ?>
+            </div>
+        </div>
 
-<h1>Editar Senha Do E-mail de Configuaração</h1>
+        <div class="content-adm-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+            ?>
+            <span id="msg"></span>
+        </div>
 
+        <div class="content-adm">
+            <form method="POST" action="" id="form-edit-conf-emails-pass" class="form-adm">
+                <?php
+                $id = "";
+                if (isset($valorForm['id'])) {
+                    $id = $valorForm['id'];
+                }
+                ?>
+                <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                
+                <div class="row-input">
+                    <div class="column">
+                        <?php
+                        $password = "";
+                        if (isset($valorForm['password'])) {
+                            $password = $valorForm['password'];
+                        }
+                        ?>
+                        <label class="title-input">Senha:<span class="text-danger">*</span></label>
+                        <input type="password" name="password" id="password" class="input-adm" placeholder="Senha do e-mail" autocomplete="on" value="<?php echo $password; ?>" >
 
-<?php 
-echo "<a href='".URLADM."list-conf-emails/index'>Listar</a><br>";
-if(isset($valorForm['id'])){
-    echo "<a href='".URLADM."view-conf-emails/index/" . $valorForm['id'] . "'>Visualizar</a><br><br>";
-}
+                    </div>
+                </div>
 
+                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
-?>
-<span id="msg"></span>
+                <button type="submit" name="SendEditConfEmailsPass" class="btn-warning" value="Salvar">Salvar</button>
 
-<form action="" method="post" id="form-edit-conf-email-pass">
-
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $id = "";
-        if(isset($valorForm['id'])){
-            $id = $valorForm['id'];
-        }
-    ?>
-    <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
-
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $password = "";
-        if(isset($valorForm['password'])){
-            $password = $valorForm['password'];
-        }
-    ?>
-    <label for="password"><strong>Senha:</strong> <span style="color:#f00;">*</span> </label><br>
-    <input type="password" name="password" id="password" placeholder="Digite a nova senha" onkeyup="passwordStrength()"
-        autocomplete="on" value="<?php echo $password ?>" > 
-
-    <span id="msgViewStrength"><br><br></span>
-
-    <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
-
-    <button type="submit" name="SendEditConfEmailsPass" value="Salvar"><strong>Salvar</strong></button>
-
-</form>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fim do conteudo do administrativo -->

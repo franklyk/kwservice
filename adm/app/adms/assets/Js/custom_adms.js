@@ -552,7 +552,7 @@ function previewImage(new_image){
         var reader = new FileReader();
         // onload (Dispara quando qualquer elemento tiver sido carregado)
         reader.onload = function(e){
-            document.getElementById('preview-img').innerHTML = "<img src='"+ e.target.result +"' alt='imagem'style='width: 100px;'>"
+            document.getElementById('preview-img').innerHTML = "<img src='"+ e.target.result +"' alt='imagem'style='width: 200px;'>"
         }
 
     }

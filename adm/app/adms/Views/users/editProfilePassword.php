@@ -5,55 +5,57 @@
         header("Location: $urlRedirect");
         die("Erro: Página não encontrada!<br>");
     }
-    
-    //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
     }
     if(isset($this->data['form'][0])){
         $valorForm = $this->data['form'][0];
-        // var_dump($this->data['form']);
-    }
-    
-    //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
-    // var_dump($this->data['form']);
-
-?>
-
-<h1>Editar Senha</h1>
-
-
-<?php 
-
-echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
-
-
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
     }
 ?>
-<span id="msg"></span>
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Editar Senha</span>
+            <div class="top-list-right">
+                <?php 
+                echo "<a href='" . URLADM . "list-profile/index' class='btn-info'>Listar</a>";
+                if(isset($_SESSION['id'])){
+                    echo "<a href='" . URLADM ."view-profile/index/" . $_SESSION['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                }
+                ?>
 
-<form action="" method="post" id="form-edit-prof-pass">
-
-    <?php 
-    //$user - mantém os dados na INPUT user
-        $password = "";
-        if(isset($valorForm['password'])){
-            $password = $valorForm['password'];
-        }
-    ?>
-    <label for="password"><strong>Senha:</strong> <span style="color:#f00;">*</span> </label><br>
-    <input type="password" name="password" id="password" placeholder="Digite a nova senha" onkeyup="passwordStrength()"
-        autocomplete="on" value="<?php echo $password ?>" required> 
-
-    <span id="msgViewStrength"><br><br></span>  
-
-    <span style="color:#f00;"><strong>* Campo Obrigatório!</strong></span> <br><br>
-
-    <button type="submit" name="SendEditProfPass" value="Salvar"><strong>Salvar</strong></button>
-
-</form>
+            </div>
+        </div>
+        <div class="content-adm-alert">
+            <?php 
+            if(isset($_SESSION['msg'])){
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            } 
+            ?>
+            <span id="msg"></span>
+        </div>
+        <div class="content-adm">
+            <form method="POST" action="" class="form-adm" id="form-edit-user">
+                
+                <div class="row-input">
+                    <div class="column">
+                        <?php
+                        $password = '';
+                        if(isset($valorForm['password'])){
+                            $password = $valorForm['password'];
+                        }
+                        ?>
+                        <label for="password" class="title-input">Senha:<span class="text-danger">*</span></label>
+                        <input type="password" name="password" class="input-adm" id="password" placeholder="Digite a nova senha"
+                            value="<?php echo $password ?>" required>
+                    </div>
+                    <div class="column btn-complete">
+                        <button type="submit" name="SendEditUser" class="btn-warning " value="Salvar">Salvar</button>
+                    </div>
+                </div>
+                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
+        </form>
+    </div>
+</div>
+</div>

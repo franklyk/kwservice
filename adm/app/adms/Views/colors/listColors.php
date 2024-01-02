@@ -1,32 +1,71 @@
-<?php
+<?php 
 
     if(!defined('KLKSK8')){
         $urlRedirect = "http://localhost/kwservice/adm/login/index";
         header("Location: $urlRedirect");
         die("Erro: Página não encontrada!<br>");
-    }
     
-    echo "<h2>Listar Cores</h2>";
-    echo "<a href='".URLADM."add-colors/index'>Cadastrar</a><br><br>";
-
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
     }
-    
-    foreach($this->data['listColors'] as $Colors){
-        // var_dump($this->data);
-        //Modo otimizados de consultar os dados
-        extract($Colors);
-        echo "ID: $id <br>";
-        echo "Nome da cor: <span style='text-transform: uppercase;'>$name</span><br>";
-        echo "Codigo hexadecimal: <span style='text-transform: uppercase;'>$color</span><br>";
-        echo "<div style='width:200px; height:30px; border:1px solid black; background-color:$color;'></div><br>";
-        echo "<a href='".URLADM."view-colors/index/$id'>Visualizar</a><br>";
-        echo "<a href='".URLADM."edit-colors/index/$id'>Editar</a><br>";
-        echo "<a href='".URLADM."delete-colors/index/$id ' onclick='return confirm(\"Tem certeza que deseja apagar este ítem?\")'>Apagar</a><br><br>";
-        echo "<hr>";
-    }
-    echo $this->data['pagination'];
-    // var_dump($this->data['pagination']);
 ?>
+<!-- Inicio do conteudo do administrativo -->
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Listar Cores</span>
+            <div class="top-list-right">
+                <?php
+                echo "<a href='" . URLADM . "add-colors/index' class='btn-success'>Cadastrar</a>";
+                ?>
+            </div>
+        </div>
+        <div class="content-adm-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+            ?>
+        </div>
+        <table class="table-list">
+            <thead class="list-head">
+                <tr>
+                    <th class="list-head-content">ID</th>
+                    <th class="list-head-content">Nome</th>
+                    <th class="list-head-content table-sm-none">Cor</th>
+                    <th class="list-head-content">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="list-body">
+                <?php
+                foreach ($this->data['listColors'] as $colors) {
+                    extract($colors);
+                ?>
+                    <tr>
+                        <td class="list-body-content"><?php echo $id; ?></td>
+                        <td class="list-body-content"><?php echo $name; ?></td>
+                        <td class="list-body-content table-sm-none">
+                            <?php echo "<span style='color: $color'>$color</span>"; ?>
+                        </td>
+                        <td class="list-body-content">
+                            <div class="dropdown-action">
+                                <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action">Ações</button>
+                                <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
+                                    <?php
+                                    echo "<a href='" . URLADM . "view-colors/index/$id'>Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-colors/index/$id'>Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-colors/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Apagar</a>";
+                                    ?>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <?php echo $this->data['pagination']; ?>
+    </div>
+</div>
+<!-- Fim do conteudo do administrativo -->

@@ -43,14 +43,16 @@ body {
 
 .btn-complete{
     /* border: 1px solid black; */
-    display: grid;
+    height: 2rem;
     position: relative;
+    bottom: 0;
+    width: 100%;
 }
 .btn-complete button{
     bottom: 0;
     position: absolute;
     right: 0;
-    width: 50%;
+    width: 25%;
 }
 
 .navbar {
@@ -175,6 +177,9 @@ body {
 
 .dropdown-menu.setting {
     width: 150px;
+}
+.dropdown-menu.setting a {
+    color: white;
 }
 
 .dropdown-menu.active {
