@@ -41,7 +41,7 @@
                 $this->data['listColors'] = [];
             }
 
-            $this->data['sidebarActive'] = 'listColors';
+            $this->data['sidebarActive'] = 'list-colors';
 
             // var_dump($this->data);
 

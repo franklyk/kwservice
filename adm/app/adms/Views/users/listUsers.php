@@ -15,6 +15,27 @@
                 ?>
             </div>
         </div>
+        <div class="top-list">
+                    <form method="post" action="">
+                        <div class="row-input-search">
+                            <div class="column">
+                                <label class="title-input-search">Nome: </label>
+                                <input type="text" name="search_name" id="search_name" class="input-search"
+                                    placeholder="Pesquisar pelo nome...">
+                            </div>
+
+                            <div class="column">
+                                <label class="title-input-search">E-mail: </label>
+                                <input type="text" name="search_email" id="search_email" class="input-search"
+                                    placeholder="Pesquisar pelo e-mail...">
+                            </div>
+
+                            <div class="column margin-top-search">
+                                <button type="submit" name="SendSearchUser" value="pesquisar" class="btn-info">Pesquisar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
         <div class="content-adm-alert">
             <?php
             if(isset($_SESSION['msg'])){
@@ -66,6 +87,8 @@
         </table>
         <div class="content-pagination">
             <div class="pagination">
+        <?php echo $this->data['pagination']; ?>
+
                 <!-- <a href="#">&laquo;</a>
                 <a href="#">1</a>
                 <a href="#">2</a>
@@ -75,6 +98,5 @@
                 <a href="#">&raquo;</a> -->
             </div>
         </div>
-        <?php echo $this->data['pagination']; ?>
     </div>
 </div>

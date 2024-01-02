@@ -41,7 +41,7 @@
                 $this->data['listConfEmails'] = [];
             }
 
-            $this->data['sidebarActive'] = 'listConfEmails';
+            $this->data['sidebarActive'] = 'list-conf-emails';
 
             // var_dump($this->data);
 

@@ -119,7 +119,7 @@ class AdmsPagination
             }
         }
 
-        // $this->result .= "<span class='active'>{$this->page}</span> ";
+        $this->result .= "<a href=".$this->page." class='active'>" . $this->page ."</a>" ;
 
         for($afterPage = $this->page + 1; $afterPage <= $this->page + $this->maxLinks; $afterPage ++){
             if($afterPage <= $this->totalPages){

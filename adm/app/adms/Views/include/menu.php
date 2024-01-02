@@ -37,35 +37,31 @@ if (isset($this->data['sidebarActive'])) {
         <a href="<?php echo URLADM; ?>dashboard/index" class="sidebar-nav <?php echo $dashboard; ?>"><i
                 class="icon fa-solid fa-house"></i><span>Dashboard</span></a>
 
-        <?php
-        $sidebar_user = '';
-        $list_users = '';
-        if($sidebar_active == 'list-users'){
-            $list_users = 'active';
-            $sidebar_user = 'active';
-        }
-        
-        ?>
         <?php 
-        $list_sits_users = '';
-        if($sidebar_active == 'list-sits-users'){
-            $list_sits_users = 'active';
-            $sidebar_user = 'active';
+        $sidebar_user = "";
+        $list_users = "";
+        if ($sidebar_active == "list-users") {
+            $list_users = "active";
+            $sidebar_user = "active";
+        } ?>
 
-        }
-        ?>
+        <?php $list_sits_users = "";
+        if ($sidebar_active == "list-sits-users") {
+            $list_sits_users = "active";
+            $sidebar_user = "active";
+        } ?>
 
-        <button class="dropdown-btn" <?php echo $sidebar_user; ?>>
-            <i class="icon fa-solid fa-users"></i><span>Usuário</span><i class="fa-solid fa-caret-down"></i>
+
+        <button class="dropdown-btn <?php echo $sidebar_user; ?>">
+            <i class="icon fa-solid fa-user"></i><span>Usuário</span><i class="fa-solid fa-caret-down"></i>
         </button>
         <div class="dropdown-container <?php echo $sidebar_user; ?>">
-            <a href="<?php echo URLADM; ?>list-users/index" class="sidebar-nav <?php echo $sidebar_user; ?>"><i
-                    class="icon fa-solid fa-user-check"></i><span>Usuários</span></a>
-
-            <a href="<?php echo URLADM; ?>list-sits-users/index" class="sidebar-nav"><i
-                    class="icon fa-solid fa-user-gear"></i><span>Situações do Usuario
-                </span></a>
+            <a href="<?php echo URLADM; ?>list-users/index" class="sidebar-nav <?php echo $list_users; ?>"><i
+                    class="icon fa-solid fa-users"></i><span>Usuários</span></a>
+            <a href="<?php echo URLADM; ?>list-sits-users/index" class="sidebar-nav <?php echo $list_sits_users; ?>"><i
+                    class="icon fa-solid fa-user-check"></i><span>Situações do Usuário</span></a>
         </div>
+
         <?php 
         $list_colors = '';
         if($sidebar_active == 'list-colors'){
@@ -79,7 +75,7 @@ if (isset($this->data['sidebarActive'])) {
         <?php 
         $list_conf_emails = '';
         if($sidebar_active == 'list-conf-emails'){
-            $list_colors = 'active';
+            $list_conf_emails = 'active';
 
         }
         ?>

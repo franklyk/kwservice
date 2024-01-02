@@ -41,7 +41,7 @@
                 $this->data['listSitsUsers'] = [];
             }
 
-            $this->data['sidebarActive'] =  'listSitsUsers';
+            $this->data['sidebarActive'] =  'list-sits-users';
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/sitsUser/listSitsUsers", $this->data);
