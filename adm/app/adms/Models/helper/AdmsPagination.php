@@ -105,27 +105,36 @@ class AdmsPagination
 
     private function layoutPagination(): void
     {
-        $this->result = "<ul>";
+        $this->result = "<div class='content-pagination'>";
 
-        $this->result .= "<li><a href='{$this->link}{$this->var}'>Início</a></li>";
+        $this->result .= "<div class='pagination'>";
+
+        $this->result .= "<p>";
+
+        $this->result .= "<a href='{$this->link}{$this->var}'>&laquo</a>";
 
         for($beforePage = $this->page - $this->maxLinks; $beforePage <= $this->page - 1; $beforePage ++){
             if($beforePage >= 1){
-                $this->result .= "<li><a href='{$this->link}/$beforePage{$this->var}'>$beforePage</ax></li>";
+                $this->result .= "<a href='{$this->link}/$beforePage{$this->var}'>$beforePage</a>";
             }
         }
 
-        $this->result .= "<li>{$this->page}</li>";
+        // $this->result .= "<span class='active'>{$this->page}</span> ";
 
         for($afterPage = $this->page + 1; $afterPage <= $this->page + $this->maxLinks; $afterPage ++){
             if($afterPage <= $this->totalPages){
-                $this->result .= "<li><a href='{$this->link}/$afterPage{$this->var}'>$afterPage</ax></li>";
+                $this->result .= "<a href='{$this->link}/$afterPage{$this->var}'>$afterPage</a> ";
             }
 
         }
 
-        $this->result .= "<li><a href='{$this->link}/{$this->totalPages}{$this->var}'>Última Página</a></li>";
+        $this->result .= "<a href='{$this->link}/{$this->totalPages}{$this->var}'>&raquo</a>";
 
-        $this->result .= "</ul>";
+
+        $this->result .= "</p>";
+
+        $this->result .= "</div>";
+
+        $this->result .= "</div>";
     }
 }
