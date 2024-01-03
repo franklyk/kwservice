@@ -9,11 +9,9 @@
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
     }
     
-    //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
+    ;
 ?>
 <!-- Inicio do conteudo do administrativo -->
 <div class="wrapper">
@@ -148,7 +146,7 @@
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendAddConfEmails" class="btn-success" value="Cadastrar">Cadastrar</button>
+                <button type="submit" name="SendAddConfEmails" class="btn btn-success" value="Cadastrar">Cadastrar</button>
 
             </form>
         </div>

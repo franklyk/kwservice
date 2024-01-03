@@ -27,6 +27,7 @@
 
 
             define('EMAILADM', 'contato@kwservice.com');
+            define('ADM', 'KWService');
 
         }
     }

@@ -62,13 +62,11 @@ class AdmsListConfEmails
     public function listConfEmails($page): void
     {
         $this->page = $page ? $page : 1;
-        // var_dump($this->page);
 
         $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-conf-emails/index');
         $pagination->condition($this->page, $this->limitResult);
         $pagination->pagination("SELECT COUNT(id) AS num_result FROM adms_confs_emails");
         $this->resultPg = $pagination->getResult();
-        // var_dump($this->resultPg);
 
         $listSitsUsers = new \App\adms\Models\helper\AdmsRead();
         $listSitsUsers->fullRead("SELECT id, name, title, email FROM adms_confs_emails ORDER BY id DESC LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");

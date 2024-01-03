@@ -101,12 +101,13 @@
                         </select>
 
                     </div>
-                    <div class="column btn-complete">
-                        <button type="submit" name="SendAddUser" class="btn-success "
-                            value="Cadastrar">Cadastrar</button>
-                    </div>
                 </div>
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
+                
+                <div class="column btn-complete">
+                    <button type="submit" name="SendAddUser" class="btn btn-success "
+                        value="Cadastrar">Cadastrar</button>
+                </div>
             </form>
         </div>
     </div>

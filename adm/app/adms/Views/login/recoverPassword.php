@@ -49,7 +49,7 @@
             </div>
 
             <div class="row button">
-                <button type="submit" name="SendRecoverPass" value="Recuperar">Recuperar</button>
+                <button type="submit" name="SendRecoverPass" value="Recuperar" class="btn btn-success button_center">Recuperar</button>
             </div>
 
             <div class="signup-link">

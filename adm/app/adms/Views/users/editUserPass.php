@@ -56,11 +56,14 @@
                         <input type="password" name="password" class="input-adm" id="password" placeholder="Digite a nova senha"
                             value="<?php echo $password ?>" required>
                     </div>
-                    <div class="column btn-complete">
-                        <button type="submit" name="SendEditUser" class="btn-warning " value="Salvar">Salvar</button>
-                    </div>
                 </div>
+
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
+
+                <div class="column btn-complete">
+                    <button type="submit" name="SendEditUser" class="btn btn-warning " value="Salvar">Salvar</button>
+                </div>
+                
         </form>
     </div>
 </div>

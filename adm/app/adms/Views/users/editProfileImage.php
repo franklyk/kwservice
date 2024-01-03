@@ -57,18 +57,20 @@
                         }
                         ?>
                         <span id="preview-img">
-                            <img src="<?php echo $old_image; ?>" alt="Imagem" style="width:200px;">
+                            <img src="<?php echo $old_image; ?>" alt="Imagem" style="width:100px;">
                         </span>
                     </div>
                 </div>
 
+                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
+
                 <div class="row-input" style="height: auto;">
                     <div class="column btn-complete">
-                        <button type="submit" name="SendEditProfImage" class="btn-warning " value="Salvar">Salvar</button>
+                        <button type="submit" name="SendEditProfImage" class="btn btn-warning " value="Salvar">Salvar</button>
                     </div>
 
                 </div>
-                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
+                
             </form>
         </div>
     </div>

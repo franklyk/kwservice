@@ -126,7 +126,8 @@ class AdmsListUsers
         } elseif ((empty($this->searchName)) and (!empty($this->searchEmail))) {
             $this->searchUserEmail();
         } else {
-            $this->searchUserNameEmail();
+            $_SESSION['msg'] = "<p style='color: #f00'>Consulta inválida!</p>";
+            $this->result = false;
         }
     }
 
@@ -143,8 +144,8 @@ class AdmsListUsers
                             WHERE name LIKE :search_name", "search_name={$this->searchNameValue}");
         $this->resultPg = $pagination->getResult();
 
-        $listUsers = new \App\adms\Models\helper\AdmsRead();
-        $listUsers->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
+        $listSearchUserName = new \App\adms\Models\helper\AdmsRead();
+        $listSearchUserName->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
                     sit.name AS name_sit,
                     col.color
                     FROM adms_users AS usr
@@ -154,7 +155,7 @@ class AdmsListUsers
                     ORDER BY usr.id DESC
                     LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
-        $this->resultBd = $listUsers->getResult();
+        $this->resultBd = $listSearchUserName->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
@@ -174,8 +175,8 @@ class AdmsListUsers
                             WHERE email LIKE :search_email", "search_email={$this->searchEmailValue}");
         $this->resultPg = $pagination->getResult();
 
-        $listUsers = new \App\adms\Models\helper\AdmsRead();
-        $listUsers->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
+        $listShearchEmail = new \App\adms\Models\helper\AdmsRead();
+        $listShearchEmail->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
                     sit.name AS name_sit,
                     col.color
                     FROM adms_users AS usr
@@ -185,7 +186,7 @@ class AdmsListUsers
                     ORDER BY usr.id DESC
                     LIMIT :limit OFFSET :offset", "search_email={$this->searchEmailValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
-        $this->resultBd = $listUsers->getResult();
+        $this->resultBd = $listShearchEmail->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
@@ -208,8 +209,8 @@ class AdmsListUsers
                             OR email LIKE :search_email", "search_name={$this->searchNameValue}&search_email={$this->searchEmailValue}");
         $this->resultPg = $pagination->getResult();
 
-        $listUsers = new \App\adms\Models\helper\AdmsRead();
-        $listUsers->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
+        $listSearchUserNameEmail = new \App\adms\Models\helper\AdmsRead();
+        $listSearchUserNameEmail->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
                     sit.name AS name_sit,
                     col.color
                     FROM adms_users AS usr
@@ -220,7 +221,7 @@ class AdmsListUsers
                     ORDER BY usr.id DESC
                     LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&search_email={$this->searchEmailValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
-        $this->resultBd = $listUsers->getResult();
+        $this->resultBd = $listSearchUserNameEmail->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {

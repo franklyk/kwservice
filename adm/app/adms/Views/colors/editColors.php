@@ -80,7 +80,7 @@ if (isset($this->data['form'][0])) {
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendEditColor" class="btn-warning" value="Salvar">Salvar</button>
+                <button type="submit" name="SendEditColor" class="btn btn-warning" value="Salvar">Salvar</button>
 
             </form>
         </div>

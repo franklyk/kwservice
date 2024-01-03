@@ -38,8 +38,6 @@
         public function index(string|int|null $page = null)
         {
 
-            
-
             $this->page = (int) $page ? $page : 1;
 
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -66,7 +64,6 @@
     
                     $this->data['listUsers'] = $listUsers->getResultBd();
                     $this->data['pagination'] = $listUsers->getResultPg();
-                    // var_dump($this->data['listUsers']);
     
                 }else{
                     $this->data['listUsers'] = [];
@@ -75,7 +72,6 @@
                 }
             }
 
-            
             $this->data['sidebarActive'] = "list-users"; 
 
             $loadView = new \Core\ConfigView("adms/Views/users/listUsers", $this->data);

@@ -49,7 +49,7 @@
             <span id="msgViewStrength"></span>
 
             <div class="row button">
-                <button type="submit" name="SendUpPass" value="Salvar">Salvar</button>
+                <button type="submit" name="SendUpPass" value="Salvar" class="btn btn-success button_center">Salvar</button>
             </div>
 
             <div class="signup-link">

@@ -9,16 +9,10 @@
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
     }
     if(isset($this->data['form'][0])){
         $valorForm = $this->data['form'][0];
-        // var_dump($this->data['form']);
     }
-    
-    //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
-    // var_dump($this->data['form']);
 
 ?>
 <!-- Inicio do conteudo do administrativo -->
@@ -151,7 +145,7 @@
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendEditConfEmails" class="btn-warning" value="Salvar">Salvar</button>
+                <button type="submit" name="SendEditConfEmails" class="btn btn-warning" value="Salvar">Salvar</button>
 
             </form>
         </div>

@@ -60,12 +60,6 @@ class AdmsSendEmail
         $this->optionConfEmail = $optionConfEmail;
         $this->data = $data;
 
-        // $this->data['toEmail'] = "frsbatist@gmail.com";
-        // $this->data['toName'] = "Franklin";
-        // $this->data['subject'] = "Confirmar e-mail";
-        // $this->data['contentHtml'] = "Olá <b>Franklin</b><br><p>Cadastro realizado com sucesso!</p>";
-        // $this->data['contentText'] = "Olá Franklin \n\nCadastro realizado com sucesso!";
-
         $this->infoPhpMailer();
     }
 

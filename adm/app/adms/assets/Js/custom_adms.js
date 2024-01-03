@@ -552,7 +552,7 @@ function previewImage(new_image){
         var reader = new FileReader();
         // onload (Dispara quando qualquer elemento tiver sido carregado)
         reader.onload = function(e){
-            document.getElementById('preview-img').innerHTML = "<img src='"+ e.target.result +"' alt='imagem'style='width: 200px;'>"
+            document.getElementById('preview-img').innerHTML = "<img src='"+ e.target.result +"' alt='imagem'style='width: 100px;'>"
         }
 
     }
@@ -822,11 +822,11 @@ let notification = document.querySelector(".notification");
 let avatar = document.querySelector(".avatar");
 
 dropMenu(avatar);
-dropMenu(notification);
+// dropMenu(notification);
 
 function dropMenu(selector) {
-    //console.log(selector);
-    selector.addEventListener("click", () => {
+    // console.log(selector);
+    selector.addEventListener("click",  () => {
         let dropdownMenu = selector.querySelector(".dropdown-menu");
         dropdownMenu.classList.contains("active") ? dropdownMenu.classList.remove("active") : dropdownMenu.classList.add("active");
     });

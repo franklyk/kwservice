@@ -19,7 +19,7 @@ if(!defined('KLKSK8')){
     <!-- Incluir os icones do font-awesome da CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="<?php echo URLADM; ?>app/adms/assets/css/custom_adm.css">
-    <title>KWService - ADMINISTRATIVO</title>
+    <title><?php echo ADM ?></title>
 </head>
 
 <body>

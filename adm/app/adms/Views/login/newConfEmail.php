@@ -47,7 +47,7 @@ if (isset($this->data['form'])) {
             </div>
 
             <div class="row button">
-                <button type="submit" name="SendNewConfEmail" value="Enviar">Enviar</button>
+                <button type="submit" name="SendNewConfEmail" value="Enviar" class="btn btn-success button_center">Enviar</button>
             </div>
 
             <div class="signup-link">

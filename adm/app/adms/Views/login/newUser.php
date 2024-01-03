@@ -8,6 +8,8 @@
     
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
+        var_dump($this->data['form']);
+
         $valorForm = $this->data['form'];
     }
 ?>
@@ -20,12 +22,11 @@
         <div class="msg-alert">
             <?php 
                 if(isset($_SESSION['msg'])){
-                    echo "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                    echo  $_SESSION['msg'] ;
                     unset($_SESSION['msg']);
-                }else{
-                    echo "<span id='msg'></span>";
                 }
             ?>
+            <span id='msg'></span>
         </div>
         <form method="POST" action="" id="form-new-user" class="form-login">
 
@@ -38,7 +39,7 @@
             <div class="row">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" name="name" id="name" placeholder="Digite o nome" value="<?php echo $name; ?>"
-                    required>
+                    >
             </div>
 
             <?php
@@ -50,7 +51,7 @@
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" id="email" placeholder="Digite o e-mail" value="<?php echo $email; ?>"
-                    required>
+                    >
             </div>
 
             <?php
@@ -62,13 +63,13 @@
             <div class="row">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Digite a senha"
-                    onkeyup="passwordStrength()" autocomplete="on" value="<?php echo $password; ?>" required>
+                    onkeyup="passwordStrength()" value="<?php echo $password; ?>" >
             </div>
 
             <span id="msgViewStrength"></span>
 
             <div class="row button">
-                <button type="submit" name="SendNewUser" value="Cadastrar">Cadastrar</button>
+                <button type="submit" name="SendNewUser" value="Cadastrar" class="btn btn-success button_center">Cadastrar</button>
             </div>
 
             <div class="signup-link">

@@ -112,8 +112,8 @@ class AdmsNewUser
         $createUser->exeCreate("adms_users", $this->data);
 
         if ($createUser->getResult()) {
-            //$_SESSION['msg'] = "<p style='color: green;'>Usuário cadastrado com sucesso!</p>";
-            //$this->result = true;
+            $_SESSION['msg'] = "<p style='color: green;'>Usuário cadastrado com sucesso!</p>";
+            $this->result = true;
             $this->sendEmail();
         } else {
             $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Usuário não cadastrado com sucesso!</p>";

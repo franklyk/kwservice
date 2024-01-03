@@ -125,3 +125,24 @@ body {
 .form-login .signup-link a:hover {
     color: var(--site-color);
 }
+.button_center{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.btn-success {
+    background-color: var(--success-color);
+    color: var(--fourth-color);
+    padding: 5px 8px;
+    border: 1px solid var(--success-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all .3s ease;
+}
+
+.btn-success:hover {
+    background-color: var(--fourth-color);
+    color: var(--success-color);
+}

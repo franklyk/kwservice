@@ -33,14 +33,15 @@
 
 
             //verifica se o butão submit foi clicado
-            if(!empty($this->dataForm["SandNewUser"])){
+            if(!empty($this->dataForm["SendNewUser"])){
                 
                 //Destroi a posiçao do botao submit
-                unset($this->dataForm["SandNewUser"]);
+                unset($this->dataForm["SendNewUser"]);
 
                 //Envia os dados do formulário para a AdmsnewUser
                 $createNewUser = new \App\adms\Models\AdmsNewUser();
                 $createNewUser->create($this->dataForm);
+                var_dump($createNewUser);
 
                 //Recebe os dados que vêm da AdmsLogin
                 if($createNewUser->getResult()){
@@ -55,10 +56,6 @@
                 //Carrega a view
                 $this->viewNewUser();
             }
-
-
-            // $this->data = null;
-
         }
         private function viewNewUser() :void
         {

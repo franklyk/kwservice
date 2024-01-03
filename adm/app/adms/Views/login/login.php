@@ -49,8 +49,8 @@ namespace App\adms\Views\login;
                 <input type="password" name="password" id="password" placeholder="Digite a Senha" autocomplete="on"
                     value="<?php echo $password ?>" required>
             </div>
-            <div class="row button">
-                <button type="submit" name="SendLogin" value="Acessar">Acessar</button>
+            <div class="row button ">
+                <button type="submit" name="SendLogin" value="Acessar" class="btn btn-success button_center">Acessar</button>
             </div>
             <div class="signup-link">
                 <a href="<?php echo URLADM; ?>new-user/index">Cadastrar</a> - <a
