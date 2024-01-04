@@ -92,10 +92,10 @@ class AdmsAddColors
         $createColor->exeCreate("adms_color", $this->data);
 
         if ($createColor->getResult()) {
-            $_SESSION['msg'] = "<p style='color: #051;'>Cor cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Cor cadastrada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Cor não cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não cadastrada com sucesso!</p>";
             $this->result = false;
         }
     }

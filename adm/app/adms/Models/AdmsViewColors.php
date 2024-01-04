@@ -59,7 +59,7 @@ class AdmsViewColors
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Cor não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Cor não encontrada!</p>";
             $this->result = false;
         }
     }

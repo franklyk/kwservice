@@ -61,7 +61,7 @@ class AdmsViewSitsUsers
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Situação não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Situação não encontrada!</p>";
             $this->result = false;
         }
     }

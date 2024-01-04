@@ -92,10 +92,10 @@ class AdmsAddConfEmail
         $createColor->exeCreate("adms_confs_emails", $this->data);
 
         if ($createColor->getResult()) {
-            $_SESSION['msg'] = "<p style='color: #051;'>E-mail cadastrado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>E-mail cadastrado com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: E-mail não cadastrado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: E-mail não cadastrado com sucesso!</p>";
             $this->result = false;
         }
     }

@@ -92,10 +92,10 @@ class AdmsAddSitsUsers
         $createUser->exeCreate("adms_sits_users", $this->data);
 
         if ($createUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: #051;'>Situação cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Situação cadastrada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Situação não cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Situação não cadastrada com sucesso!</p>";
             $this->result = false;
         }
     }

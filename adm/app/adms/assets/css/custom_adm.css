@@ -103,6 +103,7 @@ body {
 }
 
 .dropdown-menu .item {
+    color: var(--active-color);
     display: flex;
     align-items: center;
     padding: 10px;
@@ -124,9 +125,6 @@ body {
 
 .dropdown-menu .setting {
     width: 150px;
-}
-.dropdown-menu .setting a {
-    color: white;
 }
 
 .dropdown-menu.active {
@@ -151,11 +149,11 @@ body {
 
 .content .sidebar {
     color: var(--main-color);
-    height: calc(100vh - 60px);
+    height: calc(100vh - 53px);
     width: 60px;
     /*width: 250px;*/
     position: sticky;
-    top: 60px;
+    top: 53px;
     background-color: var(--main-bg-color);
     box-shadow: 0 1px 4ps 1px rgba(0, 0, 0, 0.12);
     overflow-y: auto;

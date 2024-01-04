@@ -112,11 +112,11 @@ class AdmsNewUser
         $createUser->exeCreate("adms_users", $this->data);
 
         if ($createUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: green;'>Usuário cadastrado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Usuário cadastrado com sucesso!</p>";
             $this->result = true;
             $this->sendEmail();
         } else {
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Usuário não cadastrado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não cadastrado com sucesso!</p>";
             $this->result = false;
         }
     }
@@ -129,11 +129,11 @@ class AdmsNewUser
         $sendEmail = new \App\adms\Models\helper\AdmsSendEmail();
         $sendEmail->sendEmail($this->emailData, 2);
         if ($sendEmail->getResult()) {
-            $_SESSION['msg'] = "<p style='color: #051;'>Usuário cadastrado com sucesso. Acesse a sua caixa de entrada para confimar o e-mail!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Usuário cadastrado com sucesso. Acesse a sua caixa de entrada para confimar o e-mail!</p>";
             $this->result = true;
         } else {
             $this->fromEmail = $sendEmail->getFromEmail();
-            $_SESSION['msg'] = "<p style='color: #640000;'>Usuário cadastrado com sucesso. Houve erro ao enviar o e-mail de confirmação, entre em contado com {$this->fromEmail} para mais informações!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Usuário cadastrado com sucesso. Houve erro ao enviar o e-mail de confirmação, entre em contado com {$this->fromEmail} para mais informações!</p>";
             $this->result = true;
         }
     }

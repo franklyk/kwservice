@@ -76,7 +76,7 @@ class AdmsListConfEmails
         if($this->resultBd){
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: Nenhum email encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Erro: Nenhum email encontrado!</p>";
             $this->result = false;
        }
 

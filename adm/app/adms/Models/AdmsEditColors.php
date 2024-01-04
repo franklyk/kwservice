@@ -65,7 +65,7 @@ class AdmsEditColors
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00'>Erro: Situação não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Situação não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -92,10 +92,10 @@ class AdmsEditColors
         $upColor->exeUpdate("adms_color", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if ($upColor->getResult()) {
-            $_SESSION['msg'] = "<p style='color: #051;'>Cor editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Cor editada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Cor não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não editada com sucesso!</p>";
             $this->result = false;
         }
     }

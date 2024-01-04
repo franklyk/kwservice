@@ -9,7 +9,7 @@ function passwordEmpty(){
         if (password === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Senha!</p>";
 
             return;
         }
@@ -42,13 +42,13 @@ function passwordStrength(){
 }
 function viewStrength(strength){
     if(strength < 30){
-        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#f00;'>Senha Fraca!</p>";
+        document.getElementById("msgViewStrength").innerHTML = "<p class='alert-danger'>Senha Fraca!</p>";
     }else if((strength >= 30) && (strength < 50)){
-        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#ff8c00;'>Senha Média!</p>";
+        document.getElementById("msgViewStrength").innerHTML = "<p class='alert-info'>Senha Média!</p>";
     }else if((strength >= 50) && (strength < 70)){
-        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#ffaf01;'>Senha Boa!</p>";
+        document.getElementById("msgViewStrength").innerHTML = "<p class='alert-warning'>Senha Boa!</p>";
     }else if(strength >= 70){
-        document.getElementById("msgViewStrength").innerHTML = "<p style='color:#008000;'>Senha Forte!</p>";
+        document.getElementById("msgViewStrength").innerHTML = "<p class='alert-success'>Senha Forte!</p>";
     }else{
         document.getElementById("msg").innerHTML = "<p></p>";
         return
@@ -64,7 +64,7 @@ if (formNewUser) {
         if (name === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Nome</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Nome</p>";
 
             return;
         }
@@ -73,7 +73,7 @@ if (formNewUser) {
         if (email === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo E-mail!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo E-mail!</p>";
 
             return;
         }
@@ -82,7 +82,7 @@ if (formNewUser) {
         if (password === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Senha!</p>";
 
             return;
         }
@@ -90,7 +90,7 @@ if (formNewUser) {
         if (password.length < 6) {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Erro: A Senha deve conter (NO MÍNIMO) 6 caracteres!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Erro: A Senha deve conter (NO MÍNIMO) 6 caracteres!</p>";
 
             return;
         }
@@ -99,7 +99,7 @@ if (formNewUser) {
         if (password.match(/([1-9]+)\1{1,}/)) {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Erro: A Senha não deve ter números repetidos!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Erro: A Senha não deve ter números repetidos!</p>";
 
             return;
         }
@@ -108,7 +108,7 @@ if (formNewUser) {
         if (!password.match(/[A-Za-z]/)) {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Erro: A Senha deve conter pelo menos uma letra!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Erro: A Senha deve conter pelo menos uma letra!</p>";
 
             return;
         }else{
@@ -129,7 +129,7 @@ if (formLogin) {
         if (user === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Usuário!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Usuário!</p>";
 
             return;
         }
@@ -138,7 +138,7 @@ if (formLogin) {
         if (password === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Senha!</p>";
 
             return;
         }
@@ -159,7 +159,7 @@ if (formNewConfEmail) {
         if (email === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo E-mail!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo E-mail!</p>";
 
             return;
         }else{
@@ -178,7 +178,7 @@ if (formRecoverPass) {
         if (email === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo E-mail!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo E-mail!</p>";
 
             return;
         }else{
@@ -197,7 +197,7 @@ if (formUpdatePass) {
         if (email === "") {
             e.preventDefault();
 
-            document.getElementById("msg").innerHTML = "<p style='color: #640000;'>Necessário preencher campo Senha!</p>";
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Senha!</p>";
 
             return;
         }else{

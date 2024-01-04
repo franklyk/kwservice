@@ -60,7 +60,7 @@ class AdmsEditConfEmailsPassword
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Configuração não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Configuração não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -87,10 +87,10 @@ class AdmsEditConfEmailsPassword
         $upUser->exeUpdate("adms_confs_emails", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: #051;'>A senha de configuração foi editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>A senha de configuração foi editada com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro:A senha de configuração não foi editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro:A senha de configuração não foi editada com sucesso!</p>";
             $this->result = false;
         }
     }

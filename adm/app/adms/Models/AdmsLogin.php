@@ -38,7 +38,7 @@
             if($this->resultBd){
                 $this->valEmailPerm();
             }else{
-                $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: Usuario e/ou Senha incoretos!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuario e/ou Senha incoretos!</p>";
                 $this->result = false;
             }
         }
@@ -48,16 +48,16 @@
             if($this->resultBd[0]['adms_sits_user_id'] == 1){
                 $this->valPassword();
             }elseif($this->resultBd[0]['adms_sits_user_id'] == 3){
-                $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: Necessário confirmar o e-mail! <a href='".URLADM." new-conf-email/index'>Clique aqui </a>para receber um novo link!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário confirmar o e-mail! <a href='".URLADM." new-conf-email/index'>Clique aqui </a>para receber um novo link!</p>";
                 $this->result = false;
             }elseif($this->resultBd[0]['adms_sits_user_id'] == 5){
-                $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: E-mail descadastrado entre em contato com a empresa!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: E-mail descadastrado entre em contato com a empresa!</p>";
                 $this->result = false;
             }elseif($this->resultBd[0]['adms_sits_user_id'] == 2){
-                $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: E-mail inativo entre em contato com a empresa!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: E-mail inativo entre em contato com a empresa!</p>";
                 $this->result = false;
             }else{
-                $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: E-mail inativo entre em contato com a empresa A!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: E-mail inativo entre em contato com a empresa A!</p>";
                 $this->result = false;
             }
         }
@@ -72,7 +72,7 @@
                 $_SESSION['user_image'] = $this->resultBd[0]['image'];
                 $this->result = true;
             }else{
-                $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: Usuario e/ou Senha incoretos!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuario e/ou Senha incoretos!</p>";
                 $this->result = false;
             }
         }

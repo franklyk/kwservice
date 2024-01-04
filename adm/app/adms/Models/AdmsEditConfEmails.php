@@ -61,7 +61,7 @@ class AdmsEditConfEmails
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #f00;'>Erro 006: Configurações de e-mail não encontradas!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Configurações de e-mail não encontradas!</p>";
             $this->result = false;
         }
     }
@@ -89,10 +89,10 @@ class AdmsEditConfEmails
         $upUser->exeUpdate("adms_confs_emails", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if($upUser->getResult()){
-            $_SESSION['msg'] = "<p style='color: #051;'>Configurações de e-mail editadas com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Configurações de e-mail editadas com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p style='color: #640000;'>Erro: Configurações de e-mail não editadas com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configurações de e-mail não editadas com sucesso!</p>";
             $this->result = false;
         }
     }

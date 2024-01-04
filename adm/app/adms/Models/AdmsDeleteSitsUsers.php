@@ -43,10 +43,10 @@ class AdmsDeleteSitsUsers
             $deleteSitUser->exeDelete("adms_sits_users", "WHERE id =:id", "id={$this->id}");
     
             if($deleteSitUser->getResult()){
-                $_SESSION['msg'] = "<p style='color:#051;'>Situação apagada com sucesso!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-success'>Situação apagada com sucesso!</p><br>";
                 $this->result = true;
             }else{
-                $_SESSION['msg'] = "<p style='color:#640000;'>Erro: Situação não apagada com sucesso!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Situação não apagada com sucesso!</p><br>";
                 $this->result = false;
             }
         }else{
@@ -68,7 +68,7 @@ class AdmsDeleteSitsUsers
         if ($this->resultBd) {
             return true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Usuário não encontrado!</p>";
             return false;
         }
     }
@@ -79,7 +79,7 @@ class AdmsDeleteSitsUsers
         $viewUserAdd->fullRead("SELECT id FROM adms_users WHERE adms_sits_user_id =:adms_sits_user_id LIMIT :limit", "adms_sits_user_id={$this->id}&limit=1");
 
         if($viewUserAdd->getResult()){
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro: Esta situação não pode ser apagada, existem usuários utilizando este ítem!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Esta situação não pode ser apagada, existem usuários utilizando este ítem!</p>";
             return false;
         }else{
             return true;

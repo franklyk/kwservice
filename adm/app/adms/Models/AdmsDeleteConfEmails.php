@@ -46,7 +46,7 @@ class AdmsDeleteConfEmails
                 $_SESSION['msg'] = "<p style='color:#051;'>Configuração apagada com sucesso!</p><br>";
                 $this->result = true;
             }else{
-                $_SESSION['msg'] = "<p style='color:#640000;'>Erro: Configuração não apagada com sucesso!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configuração não apagada com sucesso!</p><br>";
                 $this->result = false;
             }
         }else{
@@ -68,7 +68,7 @@ class AdmsDeleteConfEmails
         if ($this->resultBd) {
             return true;
         } else {
-            $_SESSION['msg'] = "<p style= 'color: #640000;'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Usuário não encontrado!</p>";
             return false;
         }
     }

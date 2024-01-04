@@ -19,13 +19,13 @@ namespace App\adms\Views\login;
         <div class="msg-alert">
             <?php 
                 if(isset($_SESSION['msg'])){
-                    echo  "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                    echo  $_SESSION['msg'] ;
                     unset($_SESSION['msg']);
-                }else{
-                    echo "<span id='msg'></span>";
                 }
+
             ?>
         </div>
+        <span id='msg'></span>
         <form action="" method="post" id="form-login" class="form-login">
             <?php 
                 //$user - mantém os dados na INPUT user
@@ -36,7 +36,7 @@ namespace App\adms\Views\login;
             <div class="row">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" name="user" id="user" placeholder="Digite o usuário" value="<?php echo $user ?>"
-                    required>
+                    >
             </div>
             <?php 
                 //$user - mantém os dados na INPUT password
@@ -47,7 +47,7 @@ namespace App\adms\Views\login;
             <div class="row">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Digite a Senha" autocomplete="on"
-                    value="<?php echo $password ?>" required>
+                    value="<?php echo $password ?>" >
             </div>
             <div class="row button ">
                 <button type="submit" name="SendLogin" value="Acessar" class="btn btn-success button_center">Acessar</button>

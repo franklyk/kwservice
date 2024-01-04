@@ -9,7 +9,7 @@ if(!defined('KLKSK8')){
 
 ?>
 
-<script src="<?php echo URLADM; ?>app/adms/assets/js/custom_login.js"></script>
+<script src="<?php echo URLADM; ?>app/adms/assets/Js/custom_login.js"></script>
 </body>
 
 </html>
