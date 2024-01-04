@@ -22,11 +22,12 @@
         <div class="msg-alert">
             <?php 
                 if(isset($_SESSION['msg'])){
-                    echo  $_SESSION['msg'] ;
+                    echo "<span id='msg'>". $_SESSION['msg'] ."</span>" ;
                     unset($_SESSION['msg']);
+                }else{
+                    echo "<span id='msg'></span>" ;
                 }
             ?>
-            <span id='msg'></span>
         </div>
         <form method="POST" action="" id="form-new-user" class="form-login">
 

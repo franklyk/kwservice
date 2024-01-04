@@ -68,6 +68,10 @@ body {
     align-items: center;
     justify-content: center;
 }
+.msg-alert{
+    padding: 0 25px;
+}
+
 
 .wrapper-login .form-login {
     padding: 25px;
