@@ -56,10 +56,10 @@ class AdmsEditUsers
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id
-                                                    FROM adms_users
-                                                    WHERE id=:id 
-                                                    LIMIT :limit", "id={$this->id}&limit=1");
+        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id, adms_level_id
+        FROM adms_users
+        WHERE id=:id 
+        LIMIT :limit", "id={$this->id}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {
@@ -127,13 +127,20 @@ class AdmsEditUsers
         $list = new \App\adms\Models\helper\AdmsRead();
         $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
         $registry['sit'] = $list->getResult();
+
+        $list = new \App\adms\Models\helper\AdmsRead();
+        $list->fullRead("SELECT id as id_level, name AS name_level FROM adms_access_levels ORDER BY name ASC");
+        $registry['acl'] = $list->getResult();
+        
+
+        
         
         // $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
         // $registry['color'] = $list->getResult();
 
         // $this->listRegistryAdd = ['sit' => $registry['sit'], 'color' => $registry['color']];
-        $this->listRegistryAdd = ['sit' => $registry['sit']];
-
+        $this->listRegistryAdd = ['sit' => $registry['sit'], 'acl' => $registry['acl']];
+        
         return $this->listRegistryAdd;
     }
 }

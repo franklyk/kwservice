@@ -51,6 +51,7 @@
                     <th class="list-head-content">Nome</th>
                     <th class="list-head-content table-sm-none">E-mail</th>
                     <th class="list-head-content table-md-none">Situação</th>
+                    <th class="list-head-content table-md-none">Nível de acesso</th>
                     <th class="list-head-content">Ações</th>
                 </tr>
             </thead>
@@ -66,6 +67,7 @@
                     <td class="list-body-content table-md-none">
                         <?php echo "<span style='color: $color'>$name_sit</span>"; ?>
                     </td>
+                    <td class="list-body-content table-sm-none"><?php echo $name_level; ?></td>
                     <td class="list-body-content">
                         <div class="dropdown-action">
                             <button onclick="actionDropdown(<?php echo $id; ?>)"

@@ -54,7 +54,7 @@
                         ?>
                         <label for="name" class="title-input">Imagem:<span class="text-danger">*</span>300x300</label>
                         <input type="file" name="new_image" id="new_image" class="input-adm"
-                            onchange="inputFileValImg()">
+                            onchange="inputFileValImg()" required>
                     </div>
                     <div class="column">
                         <?php

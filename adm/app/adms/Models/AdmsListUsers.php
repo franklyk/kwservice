@@ -84,10 +84,11 @@ class AdmsListUsers
         $listUsers = new \App\adms\Models\helper\AdmsRead();
         $listUsers->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
                     sit.name AS name_sit,
-                    col.color
+                    col.color, acl.id AS id_level, acl.name AS name_level
                     FROM adms_users AS usr
                     INNER JOIN adms_sits_users AS sit ON sit.id=usr.adms_sits_user_id
                     INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
+                    INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_level_id
                     ORDER BY usr.id DESC
                     LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 

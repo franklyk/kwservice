@@ -36,7 +36,7 @@ if (isset($this->data['sidebarActive'])) {
         } ?>
         <a href="<?php echo URLADM; ?>dashboard/index" class="sidebar-nav <?php echo $dashboard; ?>"><i
                 class="icon fa-solid fa-house"></i><span>Dashboard</span></a>
-
+        
         <?php 
         $sidebar_user = "";
         $list_users = "";
@@ -50,6 +50,12 @@ if (isset($this->data['sidebarActive'])) {
             $list_sits_users = "active";
             $sidebar_user = "active";
         } ?>
+        
+        <?php $list_access_levels = "";
+        if ($sidebar_active == "list-access-levels") {
+            $list_access_levels = "active";
+            $sidebar_user = "active";
+        } ?>
 
 
         <button class="dropdown-btn <?php echo $sidebar_user; ?>">
@@ -60,6 +66,8 @@ if (isset($this->data['sidebarActive'])) {
                     class="icon fa-solid fa-users"></i><span>Usuários</span></a>
             <a href="<?php echo URLADM; ?>list-sits-users/index" class="sidebar-nav <?php echo $list_sits_users; ?>"><i
                     class="icon fa-solid fa-user-check"></i><span>Situações do Usuário</span></a>
+            <a href="<?php echo URLADM; ?>list-access-levels/index" class="sidebar-nav <?php echo $list_access_levels; ?>"><i
+                    class="icon fa-solid fa-key"></i><span>Nivel de Acesso</span></a>
         </div>
 
         <?php 

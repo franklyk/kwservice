@@ -83,6 +83,13 @@
                     <?php echo "<span style='color: $color;'>$name_sit</span>"; ?>
                 </span>
             </div>
+            
+            <div class="view-det-adm">
+                <span class="view-adm-title">Nivel de Acesso: </span>
+                <span class="view-adm-info">
+                    <?php echo $name_level; ?>
+                </span>
+            </div>
 
             <div class="view-det-adm">
                 <span class="view-adm-title">Cadastrado: </span>

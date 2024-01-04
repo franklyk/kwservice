@@ -291,6 +291,7 @@ body {
     color: var(--active-color);
 }
 
+
 .sidebar .dropdown-container{
     display: none;
     background-color: var(--fourth-bg-color);
