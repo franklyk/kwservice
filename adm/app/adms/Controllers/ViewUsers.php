@@ -38,10 +38,9 @@ class ViewUsers
                 $this->data['viewUser'] = $viewUser->getResultBd();
                 $this->viewUser();
             } else {
-                $this->data['viewUser'] = $viewUser->getResultBd();
-                $this->viewUser();
-                // $urlRedirect = URLADM . "list-users/index";
-                // header("Location: $urlRedirect");
+                
+                $urlRedirect = URLADM . "list-users/index";
+                header("Location: $urlRedirect");
             }
         } else {
             $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Usuário não encontrado!</p><br>";

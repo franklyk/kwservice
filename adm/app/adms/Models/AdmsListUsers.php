@@ -78,7 +78,7 @@ class AdmsListUsers
 
         $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-users/index');
         $pagination->condition($this->page, $this->limitResult);
-        $pagination->pagination("SELECT COUNT(usr.id) AS num_result FROM adms_users usr");
+        $pagination->pagination("SELECT COUNT(usr.id) AS num_result FROM adms_users usr INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id WHERE acl.order_level >:order_level ", "order_level={$_SESSION['order_level'] }");
         $this->resultPg = $pagination->getResult();
 
         $listUsers = new \App\adms\Models\helper\AdmsRead();
@@ -89,8 +89,9 @@ class AdmsListUsers
                     INNER JOIN adms_sits_users AS sit ON sit.id=usr.adms_sits_user_id
                     INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
                     INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
+                    WHERE acl.order_level >:order_level 
                     ORDER BY usr.id DESC
-                    LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+                    LIMIT :limit OFFSET :offset", "order_level={$_SESSION['order_level']}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listUsers->getResult();
         if ($this->resultBd) {

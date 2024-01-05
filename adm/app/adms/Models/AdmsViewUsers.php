@@ -55,8 +55,8 @@ class AdmsViewUsers
                                                     INNER JOIN adms_sits_users AS sit ON sit.id=usr.adms_sits_user_id 
                                                     INNER JOIN adms_color AS col ON col.id=sit.adms_color_id 
                                                     INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
-                                                    WHERE usr.id=:id 
-                                                    LIMIT :limit", "id={$this->id}&limit=1");
+                                                    WHERE usr.id=:id AND acl.order_level >:order_level
+                                                    LIMIT :limit", "id={$this->id}&order_level={$_SESSION['order_level']}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {

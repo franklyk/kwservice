@@ -34,7 +34,7 @@ class ViewColors
             $viewColors = new \App\adms\Models\AdmsViewColors();
             $viewColors->viewColor($this->id);
             if ($viewColors->getResult()) {
-                $this->data['viewColors'] = $viewColors->getResultBd();
+                $this->data['viewColor'] = $viewColors->getResultBd();
                 $this->viewColors();
             } else {
                 $urlRedirect = URLADM . "list-colors/index";
@@ -44,6 +44,8 @@ class ViewColors
             $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não encontrada!</p>";
             $urlRedirect = URLADM . "list-colors/index";
             header("Location: $urlRedirect");
+            
+
         }
     }
 
@@ -54,6 +56,7 @@ class ViewColors
     private function viewColors(): void
     {
         $this->data['sidebarActive'] = "list-colors"; 
+
         $loadView = new \Core\ConfigView("adms/Views/colors/viewColors", $this->data);
         $loadView->loadView();
     }
