@@ -70,6 +70,7 @@ class AdmsEditUsersPassword
     {
         $this->data = $data;
 
+
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {

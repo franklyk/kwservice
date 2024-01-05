@@ -84,7 +84,7 @@ class AdmsListAccessLevels
         $listAccess = new \App\adms\Models\helper\AdmsRead();
         $listAccess->fullRead("SELECT id, name, order_level
                     FROM adms_access_levels
-                    ORDER BY id ASC
+                    ORDER BY name ASC
                     LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listAccess->getResult();

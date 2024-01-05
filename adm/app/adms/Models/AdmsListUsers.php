@@ -88,7 +88,7 @@ class AdmsListUsers
                     FROM adms_users AS usr
                     INNER JOIN adms_sits_users AS sit ON sit.id=usr.adms_sits_user_id
                     INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
-                    INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_level_id
+                    INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
                     ORDER BY usr.id DESC
                     LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
@@ -148,10 +148,11 @@ class AdmsListUsers
         $listSearchUserName = new \App\adms\Models\helper\AdmsRead();
         $listSearchUserName->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id,
                     sit.name AS name_sit,
-                    col.color
+                    col.color, acl.name AS name_level
                     FROM adms_users AS usr
                     INNER JOIN adms_sits_users AS sit ON sit.id=usr.adms_sits_user_id
                     INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
+                    INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
                     WHERE usr.name LIKE :search_name 
                     ORDER BY usr.id DESC
                     LIMIT :limit OFFSET :offset", "search_name={$this->searchNameValue}&limit={$this->limitResult}&offset={$pagination->getOffset()}");

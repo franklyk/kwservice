@@ -250,6 +250,15 @@ if (formAddUser) {
             return;
         }
         //Recebe o valor do campo SENHA
+        var adms_access_level_id = document.querySelector('#adms_access_level_id').value;
+        if (adms_access_level_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Nível de Acesso!</p>";
+
+            return;
+        }
+        //Recebe o valor do campo SENHA
         var password = document.querySelector('#password').value;
         if (password === "") {
             e.preventDefault();
@@ -842,15 +851,7 @@ if (formAccessLevels) {
             return;
         }
         
-        // //Recebe o valor do campo SENHA
-        // var order_level = document.querySelector('#order_level').value;
-        // if (order_level === "") {
-        //     e.preventDefault();
-
-        //     document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Nível!</p>";
-
-        //     return;
-        // }
+        
     })
 
 }

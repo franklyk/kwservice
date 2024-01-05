@@ -85,6 +85,25 @@
                 <div class="row-input">
                     <div class="column">
 
+                        <label class="title-input">Nível de Acesso:<span class="text-danger">*</span></label>
+                        <select name="adms_access_level_id" id="adms_access_level_id" class="input-adm" required>
+                            <option value="">Selecione</option>
+                            <?php 
+                            foreach ($this->data['select']['acl'] as $sit){
+                                extract($sit);
+                                if((isset($valorForm['adms_access_level_id'])) and ($valorForm['adms_access_level_id'] == $id_sit)){
+                                    echo "<option value='$id_level' selected>$name_level</option>";
+                                }else{
+                                    echo "<option value='$id_level'>$name_level</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+
+                    </div>
+
+                    <div class="column">
+
                         <label class="title-input">Situação:<span class="text-danger">*</span></label>
                         <select name="adms_sits_user_id" id="adms_sits_user_id" class="input-adm" required>
                             <option value="">Selecione</option>
@@ -110,5 +129,9 @@
                 </div>
             </form>
         </div>
+        <?php 
+        echo $_SESSION['adms_access_level_id'] . "<br>";
+        echo $_SESSION['order_level'] . "<br>";
+        ?>
     </div>
 </div>

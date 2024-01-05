@@ -101,12 +101,12 @@
 
                     <div class="column">
                         <label class="title-input">Nivel de Acesso:<span class="text-danger">*</span></label>
-                        <select name="adms_access_levels" id="adms_access_levels" class="input-adm" required>
+                        <select name="adms_access_level_id" id="adms_access_level_id" class="input-adm" required>
                             <option value="">Selecione</option>
                             <?php 
                             foreach ($this->data['select']['acl'] as $acl){
                                 extract($acl);
-                                if((isset($valorForm['adms_level_id'])) and ($valorForm['adms_level_id'] == $id_level)){
+                                if((isset($valorForm['adms_access_level_id'])) and ($valorForm['adms_access_level_id'] == $id_level)){
                                     echo "<option value='$id_level' selected>$name_level</option>";
                                 }else{
                                     echo "<option value='$id_level'>$name_level</option>";

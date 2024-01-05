@@ -56,7 +56,7 @@ class AdmsEditUsers
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id, adms_level_id
+        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id, adms_access_level_id
         FROM adms_users
         WHERE id=:id 
         LIMIT :limit", "id={$this->id}&limit=1");
@@ -128,8 +128,7 @@ class AdmsEditUsers
         $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
         $registry['sit'] = $list->getResult();
 
-        $list = new \App\adms\Models\helper\AdmsRead();
-        $list->fullRead("SELECT id as id_level, name AS name_level FROM adms_access_levels ORDER BY name ASC");
+        $list->fullRead("SELECT id AS id_level, name AS name_level FROM adms_access_levels WHERE order_level >:order_level ORDER BY name  ASC", "order_level={$_SESSION['order_level']}");
         $registry['acl'] = $list->getResult();
         
 

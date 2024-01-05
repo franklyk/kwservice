@@ -96,7 +96,7 @@ class AdmsAddUsers
     private function add(): void
     {
         $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
-        $this->data['conf_email'] = password_hash($this->data['password']. date("Y-m-d H-i-s"), PASSWORD_DEFAULT);
+        // $this->data['conf_email'] = password_hash($this->data['password']. date("Y-m-d H-i-s"), PASSWORD_DEFAULT);
         $this->data['created'] = date("Y-m-d H:i:s");
 
         $createUser = new \App\adms\Models\helper\AdmsCreate();
@@ -116,12 +116,15 @@ class AdmsAddUsers
         $list = new \App\adms\Models\helper\AdmsRead();
         $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
         $registry['sit'] = $list->getResult();
+
+        $list->fullRead("SELECT id AS id_level, name AS name_level FROM adms_access_levels WHERE order_level >:order_level ORDER BY name  ASC", "order_level={$_SESSION['order_level']}");
+        $registry['acl'] = $list->getResult();
         
         // $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
         // $registry['color'] = $list->getResult();
 
         // $this->listRegistryAdd = ['sit' => $registry['sit'], 'color' => $registry['color']];
-        $this->listRegistryAdd = ['sit' => $registry['sit']];
+        $this->listRegistryAdd = ['sit' => $registry['sit'], 'acl' => $registry['acl']];
 
         return $this->listRegistryAdd;
     }
