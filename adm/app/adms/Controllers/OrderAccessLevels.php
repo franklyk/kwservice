@@ -13,8 +13,8 @@ if(!defined('KLKSK8')){
  */
 class OrderAccessLevels
 {
-    /** @var array|string|null $data Recebe os dados que devem ser enviados para VIEW */
-    private array|string|null $data;
+    /** @var array|string|null $pag Recebe o número da página */
+    private array|string|null $pag;
 
     /** @var int|string|null $id Recebe o id do registro */
     private int|string|null $id;
@@ -28,23 +28,27 @@ class OrderAccessLevels
      */
     public function index(int|string|null $id = null): void
     {
-        if (!empty($id)) {
+
+        $this->pag = filter_input(INPUT_GET, "pag", FILTER_DEFAULT);
+        var_dump($this->pag);
+
+        if ((!empty($id))) {
             $this->id = (int) $id;
 
             $viewAccessLevel = new \App\adms\Models\AdmsOrderAccessLevels();
             $viewAccessLevel->orderAccessLevels($this->id);
+
             if ($viewAccessLevel->getResult()) {
-                // $this->data['viewColor'] = $viewAccessLevel->getResultBd();
+                $urlRedirect = URLADM . "list-access-levels/index/{$this->pag}";
+                header("Location: $urlRedirect");
             } else {
-                $urlRedirect = URLADM . "list-access-levels/index";
+                $urlRedirect = URLADM . "list-access-levels/index/{$this->pag}";
                 header("Location: $urlRedirect");
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nível de acesso não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nível de acesso não encontrado 1 !</p>";
             $urlRedirect = URLADM . "list-access-levels/index";
             header("Location: $urlRedirect");
-            
-
         }
     }
 

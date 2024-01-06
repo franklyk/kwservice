@@ -30,18 +30,6 @@ class AdmsListAccessLevels
     /** @var string|null $page Recebe a páginação */
     private string|null $resultPg;
 
-    /** @var string|null $searchName Recebe o nome do usuario */
-    private string|null $searchName;
-
-    /** @var string|null $searchEmail Recebe o email do usuario */
-    private string|null $searchEmail;
-
-    /** @var string|null $searchNameValue Recebe o nome do usuario */
-    private string|null $searchNameValue;
-
-    /** @var string|null $searchEmailValue Recebe o e-mail do usuario */
-    private string|null $searchEmailValue;
-
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
      */
@@ -75,16 +63,18 @@ class AdmsListAccessLevels
     public function listAccess(int $page = null): void
     {
         $this->page = (int) $page ? $page : 1;
-
+        
         $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-access-levels/index');
         $pagination->condition($this->page, $this->limitResult);
-        $pagination->pagination("SELECT COUNT(acs.id) AS num_result FROM adms_access_levels acs");
+        $pagination->pagination("SELECT COUNT(id) AS num_result 
+                                    FROM adms_access_levels 
+                                    WHERE order_level >:order_level", "order_level=" . $_SESSION['order_level']);
         $this->resultPg = $pagination->getResult();
 
         $listAccess = new \App\adms\Models\helper\AdmsRead();
         $listAccess->fullRead("SELECT id, name, order_level 
                     FROM adms_access_levels
-                    WHERE order_level>:order_level
+                    WHERE order_level >:order_level
                     ORDER BY order_level ASC
                     LIMIT :limit OFFSET :offset", "order_level={$_SESSION['order_level']}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 

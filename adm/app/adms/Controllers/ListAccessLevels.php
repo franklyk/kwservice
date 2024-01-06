@@ -37,40 +37,18 @@
         public function index(string|int|null $page = null)
         {
             $this->page = (int) $page ? $page : 1;
+           
+            $listAccess = new \App\adms\Models\AdmsListAccessLevels();
+            $listAccess->listAccess($this->page);
 
-            $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-            
-            
-
-            if(!empty($this->dataForm['SendSearchAccess'])){
-                $listSearchUsers = new \App\adms\Models\AdmsListAccessLevels();
-                $listSearchUsers->listAccess();
-                
-                
-                if($listSearchUsers->getResult()){
-
-                    $this->data['listAccessLevels'] = $listSearchUsers->getResultBd();
-                    $this->data['pagination'] = $listSearchUsers->getResultPg();
-                }else{
-                    $this->data['listAccessLevels'] = [];
-                    $this->data['pagination'] = "";
-                }
+            if($listAccess->getResult()){
+                $this->data['listAccessLevels'] = $listAccess->getResultBd();
+                $this->data['pagination'] = $listAccess->getResultPg();
             }else{
-                $listAccess = new \App\adms\Models\AdmsListAccessLevels();
-                $listAccess->listAccess($this->page);
-    
-                if($listAccess->getResult()){
-    
-                    $this->data['listAccessLevels'] = $listAccess->getResultBd();
-                    $this->data['pagination'] = $listAccess->getResultPg();
-    
-                }else{
-                    $this->data['listAccessLevels'] = [];
-                    $this->data['pagination'] = "";
-
-                }
+                $this->data['listAccessLevels'] = [];
             }
-
+            
+            $this->data['pag'] = $this->page;
             $this->data['sidebarActive'] = "list-access-levels"; 
 
             $loadView = new \Core\ConfigView("adms/Views/accessLevels/listAcessLevels", $this->data);
