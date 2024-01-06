@@ -117,7 +117,10 @@ class AdmsAddUsers
         $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");
         $registry['sit'] = $list->getResult();
 
-        $list->fullRead("SELECT id AS id_level, name AS name_level FROM adms_access_levels WHERE order_level >:order_level ORDER BY name  ASC", "order_level={$_SESSION['order_level']}");
+        $list->fullRead("SELECT id AS id_level, name AS name_level 
+        FROM adms_access_levels 
+        WHERE order_level >:order_level 
+        ORDER BY name  ASC", "order_level={$_SESSION['order_level']}");
         $registry['acl'] = $list->getResult();
         
         // $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name  ASC");

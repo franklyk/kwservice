@@ -43,7 +43,7 @@ class ViewUsers
                 header("Location: $urlRedirect");
             }
         } else {
-            $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Usuário não encontrado!</p><br>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não encontrado!</p><br>";
 
             $urlRedirect = URLADM . "list-users/index";
             header("Location: $urlRedirect");

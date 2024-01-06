@@ -20,7 +20,7 @@ if (isset($this->data['form'][0])) {
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Editar Cor</span>
+            <span class="title-content">Editar Nível de Acesso</span>
             <div class="top-list-right">
                 <?php
                 echo "<a href='" . URLADM . "list-access_levels/index' class='btn-info'>Listar</a> ";

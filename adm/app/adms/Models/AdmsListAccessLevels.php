@@ -82,10 +82,11 @@ class AdmsListAccessLevels
         $this->resultPg = $pagination->getResult();
 
         $listAccess = new \App\adms\Models\helper\AdmsRead();
-        $listAccess->fullRead("SELECT id, name, order_level
+        $listAccess->fullRead("SELECT id, name, order_level 
                     FROM adms_access_levels
-                    ORDER BY name ASC
-                    LIMIT :limit OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");
+                    WHERE order_level>:order_level
+                    ORDER BY order_level ASC
+                    LIMIT :limit OFFSET :offset", "order_level={$_SESSION['order_level']}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
         $this->resultBd = $listAccess->getResult();
         if ($this->resultBd) {

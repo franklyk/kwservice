@@ -56,9 +56,9 @@ class AdmsEditAccessLevels
         $viewAccess->fullRead(
             "SELECT id, name, order_level
                             FROM adms_access_levels
-                            WHERE id=:id
+                            WHERE id=:id AND order_level>:order_level
                             LIMIT :limit",
-            "id={$this->id}&limit=1"
+            "order_level={$_SESSION['order_level']}&id={$this->id}&limit=1"
         );
 
         $this->resultBd = $viewAccess->getResult();

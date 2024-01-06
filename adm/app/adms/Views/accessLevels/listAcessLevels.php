@@ -49,6 +49,7 @@
                                 class="dropdown-btn-action">Ações</button>
                             <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                 <?php
+                                    echo "<a href='" . URLADM . "order-access-levels/index/$id'>Ordem</a>";
                                     echo "<a href='" . URLADM . "view-access-levels/index/$id'>Visualizar</a>";
                                     echo "<a href='" . URLADM . "edit-access-levels/index/$id'>Editar</a>";
                                     echo "<a href='" . URLADM . "delete-access-levels/index/$id' onclick='return confirm(\"Tem certeza que deseja excuir este Registro?\")'>Apagar</a>";

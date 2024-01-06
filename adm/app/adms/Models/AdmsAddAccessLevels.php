@@ -25,6 +25,9 @@ class AdmsAddAccessLevels
     /** @var array|null $resultBD Recebe o valor retornado do banco de dados*/
     private array|null $resultQuery;
 
+    /** @var array|string|null $id Recebe o id do registro */
+    private int|string|null $id;
+
     private array $listRegistryAdd;
 
     /**
@@ -89,9 +92,8 @@ class AdmsAddAccessLevels
     private function viewLastAccessLevels()
     {
         $viewlastAccessLevels =new \App\adms\Models\helper\AdmsRead();
-        $viewlastAccessLevels->fullRead("SELECT order_level FROM adms_access_levels ORDER BY order_level DESC LIMIT 1");
+        $viewlastAccessLevels->fullRead("SELECT id, order_level FROM adms_access_levels ORDER BY order_level DESC LIMIT 1");
         $this->resultQuery = $viewlastAccessLevels->getResult();
-        var_dump($this->resultQuery);
         if($this->resultQuery){
             $this->data['order_level'] = $this->resultQuery[0]['order_level'] + 1;
             return true;

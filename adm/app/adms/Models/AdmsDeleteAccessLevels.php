@@ -62,7 +62,11 @@ class AdmsDeleteAccessLevels
     {
 
         $viewAccess = new \App\adms\Models\helper\AdmsRead();
-        $viewAccess->fullRead("SELECT id FROM adms_access_levels WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewAccess->fullRead("SELECT id 
+        FROM adms_access_levels 
+        WHERE id=:id AND order_level>:order_level
+        LIMIT :limit", 
+        "id={$this->id}&order_level={$_SESSION['order_level']}&limit=1");
 
         $this->resultBd = $viewAccess->getResult();
         if ($this->resultBd) {
