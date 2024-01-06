@@ -35,7 +35,7 @@
                 echo "<span id='msg'></span>";
             }
             ?>
-            
+
         </div>
         <div class="content-adm">
             <form method="POST" action="" class="form-adm" id="form-edit-user">

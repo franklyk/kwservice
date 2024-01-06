@@ -32,14 +32,12 @@
         public function index(int|string|null $id = null): void
         {
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-            
+
             if ((!empty($id)) and (empty($this->dataForm['SendEditUser']))) {
                 $this->id = (int) $id;
                 $viewUser = new \App\adms\Models\AdmsEditUsers();
                 $viewUser->viewUser($this->id);
-
                 if($viewUser->getResult()){
-                    
                     $this->data['form'] = $viewUser->getResultBd();
                     $this->viewEditUser();
                 }else{
@@ -47,9 +45,7 @@
                     header("Location: $urlRedirect");
                 }
             } else {
-                /*$_SESSION['msg'] = "<p style='color:#f00;'>Erro: Usuário não encontrado!</p><br>";
-                $urlRedirect = URLADM . "list-users/index";
-                header("Location: $urlRedirect");*/
+
                 $this->editUser();
             }
         }
@@ -57,10 +53,10 @@
         {
             $listSelect = new \App\adms\Models\AdmsEditUsers();
             $this->data['select'] = $listSelect->listSelect();
-            
+
+            $this->data['sidebarActive'] = "list-users"; 
             $loadView = new \Core\ConfigView("adms/Views/users/editUser", $this->data);
             $loadView->loadView();
-            
         }
 
 

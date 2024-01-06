@@ -56,18 +56,20 @@ class AdmsEditUsers
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT usr.id, usr.name, usr.nickname, usr.email, usr.user, usr.adms_sits_user_id, usr.adms_access_level_id
-        FROM adms_users AS usr
-        WHERE usr.id=:id 
-        INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
-        WHERE acl.order_level >:order_level
-        LIMIT :limit", "id={$this->id}&order_level={$_SESSION['order_level']}&limit=1");
+        $viewUser->fullRead(
+            "SELECT usr.id, usr.name, usr.nickname, usr.email, usr.user, usr.adms_sits_user_id, usr.adms_access_level_id
+            FROM adms_users AS usr
+            INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
+            WHERE usr.id=:id AND acl.order_level >:order_level
+            LIMIT :limit",
+            "id={$this->id}&order_level={$_SESSION['order_level']}&limit=1"
+        );
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não encontrado!</p>";
             $this->result = false;
         }
     }
@@ -75,6 +77,7 @@ class AdmsEditUsers
     public function update(array $data = null):void
     {
         $this->data = $data;
+
         $this->dataExitVal['nickname'] = $this->data['nickname'];
         unset($this->data['nickname']);
 
@@ -91,14 +94,13 @@ class AdmsEditUsers
         $valEmail = new \App\adms\Models\helper\AdmsValEmail();
         $valEmail->validateEmail($this->data['email']);
 
-        $valEmailSingle= new \App\adms\Models\helper\AdmsValEmailSingle();
-        $valEmailSingle->validateEmailSingle($this->data['email'], true, $this->data['id'],);
+        $valEmailSingle = new \App\adms\Models\helper\AdmsValEmailSingle();
+        $valEmailSingle->validateEmailSingle($this->data['email'], true, $this->data['id']);
 
         $valUserSingle = new \App\adms\Models\helper\AdmsValUserSingle();
         $valUserSingle->validateUserSingle($this->data['user'], true, $this->data['id']);
 
-
-        if ($valEmail->getResult() and ($valEmailSingle->getResult()) and ($valUserSingle->getResult())) {
+        if (($valEmail->getResult()) and ($valEmailSingle->getResult()) and ($valUserSingle->getResult())) {
             $this->edit();
         } else {
             $this->result = false;
@@ -108,17 +110,15 @@ class AdmsEditUsers
     private function edit(): void
     {
         $this->data['modified'] = date("Y-m-d H:i:s");
-
         $this->data['nickname'] = $this->dataExitVal['nickname'];
-        
-        $this->result = false;
+
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
-        if($upUser->getResult()){
+        if ($upUser->getResult()) {
             $_SESSION['msg'] = "<p class='alert-success'>Usuário editado com sucesso!</p>";
             $this->result = true;
-        }else{
+        } else {
             $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não editado com sucesso!</p>";
             $this->result = false;
         }
