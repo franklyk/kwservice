@@ -17,7 +17,7 @@ function passwordEmpty(){
 //Calcular a forca da senha
 function passwordStrength(){
     var password = document.getElementById("password").value;
-    console.log(password);
+    // console.log(password);
     var strength = 0;
 
     if((password.length >= 6) && (password.length <= 7)){
@@ -58,7 +58,6 @@ function viewStrength(strength){
 const formNewUser = document.getElementById("form-new-user");
 if (formNewUser) {
     formNewUser.addEventListener("submit", async (e) => {
-        formNewUser.passwordEmpty();
         
         //Recebe o valor do campo NAME
         var name = document.querySelector('#name').value;
@@ -78,15 +77,7 @@ if (formNewUser) {
 
             return;
         }
-        // //Recebe o valor do campo SENHA
-        // var password = document.querySelector('#password').value;
-        // if (password === "") {
-        //     e.preventDefault();
-
-        //     document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Senha!</p>";
-
-        //     return;
-        // }
+        
         //Verifica se o campo SENHA possui 6 caracteres
         if (password.length < 6) {
             e.preventDefault();

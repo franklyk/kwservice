@@ -36,39 +36,47 @@ if (isset($this->data['sidebarActive'])) {
         } ?>
         <a href="<?php echo URLADM; ?>dashboard/index" class="sidebar-nav <?php echo $dashboard; ?>"><i
                 class="icon fa-solid fa-house"></i><span>Dashboard</span></a>
-        
+
         <?php 
-        $sidebar_user = "";
         $list_users = "";
         if ($sidebar_active == "list-users") {
             $list_users = "active";
-            $sidebar_user = "active";
         } ?>
+        <a href="<?php echo URLADM; ?>list-users/index" class="sidebar-nav <?php echo $list_users; ?>"><i
+                class="icon fa-solid fa-users"></i><span>Usuários</span></a>
 
         <?php $list_sits_users = "";
         if ($sidebar_active == "list-sits-users") {
             $list_sits_users = "active";
-            $sidebar_user = "active";
         } ?>
-        
+        <a href="<?php echo URLADM; ?>list-sits-users/index" class="sidebar-nav <?php echo $list_sits_users; ?>"><i
+                class="icon fa-solid fa-user-check"></i><span>Situações do Usuário</span></a>
+
         <?php $list_access_levels = "";
         if ($sidebar_active == "list-access-levels") {
             $list_access_levels = "active";
-            $sidebar_user = "active";
         } ?>
 
+        <a href="<?php echo URLADM; ?>list-access-levels/index"
+            class="sidebar-nav <?php echo $list_access_levels; ?>"><i class="icon fa-solid fa-key"></i><span>Nivel de
+                Acesso</span></a>
+        
+        <?php $list_pages = "";
+        if ($sidebar_active == "list-pages") {
+            $list_pages = "active";
+        } ?>
 
-        <button class="dropdown-btn <?php echo $sidebar_user; ?>">
-            <i class="icon fa-solid fa-user"></i><span>Usuário</span><i class="fa-solid fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container <?php echo $sidebar_user; ?>">
-            <a href="<?php echo URLADM; ?>list-users/index" class="sidebar-nav <?php echo $list_users; ?>"><i
-                    class="icon fa-solid fa-users"></i><span>Usuários</span></a>
-            <a href="<?php echo URLADM; ?>list-sits-users/index" class="sidebar-nav <?php echo $list_sits_users; ?>"><i
-                    class="icon fa-solid fa-user-check"></i><span>Situações do Usuário</span></a>
-            <a href="<?php echo URLADM; ?>list-access-levels/index" class="sidebar-nav <?php echo $list_access_levels; ?>"><i
-                    class="icon fa-solid fa-key"></i><span>Nivel de Acesso</span></a>
-        </div>
+        <a href="<?php echo URLADM; ?>list-pages/index"
+            class="sidebar-nav <?php echo $list_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Páginas</span></a>
+        
+        <?php $list_sits_pages = "";
+        if ($sidebar_active == "list-sits-pages") {
+            $list_sits_pages = "active";
+        } ?>
+
+        <a href="<?php echo URLADM; ?>list-access-levels/index"
+            class="sidebar-nav <?php echo $list_access_levels; ?>"><i class="icon fa-solid fa-key"></i><span>Nivel de
+                Acesso</span></a>
 
         <?php 
         $list_colors = '';
