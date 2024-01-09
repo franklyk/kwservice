@@ -67,7 +67,7 @@
 
             if (!empty($this->dataForm['SendEditPages'])) {
                 unset($this->dataForm['SendEditPages']);
-                $viewPages = new \App\adms\Models\AdmsEditColors();
+                $viewPages = new \App\adms\Models\AdmsEditPages();
                 $viewPages->update($this->dataForm);
 
                 if($viewPages->getResult()){

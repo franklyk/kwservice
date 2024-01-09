@@ -113,7 +113,7 @@ class AdmsEditUsers
         $this->data['nickname'] = $this->dataExitVal['nickname'];
 
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
-        $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upUser->exeUpdate("adms_pages", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if ($upUser->getResult()) {
             $_SESSION['msg'] = "<p class='alert-success'>Usuário editado com sucesso!</p>";

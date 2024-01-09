@@ -28,6 +28,9 @@ class AdmsEditPages
 
     /** @var array|null $data Recebe as informações do formulário */
     private array|null $data;
+    
+    /** @var array|null $dataExitVal Recebe os campos que devem ser tirados da validação */
+    private array|null $dataExitVal;
 
     /** @var array|null $listRegistryEdit Recebe os campos com dados que serão ezibidos no campo select*/
     private array|null $listRegistryEdit;
@@ -50,7 +53,7 @@ class AdmsEditPages
 
     public function viewPages(int $id): void
     {
-        $this->id = $id;
+            $this->id = $id;
 
             $viewPages = new \App\adms\Models\helper\AdmsRead();
             $viewPages->fullRead("SELECT pg.id, pg.controller, pg.metodo, pg.menu_controller, pg.menu_metodo, pg.name_page, pg.publish, pg.icon, pg.obs, pg.adms_sits_pgs_id, pg.adms_types_pgs_id, pg.adms_groups_pgs_id,
@@ -76,6 +79,11 @@ class AdmsEditPages
     {
         $this->data = $data;
 
+        $this->dataExitVal['icon'] = $this->data['icon'];
+        $this->dataExitVal['obs'] = $this->data['obs'];
+        
+        unset($this->data['icon'], $this->data['obs']);
+
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {
@@ -87,11 +95,15 @@ class AdmsEditPages
 
     private function edit(): void
     {
-        $this->data['modified'] = date("Y-m-d H:i:s");
         
+        
+        $this->data['icon'] = $this->dataExitVal['icon'];
+        $this->data['obs'] = $this->dataExitVal['obs'];
+
+        $this->data['modified'] = date("Y-m-d H:i:s");
 
         $upColor = new \App\adms\Models\helper\AdmsUpdate();
-        $upColor->exeUpdate("adms_color", $this->data, "WHERE id=:id", "id={$this->data['id']}");
+        $upColor->exeUpdate("adms_pages", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if ($upColor->getResult()) {
             $_SESSION['msg'] = "<p class='alert-success'>Página editada com sucesso!</p>";

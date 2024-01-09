@@ -10,23 +10,15 @@ if(!defined('KLKSK8')){
 if (isset($this->data['form'])) {
     $valorForm = $this->data['form'];
 }
-
-if (isset($this->data['form'][0])) {
-    $valorForm = $this->data['form'][0];
-}
-
 ?>
 <!-- Inicio do conteudo do administrativo -->
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Editar Página</span>
+            <span class="title-content">Cadastrar Páginas</span>
             <div class="top-list-right">
                 <?php
                 echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>Listar</a> ";
-                if (isset($valorForm['id'])) {
-                    echo "<a href='" . URLADM . "view-pages/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
-                }
                 ?>
             </div>
         </div>
@@ -43,14 +35,7 @@ if (isset($this->data['form'][0])) {
 
         <div class="content-adm">
             <form method="POST" action="" id="form-add-pages" class="form-adm">
-                <?php
-                $id = "";
-                if (isset($valorForm['id'])) {
-                    $id = $valorForm['id'];
-                }
-                ?>
-                <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
-
+                
                 <div class="row-input">
                     <div class="column">
                         <?php
@@ -60,7 +45,9 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Nome da Página:<span class="text-danger">*</span></label>
-                        <input type="text" name="name_page" id="name_page" class="input-adm" placeholder="Nome da Página a ser apresentado no menu" value="<?php echo $name_page; ?>" required>
+                        <input type="text" name="name_page" id="name_page" class="input-adm"
+                            placeholder="Nome da Página a ser apresentado no menu" value="<?php echo $name_page; ?>"
+                            required>
                     </div>
                 </div>
 
@@ -73,10 +60,11 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Classe:<span class="text-danger">*</span></label>
-                        <input type="text" name="controller" id="controller" class="input-adm" placeholder="Nome da Classe"  value="<?php echo $controller; ?>" required>
+                        <input type="text" name="controller" id="controller" class="input-adm"
+                            placeholder="Nome da Classe" value="<?php echo $controller; ?>" required>
 
                     </div>
-                    
+
                     <div class="column">
                         <?php
                         $metodo = "";
@@ -85,7 +73,8 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Método:<span class="text-danger">*</span></label>
-                        <input type="text" name="metodo" id="metodo" class="input-adm" placeholder="Nome do Método" value="<?php echo $metodo; ?>" required>
+                        <input type="text" name="metodo" id="metodo" class="input-adm" placeholder="Nome do Método"
+                            value="<?php echo $metodo; ?>" required>
 
                     </div>
                 </div>
@@ -99,10 +88,11 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Classe no menu:<span class="text-danger">*</span></label>
-                        <input type="text" name="menu_controller" id="menu_controller" class="input-adm" placeholder="Nome da classe no menu" value="<?php echo $menu_controller; ?>" required>
+                        <input type="text" name="menu_controller" id="menu_controller" class="input-adm"
+                            placeholder="Nome da classe no menu" value="<?php echo $menu_controller; ?>" required>
 
                     </div>
-                    
+
                     <div class="column">
                         <?php
                         $menu_metodo = "";
@@ -111,7 +101,8 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Método no menu:<span class="text-danger">*</span></label>
-                        <input type="text" name="menu_metodo" id="menu_metodo" class="input-adm" placeholder="Nome do método no menu" value="<?php echo $menu_metodo; ?>" required>
+                        <input type="text" name="menu_metodo" id="menu_metodo" class="input-adm"
+                            placeholder="Nome do método no menu" value="<?php echo $menu_metodo; ?>" required>
 
                     </div>
                 </div>
@@ -124,10 +115,11 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Observação:<span class="text-danger">*</span></label>
-                        <input type="text" name="obs" id="obs" class="input-adm" placeholder="Observação"value="<?php echo $obs; ?>">
+                        <input type="text" name="obs" id="obs" class="input-adm" placeholder="Observação"
+                            value="<?php echo $obs; ?>">
 
                     </div>
-                    
+
                     <div class="column">
                         <?php
                         $icon = "";
@@ -136,7 +128,8 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Ícone:<span class="text-danger">*</span></label>
-                        <input type="text" name="icon" id="icon" class="input-adm" placeholder="Ícone a ser apresentado no menu"value="<?php echo $icon; ?>" required>
+                        <input type="text" name="icon" id="icon" class="input-adm"
+                            placeholder="Ícone a ser apresentado no menu" value="<?php echo $icon; ?>">
 
                     </div>
                 </div>
@@ -222,7 +215,7 @@ if (isset($this->data['form'][0])) {
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendEditPages" class="btn btn-warning" value="Salvar">Salvar</button>
+                <button type="submit" name="SendAddPages" class="btn btn-warning" value="cadastrar">Cadastrar</button>
 
             </form>
         </div>
