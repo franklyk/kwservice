@@ -11,7 +11,7 @@ if(!defined('KLKSK8')){
  * Controller da página alterar ordem do nívels de acesso
  * @author Franklin
  */
-class OrderAccessLevels
+class OrderTypesPages
 {
     /** @var array|string|null $pag Recebe o número da página */
     private array|string|null $pag;
@@ -31,22 +31,22 @@ class OrderAccessLevels
 
         $this->pag = filter_input(INPUT_GET, "pag", FILTER_SANITIZE_NUMBER_INT);
 
-        if ((!empty($id))) {
+        if ((!empty($id)) and (!empty($this->pag))) {
             $this->id = (int) $id;
 
-            $viewAccessLevel = new \App\adms\Models\AdmsOrderAccessLevels();
-            $viewAccessLevel->orderAccessLevels($this->id);
+            $viewOrdersTypes = new \App\adms\Models\AdmsOrderTypesPages();
+            $viewOrdersTypes->viewOrdersTypes($this->id);
 
-            if ($viewAccessLevel->getResult()) {
-                $urlRedirect = URLADM . "list-access-levels/index/{$this->pag}";
+            if ($viewOrdersTypes->getResult()) {
+                $urlRedirect = URLADM . "list-types-pages/index/{$this->pag}";
                 header("Location: $urlRedirect");
             } else {
-                $urlRedirect = URLADM . "list-access-levels/index/{$this->pag}";
+                $urlRedirect = URLADM . "list-types-pages/index/{$this->pag}";
                 header("Location: $urlRedirect");
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nível de acesso não encontrado!</p>";
-            $urlRedirect = URLADM . "list-access-levels/index";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Tipo de páginas não encontrado!</p>";
+            $urlRedirect = URLADM . "list-groups-pages/index";
             header("Location: $urlRedirect");
         }
     }

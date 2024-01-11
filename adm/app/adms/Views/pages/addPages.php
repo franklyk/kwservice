@@ -34,7 +34,7 @@ if (isset($this->data['form'])) {
         </div>
 
         <div class="content-adm">
-            <form method="POST" action="" id="form-add-pages" class="form-adm">
+            <form method="POST" action="" id="form-pages" class="form-adm">
                 
                 <div class="row-input">
                     <div class="column">

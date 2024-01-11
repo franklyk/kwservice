@@ -34,7 +34,7 @@ if (isset($this->data['form'])) {
         </div>
 
         <div class="content-adm">
-            <form method="POST" action="" id="form-add-color" class="form-adm">
+            <form method="POST" action="" id="form-color" class="form-adm">
                 <div class="row-input">
                     <div class="column">
                         <?php
@@ -44,7 +44,8 @@ if (isset($this->data['form'])) {
                         }
                         ?>
                         <label class="title-input">Nome:<span class="text-danger">*</span></label>
-                        <input type="text" name="name" id="name" class="input-adm" placeholder="Digite o nome da cor" value="<?php echo $name; ?>"  required>
+                        <input type="text" name="name" id="name" class="input-adm" placeholder="Digite o nome da cor"
+                            value="<?php echo $name; ?>" required>
                     </div>
                 </div>
 
@@ -57,14 +58,15 @@ if (isset($this->data['form'])) {
                         }
                         ?>
                         <label class="title-input">Cor:<span class="text-danger">*</span></label>
-                        <input type="text" name="color" id="color" class="input-adm" placeholder="Digite a cor em hexadecimal" value="<?php echo $color; ?>"  required>
+                        <input type="text" name="color" id="color" class="input-adm"
+                            placeholder="Digite a cor em hexadecimal" value="<?php echo $color; ?>" required>
 
                     </div>
                 </div>
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendAddColor"  class="btn btn-success" value="Cadastrar">Cadastrar</button>
+                <button type="submit" name="SendAddColor" class="btn btn-success" value="Cadastrar">Cadastrar</button>
 
             </form>
         </div>

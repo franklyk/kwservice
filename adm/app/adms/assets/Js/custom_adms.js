@@ -630,6 +630,184 @@ if (formColor) {
 
 }
 
+const formGroupsPages = document.getElementById("form-groups-pages");
+if (formGroupsPages) {
+    formGroupsPages.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Nome</p>";
+
+            return;
+        }else{
+            document.getElementById("msg").innerHTML = "<p></p>";
+            return
+        }
+    })
+
+}
+
+const formEditTypesPages = document.getElementById("form-add-types-pages");
+if (formEditTypesPages) {
+    formEditTypesPages.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Nome</p>";
+
+            return;
+        }else{
+            document.getElementById("msg").innerHTML = "<p></p>";
+            return
+        }
+    })
+
+}
+const formAddTypesPages = document.getElementById("form-edit-types-pages");
+if (formAddTypesPages) {
+    formAddTypesPages.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo NAME
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Nome</p>";
+
+            return;
+        }else{
+            document.getElementById("msg").innerHTML = "<p></p>";
+            return
+        }
+    })
+
+}
+const formPages = document.getElementById("form-pages");
+if (formPages) {
+    formPages.addEventListener("submit", async (e) => {
+
+        
+        //Recebe o valor do campo name_page
+        var name_page = document.querySelector('#name_page').value;
+        if (name_page === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Nome</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Classe
+        var controller = document.querySelector('#controller').value;
+        if (controller === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Classe</p>";
+
+            return;
+        }
+        //Recebe o valor do campo metodo
+        var metodo = document.querySelector('#metodo').value;
+        if (metodo === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Método</p>";
+
+            return;
+        }
+        //Recebe o valor do campo Classe do menu
+        var menu_controller = document.querySelector('#menu_controller').value;
+        if (menu_controller === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Classe do menu</p>";
+
+            return;
+        }
+        //Recebe o valor do campo menu_metodo
+        var menu_metodo = document.querySelector('#menu_metodo').value;
+        if (menu_metodo === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Método no menu</p>";
+
+            return;
+        }
+        
+        //Recebe o valor do campo Página Pública
+        var publish = document.querySelector('#publish').value;
+        if (publish === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Página Pública</p>";
+
+            return;
+        }
+        //Recebe o valor do campo NAME
+        var adms_sits_pgs_id = document.querySelector('#adms_sits_pgs_id').value;
+        if (adms_sits_pgs_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Situação da Página</p>";
+
+            return;
+        }
+        //Recebe o valor do campo NAME
+        var adms_groups_pgs_id = document.querySelector('#adms_groups_pgs_id').value;
+        if (adms_groups_pgs_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Grupo da Página</p>";
+
+            return;
+        }
+        //Recebe o valor do campo NAME
+        var adms_types_pgs_id = document.querySelector('#adms_types_pgs_id').value;
+        if (adms_types_pgs_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Necessário preencher campo Tipo da Página</p>";
+
+            return;
+        }else{
+            document.getElementById("msg").innerHTML = "<p></p>";
+            return
+        }
+    })
+
+}
+
+const formSitPages = document.getElementById("form-sit-pages");
+if (formSitPages) {
+    formSitPages.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo Nome
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Nome!</p>";
+
+            return;
+        }
+        
+        //Recebe o valor do campo Nome
+        var adms_color_id = document.querySelector('#adms_color_id').value;
+        if (adms_color_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Cor!</p>";
+
+            return;
+        }
+    })
+
+}
 const formAddConfEmail = document.getElementById("form-add-conf-emails");
 if (formAddConfEmail) {
     formAddConfEmail.addEventListener("submit", async (e) => {

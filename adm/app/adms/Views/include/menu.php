@@ -74,9 +74,24 @@ if (isset($this->data['sidebarActive'])) {
             $list_sits_pages = "active";
         } ?>
 
-        <a href="<?php echo URLADM; ?>list-access-levels/index"
-            class="sidebar-nav <?php echo $list_access_levels; ?>"><i class="icon fa-solid fa-key"></i><span>Nivel de
-                Acesso</span></a>
+        <a href="<?php echo URLADM; ?>list-sits-pages/index"
+            class="sidebar-nav <?php echo $list_sits_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Situações das Páginas</span></a>
+        
+        <?php $groups_pages = "";
+        if ($sidebar_active == "list-groups-pages") {
+            $groups_pages = "active";
+        } ?>
+
+        <a href="<?php echo URLADM; ?>list-groups-pages/index"
+            class="sidebar-nav <?php echo $groups_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Grupos de Páginas</span></a>
+
+        <?php $types_pages = "";
+        if ($sidebar_active == "list-types-pages") {
+            $types_pages = "active";
+        } ?>
+
+        <a href="<?php echo URLADM; ?>list-types-pages/index"
+            class="sidebar-nav <?php echo $types_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Tipos de Páginas</span></a>
 
         <?php 
         $list_colors = '';

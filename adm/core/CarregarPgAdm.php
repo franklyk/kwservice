@@ -100,12 +100,12 @@
 
         private function pgPrivate():void
         {
-            $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword", "EditProfileImage", "ListSitsUsers", "ViewSitsUsers", "AddSitsUsers", "EditSitsUsers", "DeleteSitsUsers", "ListColors", "ViewColors","AddColors", "EditColors","DeleteColors","ListConfEmails","ViewConfEmails","AddConfEmails","EditConfEmails", "EditConfEmailsPassword", "DeleteConfEmails", "ListAccessLevels", "ViewAccessLevels", "AddAccessLevels", "EditAccessLevels", "DeleteAccessLevels", "OrderAccessLevels", "ListPages", "ViewPages","EditPages", "AddPages", "DeletePages"];
+            $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword", "EditProfileImage", "ListSitsUsers", "ViewSitsUsers", "AddSitsUsers", "EditSitsUsers", "DeleteSitsUsers", "ListColors", "ViewColors","AddColors", "EditColors","DeleteColors","ListConfEmails","ViewConfEmails","AddConfEmails","EditConfEmails", "EditConfEmailsPassword", "DeleteConfEmails", "ListAccessLevels", "ViewAccessLevels", "AddAccessLevels", "EditAccessLevels", "DeleteAccessLevels", "OrderAccessLevels", "ListPages", "ViewPages","EditPages", "AddPages", "DeletePages",'ListSitsPages',"ViewSitsPages", "EditSitsPages", "AddSitsPages", "DeleteSitsPages", "ListGroupsPages","ViewGroupsPages", "EditGroupsPages", "AddGroupsPages", "DeleteGroupsPages", "ListTypesPages", "ViewTypesPages", "EditTypesPages", "AddTypesPages", "DeleteTypesPages", "OrderGroupsPages", "OrderTypesPages"];
 
             if(in_array($this->urlController, $this->listPgPrivate)){
                 $this->verifyLogin();
             }else{
-                $_SESSION['msg'] = "<p style='color:#f00;'>Página não encontrada!</p><br>";
+                $_SESSION['msg'] = "<p style='color:#f00;'>Grupo de páginas não encontrada!</p><br>";
 
                 $urlRedirect = URLADM . "login/index";
                 header("Location: $urlRedirect");

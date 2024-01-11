@@ -15,10 +15,10 @@ if (isset($this->data['form'])) {
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Cadastrar Novo Nível</span>
+            <span class="title-content">Cadastrar Grupos Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>Listar</a> ";
+                echo "<a href='" . URLADM . "list-groups-pages/index' class='btn-info'>Listar</a> ";
                 ?>
             </div>
         </div>
@@ -34,7 +34,8 @@ if (isset($this->data['form'])) {
         </div>
 
         <div class="content-adm">
-            <form method="POST" action="" id="form-access-levels" class="form-adm">
+            <form method="POST" action="" id="form-groups-pages" class="form-adm">
+                
                 <div class="row-input">
                     <div class="column">
                         <?php
@@ -43,16 +44,16 @@ if (isset($this->data['form'])) {
                             $name = $valorForm['name'];
                         }
                         ?>
-                        <label class="title-input">Nome:<span class="text-danger">*</span></label>
-                        <input type="text" name="name" id="name" class="input-adm" placeholder="Digite o nome do nível"
-                            value="<?php echo $name; ?>">
+                        <label class="title-input">Nome do Grupo:<span class="text-danger">*</span></label>
+                        <input type="text" name="name" id="name" class="input-adm"
+                            placeholder="Nome da Página a ser apresentado no menu" value="<?php echo $name; ?>"
+                            required>
                     </div>
                 </div>
-
+                
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendAddAccessLevels" class="btn btn-success"
-                    value="Cadastrar">Cadastrar</button>
+                <button type="submit" name="SendAddGroupPages" class="btn btn-warning" value="cadastrar">Cadastrar</button>
 
             </form>
         </div>

@@ -14,7 +14,7 @@ if(!defined('KLKSK8')){
  *
  * @author Franklin
  */
-class AdmsOrderAccessLevels
+class AdmsOrderTypesPages
 
 {
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
@@ -55,22 +55,21 @@ class AdmsOrderAccessLevels
      * @param integer $id
      * @return void
      */
-    public function orderAccessLevels(int $id): void
+    public function viewOrdersTypes(int $id): void
     {
         $this->id = $id;
 
-        $viewAccessLevel = new \App\adms\Models\helper\AdmsRead();
-        $viewAccessLevel->fullRead("SELECT id, order_level
-                        FROM adms_access_levels                         
-                        WHERE id=:id AND order_level >:order_level
-                        LIMIT :limit", "id={$this->id}&order_level=" . $_SESSION['order_level'] . "&limit=1");
+        $viewPrevOrderTypes = new \App\adms\Models\helper\AdmsRead();
+        $viewPrevOrderTypes->fullRead("SELECT id, order_type_pg
+                        FROM adms_type_pgs                         
+                        WHERE id=:id 
+                        LIMIT :limit", "id={$this->id}&limit=1");
 
-        $this->resultBd = $viewAccessLevel->getResult();
-        var_dump($this->resultBd);
+        $this->resultBd = $viewPrevOrderTypes->getResult();
         if ($this->resultBd) {
-            $this->viewPrevAccessLevel();
+            $this->viewPrevOrderTypes();
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nível de acesso não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Grupo de páginas não encontrado!</p>";
             $this->result = false;
         }
     }
@@ -80,27 +79,26 @@ class AdmsOrderAccessLevels
      * Retorna FALSE se houver algum erro.
      * @return void
      */
-    private function viewPrevAccessLevel(): void
+    private function viewPrevOrderTypes(): void
     {
-        $prevAccessLevel = new \App\adms\Models\helper\AdmsRead();
-        $prevAccessLevel->fullRead(
-            "SELECT id, order_level 
-                        FROM adms_access_levels
-                        WHERE order_level <:order_level
-                        AND order_level >:order_levels_user
-                        ORDER BY order_level DESC
+        $viewPrevOrderTypes = new \App\adms\Models\helper\AdmsRead();
+        $viewPrevOrderTypes->fullRead(
+            "SELECT id, order_type_pg
+                        FROM adms_type_pgs
+                        WHERE order_type_pg <:order_type_pg
+                        ORDER BY order_type_pg DESC
                         LIMIT :limit",
-                        "order_level={$this->resultBd[0]['order_level']}&order_levels_user=" . $_SESSION['order_level'] . "&limit=1"
+                        "order_type_pg={$this->resultBd[0]['order_type_pg']}&limit=1"
         );
 
-        $this->resultBdPrev = $prevAccessLevel->getResult();
+        $this->resultBdPrev = $viewPrevOrderTypes->getResult();
         if ($this->resultBdPrev) {
             $this->editMoveDown();
             $this->result = true;
 
 
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nível de acesso não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Ordem do tipo não encontrada!</p>";
             $this->result = false;
         }
     }
@@ -112,16 +110,16 @@ class AdmsOrderAccessLevels
      */
     private function editMoveDown(): void
     {
-        $this->data['order_level'] = $this->resultBd[0]['order_level'];
+        $this->data['order_type_pg'] = $this->resultBd[0]['order_type_pg'];
         $this->data['modified'] = date("Y-m-d H:i:s");
 
         $moveDown = new \App\adms\Models\helper\AdmsUpdate();
-        $moveDown->exeUpdate("adms_access_levels", $this->data, "WHERE id=:id", "id={$this->resultBdPrev[0]['id']}");
+        $moveDown->exeUpdate("adms_type_pgs", $this->data, "WHERE id=:id", "id={$this->resultBdPrev[0]['id']}");
 
         if ($moveDown->getResult()) {
             $this->editMoveUp();
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Ordem do nível de acesso não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Ordem do tipo de páginas não editada com sucesso!</p>";
             $this->result = false;
         }
     }
@@ -133,17 +131,17 @@ class AdmsOrderAccessLevels
      */
     private function editMoveUp(): void
     {
-        $this->data['order_level'] = $this->resultBdPrev[0]['order_level'];
+        $this->data['order_type_pg'] = $this->resultBdPrev[0]['order_type_pg'];
         $this->data['modified'] = date("Y-m-d H:i:s");
 
         $moveUp = new \App\adms\Models\helper\AdmsUpdate();
-        $moveUp->exeUpdate("adms_access_levels", $this->data, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
+        $moveUp->exeUpdate("adms_type_pgs", $this->data, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
 
         if ($moveUp->getResult()) {
-            $_SESSION['msg'] = "<p class='alert-success'>Ordem do nível de acesso editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Ordem do tipo de páginas editada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Ordem do nível de acesso não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Ordem do tipo de páginas não editada com sucesso!</p>";
             $this->result = false;
         }
     }

@@ -42,7 +42,7 @@ if (isset($this->data['form'][0])) {
         </div>
 
         <div class="content-adm">
-            <form method="POST" action="" id="form-access_levels" class="form-adm">
+            <form method="POST" action="" id="form-access-levels" class="form-adm">
                 <?php
                 $id = "";
                 if (isset($valorForm['id'])) {

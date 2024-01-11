@@ -9,16 +9,25 @@ if(!defined('KLKSK8')){
 
 if (isset($this->data['form'])) {
     $valorForm = $this->data['form'];
+
 }
+
+if (isset($this->data['form'][0])) {
+    $valorForm = $this->data['form'][0];
+}
+
 ?>
 <!-- Inicio do conteudo do administrativo -->
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Cadastrar Novo Nível</span>
+            <span class="title-content">Editar Grupo de Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>Listar</a> ";
+                echo "<a href='" . URLADM . "list-groups-pages/index' class='btn-info'>Listar</a> ";
+                if (isset($valorForm['id'])) {
+                    echo "<a href='" . URLADM . "view-groups-pages/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                }
                 ?>
             </div>
         </div>
@@ -34,7 +43,15 @@ if (isset($this->data['form'])) {
         </div>
 
         <div class="content-adm">
-            <form method="POST" action="" id="form-access-levels" class="form-adm">
+            <form method="POST" action="" id="form-groups-pages" class="form-adm">
+                <?php
+                $id = "";
+                if (isset($valorForm['id'])) {
+                    $id = $valorForm['id'];
+                }
+                ?>
+                <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+
                 <div class="row-input">
                     <div class="column">
                         <?php
@@ -43,16 +60,14 @@ if (isset($this->data['form'])) {
                             $name = $valorForm['name'];
                         }
                         ?>
-                        <label class="title-input">Nome:<span class="text-danger">*</span></label>
-                        <input type="text" name="name" id="name" class="input-adm" placeholder="Digite o nome do nível"
-                            value="<?php echo $name; ?>">
+                        <label class="title-input">Nome do Grupo:<span class="text-danger">*</span></label>
+                        <input type="text" name="name" id="name" class="input-adm" placeholder="Nome do grupo" value="<?php echo $name; ?>" required>
                     </div>
                 </div>
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendAddAccessLevels" class="btn btn-success"
-                    value="Cadastrar">Cadastrar</button>
+                <button type="submit" name="SendEditGroup" class="btn btn-warning" value="Salvar">Salvar</button>
 
             </form>
         </div>
