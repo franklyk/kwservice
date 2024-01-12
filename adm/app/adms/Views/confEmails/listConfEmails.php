@@ -34,7 +34,7 @@
                     <th class="list-head-content">Título</th>
                     <th class="list-head-content table-sm-none">Nome</th>
                     <th class="list-head-content table-md-none">E-mail</th>
-                    <th class="list-head-content">Ações</th>
+                    <th class="list-head-content"><?php echo ICON_SETTINGS ?>-Ações</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -49,12 +49,12 @@
                         <td class="list-body-content table-md-none"><?php echo $email; ?></td>
                         <td class="list-body-content">
                             <div class="dropdown-action">
-                                <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action">Ações</button>
+                                <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?>-Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
-                                    echo "<a href='" . URLADM . "view-conf-emails/index/$id'>Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-conf-emails/index/$id'>Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-conf-emails/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Apagar</a>";
+                                    echo "<a href='" . URLADM . "view-conf-emails/index/$id'>".ICON_VIEW."-Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-conf-emails/index/$id'>".ICON_EDIT."-Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-conf-emails/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE."-Apagar</a>";
                                     ?>
                                 </div>
                             </div>

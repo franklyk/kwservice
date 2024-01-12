@@ -33,7 +33,7 @@
                     <th class="list-head-content">ID</th>
                     <th class="list-head-content">Nome</th>
                     <th class="list-head-content">Ordem</th>
-                    <th class="list-head-content">Ações</th>
+                    <th class="list-head-content"><?php echo ICON_SETTINGS ?>-Ações</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -49,13 +49,13 @@
                     <td class="list-body-content">
                         <div class="dropdown-action">
                             <button onclick="actionDropdown(<?php echo $id; ?>)"
-                                class="dropdown-btn-action">Ações</button>
+                                class="dropdown-btn-action"><?php echo ICON_SETTINGS ?>-Ações</button>
                             <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                 <?php
-                                    echo "<a href='" . URLADM . "order-groups-pages/index/$id?pag=" . $this->data['pag'] . "'>Ordem</a>";
-                                    echo "<a href='" . URLADM . "view-groups-pages/index/$id'>Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-groups-pages/index/$id'>Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-groups-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Apagar</a>";
+                                    echo "<a href='" . URLADM . "order-groups-pages/index/$id?pag=" . $this->data['pag'] . "'>". ICON_ORDER."-Ordem</a>";
+                                    echo "<a href='" . URLADM . "view-groups-pages/index/$id'>".ICON_VIEW."-Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-groups-pages/index/$id'>".ICON_EDIT."-Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-groups-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE."-Apagar</a>";
                                     ?>
                             </div>
                         </div>

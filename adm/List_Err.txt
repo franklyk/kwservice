@@ -4,3 +4,10 @@
 004 - CarregarPgAdm.php - Erro ao carregar o Metodo
 005 - ConfigView.php - Erro ao carregar a VIEW Login
 006 - AdmsViewUsers - Usuario não encontrado
+
+
+
+". ICON_ORDER."-Ordem</a>";
+".ICON_VIEW."-Visualizar</a>";
+".ICON_EDIT."-Editar</a>";
+".ICON_DELETE."-Apagar</a>";

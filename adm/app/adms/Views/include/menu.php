@@ -7,17 +7,6 @@ if(!defined('KLKSK8')){
     die("Erro: Página não encontrada!<br>");
 }
 
-?>
-
-<!-- <a href="">Dashboard</a><br>
-<a href="<?php echo URLADM; ?>list-users/index">Usuarios</a><br>
-<a href="<?php echo URLADM; ?>list-sits-users/index">Situações dos Usuários</a><br>
-<a href="<?php echo URLADM; ?>list-colors/index">Cores</a><br>
-<a href="<?php echo URLADM; ?>list-conf-emails/index">Configurações de Email</a><br>
-<a href="<?php echo URLADM; ?>view-profile/index">Perfil</a><br>
-
-<a href="<?php echo URLADM; ?>logout/index">Sair</a><br> -->
-<?php 
 $sidebar_active = "";
 if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
@@ -67,7 +56,7 @@ if (isset($this->data['sidebarActive'])) {
         } ?>
 
         <a href="<?php echo URLADM; ?>list-pages/index"
-            class="sidebar-nav <?php echo $list_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Páginas</span></a>
+            class="sidebar-nav <?php echo $list_pages; ?>"><i class="icon fa-solid fa-file"></i></i><span>Páginas</span></a>
         
         <?php $list_sits_pages = "";
         if ($sidebar_active == "list-sits-pages") {
@@ -75,7 +64,7 @@ if (isset($this->data['sidebarActive'])) {
         } ?>
 
         <a href="<?php echo URLADM; ?>list-sits-pages/index"
-            class="sidebar-nav <?php echo $list_sits_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Situações das Páginas</span></a>
+            class="sidebar-nav <?php echo $list_sits_pages; ?>"><i class="icon fa-solid fa-file-circle-question"></i><span>Situações das Páginas</span></a>
         
         <?php $groups_pages = "";
         if ($sidebar_active == "list-groups-pages") {
@@ -83,7 +72,7 @@ if (isset($this->data['sidebarActive'])) {
         } ?>
 
         <a href="<?php echo URLADM; ?>list-groups-pages/index"
-            class="sidebar-nav <?php echo $groups_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Grupos de Páginas</span></a>
+            class="sidebar-nav <?php echo $groups_pages; ?>"><i class="icon fa-solid fa-file-lines"></i></i><span>Grupos de Páginas</span></a>
 
         <?php $types_pages = "";
         if ($sidebar_active == "list-types-pages") {
@@ -91,7 +80,7 @@ if (isset($this->data['sidebarActive'])) {
         } ?>
 
         <a href="<?php echo URLADM; ?>list-types-pages/index"
-            class="sidebar-nav <?php echo $types_pages; ?>"><i class="icon fa-solid fa-key"></i><span>Tipos de Páginas</span></a>
+            class="sidebar-nav <?php echo $types_pages; ?>"><i class="icon fa-solid fa-file"></i><span>Tipos de Páginas</span></a>
 
         <?php 
         $list_colors = '';

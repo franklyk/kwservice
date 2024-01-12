@@ -11,7 +11,7 @@
             <span class="title-content">Listar Usuários</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" .URLADM . "add-users/index' class='btn-success'>Cadastrar</a>";
+                echo "<a href='" .URLADM . "add-users/index' class='btn-success'>".ICON_ADD."-Cadastrar</a>";
                 ?>
             </div>
         </div>
@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="column margin-top-search">
-                                <button type="submit" name="SendSearchUser" value="pesquisar" class="btn-info">Pesquisar</button>
+                                <button type="submit" name="SendSearchUser" value="pesquisar" class="btn-info"><?php echo ICON_SEARCH?>-Pesquisar</button>
                             </div>
                         </div>
                     </form>
@@ -52,7 +52,7 @@
                     <th class="list-head-content table-sm-none">E-mail</th>
                     <th class="list-head-content table-md-none">Situação</th>
                     <th class="list-head-content table-md-none">Nível de acesso</th>
-                    <th class="list-head-content">Ações</th>
+                    <th class="list-head-content"><?php echo ICON_SETTINGS ?>-Ações</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -71,12 +71,12 @@
                     <td class="list-body-content">
                         <div class="dropdown-action">
                             <button onclick="actionDropdown(<?php echo $id; ?>)"
-                                class="dropdown-btn-action">Ações</button>
+                                class="dropdown-btn-action"><?php echo ICON_SETTINGS ?>-Ações</button>
                             <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                 <?php
-                                    echo "<a href='" . URLADM . "view-users/index/$id'>Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-users/index/$id'>Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-users/index/$id' onclick='return confirm(\"Tem certeza que deseja excuir este Registro?\")'>Apagar</a>";
+                                    echo "<a href='" . URLADM . "view-users/index/$id'>".ICON_VIEW."-Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-users/index/$id'>".ICON_EDIT."-Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-users/index/$id' onclick='return confirm(\"Tem certeza que deseja excuir este Registro?\")'>".ICON_DELETE."-Apagar</a>";
                                 ?>
                             </div>
                         </div>
@@ -96,3 +96,4 @@
         </div>
     </div>
 </div>
+
