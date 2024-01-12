@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página cadastrar novo usuário
+     * Controller da página cadastrar cores
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

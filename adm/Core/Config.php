@@ -31,13 +31,13 @@
 
 
 
-            define('ICON_SETTINGS', '<i class="fa-solid fa-sliders"></i>');
+            define('ICON_SETTINGS', '<i class="fa-solid fa-screwdriver-wrench"></i>');
 
             define('ICON_ADD', '<i class="fa-solid fa-plus"></i>');
 
             define('ICON_SEARCH', '<i class="fa-brands fa-sistrix"></i>');
 
-            define('ICON_LIST', '<i class="fa-solid fa-magnifying-glass"></i>');
+            define('ICON_LIST', '<i class="fa-regular fa-rectangle-list"></i>');
 
             define('ICON_ORDER', '<i class="fa-solid fa-angles-up"></i>');
             define('ICON_VIEW', '<i class="fa-regular fa-eye"></i>');

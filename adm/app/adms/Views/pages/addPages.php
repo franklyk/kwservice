@@ -215,7 +215,7 @@ if (isset($this->data['form'])) {
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-                <button type="submit" name="SendAddPages" class="btn btn-warning" value="cadastrar">Cadastrar</button>
+                <button type="submit" name="SendAddPages" class="btn btn-success" value="cadastrar"><?php echo ICON_CHECK; ?> Cadastrar</button>
 
             </form>
         </div>

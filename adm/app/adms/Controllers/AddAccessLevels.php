@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página cadastrar novo usuário
+     * Controller da página cadastrar Nível de Acesso
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

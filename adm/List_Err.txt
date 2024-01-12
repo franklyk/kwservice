@@ -7,7 +7,14 @@
 
 
 
-". ICON_ORDER."-Ordem</a>";
-".ICON_VIEW."-Visualizar</a>";
-".ICON_EDIT."-Editar</a>";
-".ICON_DELETE."-Apagar</a>";
+
+
+
+
+
+".ICON_ADD." Cadastrar</a>";
+".ICON_LIST."Listar</a> ";
+".ICON_ORDER." Ordem</a>";
+".ICON_VIEW." Visualizar</a>";
+".ICON_EDIT." Editar</a>";
+".ICON_DELETE." Apagar</a>";

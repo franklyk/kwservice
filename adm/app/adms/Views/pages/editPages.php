@@ -23,9 +23,9 @@ if (isset($this->data['form'][0])) {
             <span class="title-content">Editar Página</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>Listar</a> ";
+                echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>".ICON_LIST."Listar</a> ";
                 if (isset($valorForm['id'])) {
-                    echo "<a href='" . URLADM . "view-pages/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                    echo "<a href='" . URLADM . "view-pages/index/" . $valorForm['id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a>";
                 }
                 ?>
             </div>
@@ -136,7 +136,7 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Ícone:<span class="text-danger">*</span></label>
-                        <input type="text" name="icon" id="icon" class="input-adm" placeholder="Ícone a ser apresentado no menu"value="<?php echo $icon; ?>" required>
+                        <input type="text" name="icon" id="icon" class="input-adm" placeholder="Ícone a ser apresentado no menu"value="<?php echo $icon; ?>">
 
                     </div>
                 </div>

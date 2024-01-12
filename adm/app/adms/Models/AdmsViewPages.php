@@ -49,12 +49,21 @@ class AdmsViewPages
 
         $viewColor = new \App\adms\Models\helper\AdmsRead();
         $viewColor->fullRead(
-            "SELECT id, name_page, created, modified 
-                            FROM adms_pages
-                            WHERE id=:id
-                            LIMIT :limit",
+            "SELECT pg.id, pg.controller, pg.metodo, pg.menu_controller, pg.menu_metodo, pg.name_page, pg.publish, pg.icon, pg.obs, pg.created, pg.modified,
+            sit.name name_sit,
+            tpg.type name_type,
+            grpg.name name_grpg,
+            col.color
+            FROM adms_pages AS pg
+            INNER JOIN adms_type_pgs AS tpg ON tpg.id=pg.adms_types_pgs_id
+            INNER JOIN adms_sits_pgs AS sit ON sit.id=pg.adms_sits_pgs_id
+            INNER JOIN adms_groups_pgs AS grpg ON grpg.id=pg.adms_groups_pgs_id
+            INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
+            WHERE pg.id=:id
+            LIMIT :limit",
             "id={$this->id}&limit=1");
 
+/* INNER JOIN adms_color AS col ON col.id=sit.adms_color_id*/
         $this->resultBd = $viewColor->getResult();
         if ($this->resultBd) {
             $this->result = true;
