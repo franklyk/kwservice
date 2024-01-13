@@ -12,7 +12,7 @@
     
 
     /**
-     * Página para listar páginas
+     * Página para Listar Páginas
      */
     class ListPages
     

@@ -10,7 +10,7 @@ if(!defined('KLKSK8')){
 
 
 /**
- * Controller da página de Recuperar senha
+ * Controller da página de Recuperar Senha
  * 
  * @author Franklin (" KLYK ") <frsbatist@gmail.com>
  *

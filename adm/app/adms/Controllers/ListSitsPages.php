@@ -12,7 +12,7 @@
     
 
     /**
-     * Página para listar usuários
+     * Página para Listar Situações de Páginas
      */
     class ListSitsPages
     

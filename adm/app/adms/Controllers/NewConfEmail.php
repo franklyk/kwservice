@@ -10,7 +10,7 @@ if(!defined('KLKSK8')){
 
 
 /**
- * Controller da página para receber novo link para Confirmar Email
+ * Controller da página para receber Novo Link Para Confirmar E-mail
  * 
  * @author Franklin (" KLYK ") <frsbatist@gmail.com>
  * 

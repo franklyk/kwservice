@@ -8,12 +8,12 @@
 
 
 
-
+fa-regular fa-pen-to-square
 
 
 
 ".ICON_ADD." Cadastrar</a>";
-".ICON_LIST."Listar</a> ";
+".ICON_LIST." Listar</a> ";
 ".ICON_ORDER." Ordem</a>";
 ".ICON_VIEW." Visualizar</a>";
 ".ICON_EDIT." Editar</a>";

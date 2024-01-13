@@ -8,7 +8,7 @@ if(!defined('KLKSK8')){
     die("Erro: Página não encontrada!<br>");
 }
 /**
- * Controller da página alterar ordem do nívels de acesso
+ * Controller da página Alterar Ordem do Tipo de Página
  * @author Franklin
  */
 class OrderTypesPages

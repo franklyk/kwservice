@@ -12,7 +12,7 @@
     
 
     /**
-     * Página para listar usuários
+     * Página para Listar Configurações de E-mail
      */
     class ListConfEmails
     

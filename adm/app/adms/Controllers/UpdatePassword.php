@@ -10,7 +10,7 @@ if(!defined('KLKSK8')){
 
 
 /**
- * Controller da página de editar nova senha
+ * Controller da página de Editar Senha
  * 
  * @author Franklin (" KLYK ") <frsbatist@gmail.com>
  *

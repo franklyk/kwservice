@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página apagar usuário
+     * Controller da página apagar situações de usuários
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

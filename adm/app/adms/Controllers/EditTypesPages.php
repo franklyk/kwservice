@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página editar Grupo de páginas 
+     * Controller da página editar tipos de páginas 
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

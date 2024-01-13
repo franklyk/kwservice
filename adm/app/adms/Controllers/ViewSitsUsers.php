@@ -11,7 +11,11 @@ if(!defined('KLKSK8')){
 }
 
 
-
+/**
+ * Controller da Página Vizualizar Situação do Usuário
+ * 
+ * @author Franklin <frsbatis@gmail.com>
+ */
 class ViewSitsUsers
 {
     /** @var array|string|null $data Recebe os dados que serão enviados para a VIEW */

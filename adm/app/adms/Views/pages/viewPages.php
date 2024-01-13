@@ -11,7 +11,7 @@
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Detalhes da Cor</span>
+            <span class="title-content">Detalhes da Página</span>
             <div class="top-list-right">
                 <?php
                 echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";

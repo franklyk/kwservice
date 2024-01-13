@@ -18,7 +18,7 @@ if (isset($this->data['form'])) {
             <span class="title-content">Cadastrar Novo Nível</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>Listar</a> ";
+                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>".ICON_LIST." Listar</a> ";
                 ?>
             </div>
         </div>
@@ -52,7 +52,7 @@ if (isset($this->data['form'])) {
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
                 <button type="submit" name="SendAddAccessLevels" class="btn btn-success"
-                    value="Cadastrar">Cadastrar</button>
+                    value="Cadastrar"><?php echo ICON_CHECK ?>Cadastrar</button>
 
             </form>
         </div>

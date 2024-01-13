@@ -9,7 +9,7 @@
     }
     
     /**
-    * Controller da página de sair
+    * Controller da Página de Sair
     * 
     * @author Franklin (" KLYK ") <frsbatist@gmail.com>
     *

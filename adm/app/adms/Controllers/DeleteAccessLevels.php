@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página apagar usuário
+     * Controller da página apagar nivel de acesso
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

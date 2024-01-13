@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página editar situação 
+     * Controller da página editar situação do usuário
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

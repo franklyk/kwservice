@@ -10,7 +10,11 @@ if(!defined('KLKSK8')){
     die("Erro: Página não encontrada!<br>");
 }
 
-
+/**
+ * Controller da Página Visualizar Situação da Página
+ * 
+ * @author Franklin (" KLYK ") <frsbatis@gmail.com>
+ */
 
 class ViewSitsPages
 {

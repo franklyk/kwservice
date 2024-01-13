@@ -8,7 +8,7 @@ if(!defined('KLKSK8')){
     die("Erro: Página não encontrada!<br>");
 }
 /**
- * Controller da página visualizar cor
+ * Controller da página Visualizar Cor
  * @author Franklin
  */
 class ViewColors

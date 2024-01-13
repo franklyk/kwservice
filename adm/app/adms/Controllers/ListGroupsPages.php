@@ -12,7 +12,7 @@
     
 
     /**
-     * Página para listar usuários
+     * Página para Listar Grupos de Páginas
      */
     class ListGroupsPages
     

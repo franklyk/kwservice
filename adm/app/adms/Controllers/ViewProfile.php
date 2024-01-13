@@ -12,7 +12,7 @@ if(!defined('KLKSK8')){
 
 
 /**
- * Controller da página visualizar perfil
+ * Controller da página Visualizar Perfil
  * 
  * @author Franklin <frsbatist@gmail.com>
  */

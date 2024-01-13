@@ -9,7 +9,7 @@
     }
     
     /**
-     * Controller da página editar perfil
+     * Controller da página editar senha do perfil
      * 
      * @author Franklin (" KLYK ") <frsbatist@gmail.com>
      */

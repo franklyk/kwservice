@@ -14,10 +14,10 @@
             <span class="title-content">Detalhes do Nível de Acesso</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>Listar</a> ";
+                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>".ICON_LIST."Listar</a> ";
                 if (!empty($this->data['viewColors'])) {
-                    echo "<a href='" . URLADM . "edit-access-levels/index/" . $this->data['viewColors'][0]['id'] . "' class='btn-warning'>Editar</a> ";
-                    echo "<a href='" . URLADM . "delete-access-levels/index/" . $this->data['viewColors'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                    echo "<a href='" . URLADM . "edit-access-levels/index/" . $this->data['viewColors'][0]['id'] . "' class='btn-warning'>".ICON_EDIT." Editar</a>";
+                    echo "<a href='" . URLADM . "delete-access-levels/index/" . $this->data['viewColors'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a>";
                 }
                 ?>
             </div>

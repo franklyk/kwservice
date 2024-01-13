@@ -9,7 +9,11 @@ if(!defined('KLKSK8')){
     header("Location: $urlRedirect");
     die("Erro: Página não encontrada!<br>");
 }
-
+/**
+ * Controller da Página Visualizar Nível de Acesso
+ * 
+ * @author Franklin <frsbatist@gmail.com>
+ */
 
 
 class ViewAccessLevels
