@@ -29,7 +29,7 @@
             define('EMAILADM', 'contato@kwservice.com');
             define('ADM', 'KWService');
 
-
+            define('ICON_PERMISSION', '<i class="icon fa-solid fa-house-lock"></i>');
 
             define('ICON_SETTINGS', '<i class="fa-solid fa-screwdriver-wrench"></i>');
 
