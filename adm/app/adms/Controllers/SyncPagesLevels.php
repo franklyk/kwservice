@@ -29,9 +29,13 @@
          */
         public function index():void
         {
-
+            
             $syncPagesLevels = new \App\adms\Models\AdmsSyncPagesLevels();
             $syncPagesLevels->syncPagesLevels();
+            
+            $urlRedirect = URLADM . "list-access-levels/index";
+            header("Location: $urlRedirect");
+
         }
     }
 
