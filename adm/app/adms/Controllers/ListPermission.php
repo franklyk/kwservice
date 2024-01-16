@@ -57,8 +57,6 @@
                 $this->viewPermission();
 
             }else{
-                // $this->data['listPermission'] = [];
-                // $this->data['pagination'] = null;
                 $urlRedirect = URLADM . "list-access-levels/index";
                 header("Location: $urlRedirect");
 

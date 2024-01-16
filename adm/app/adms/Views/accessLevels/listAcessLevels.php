@@ -11,7 +11,8 @@
             <span class="title-content">Niveis de Acesso</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" .URLADM . "add-access-levels/index' class='btn-success'>Cadastrar</a>";
+                echo "<a href='" .URLADM . "add-access-levels/index' class='btn-success'>Cadastrar</a> ";
+                echo "<a href='" .URLADM . "sync-pages-levels/index' class='btn-warning'>Sincronizar</a>";
                 ?>
             </div>
         </div>
