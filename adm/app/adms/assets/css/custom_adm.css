@@ -848,5 +848,24 @@ select.input-search:focus{
 
 /* Fim pesquisar */
 
+/* Início Text*/
+
+.text-danger{
+    color: var(--danger-color);
+}
+
+.text-info{
+    color: var(--info-color);
+}
+
+.text-success{
+    color: var(--success-color);
+}
+.text-warning{
+    color: var(--warning-color);
+}
+
+/* Fim Text*/
+
 
 /* Fim conteudo */

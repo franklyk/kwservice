@@ -54,6 +54,7 @@
                 $this->data['listPermission'] = $listPermission->getResultBd();
                 $this->data['viewAccessLevels'] = $listPermission->getResultBdLevel();
                 $this->data['pagination'] = $listPermission->getResultPg();
+                $this->data['pag'] = $this->page;
                 $this->viewPermission();
 
             }else{

@@ -44,7 +44,15 @@
                     <td class="list-body-content"><?php echo $id; ?></td>
                     <td class="list-body-content"><?php echo $name_page; ?></td>
                     <td class="list-body-content"><?php echo $order_level_page; ?></td>
-                    <td class="list-body-content"><?php echo $permission; ?></td>
+                    <td class="list-body-content">
+                        <?php 
+                            if($permission == 1){
+                                echo "<a href='".URLADM."edit-permission/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-success'>Liberado</span></a>";
+                            }else{
+                                echo "<a href='".URLADM."edit-permission/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-danger'>Bloqueado</span></a>";
+                            }
+                        ?>
+                    </td>
 
                     <td class="list-body-content">
                         <div class="dropdown-action">
@@ -68,7 +76,7 @@
                 ?>
             </tbody>
         </table>
-        
+
         <?php 
             echo $this->data['pagination']; 
         ?>
