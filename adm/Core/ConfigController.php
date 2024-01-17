@@ -155,7 +155,7 @@
         public function loadPage(): void
         {
 
-            $loadPgAdm = new \Core\CarregarPgAdm();
+            $loadPgAdm = new \Core\CarregarPgAdmLevel();
             $loadPgAdm->loadPage($this->urlController, $this->urlMetodo, $this->urlParameter);
         }
     }

@@ -82,7 +82,7 @@
             if(method_exists($classLoad, $this->urlMetodo)){
                 $classLoad->{$this->urlMetodo}($this->urlParameter);
             }else{
-                die("Erro: 004 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM); 
+                die("Erro: 007 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM); 
             }
         }
 
