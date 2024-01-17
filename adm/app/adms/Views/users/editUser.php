@@ -67,7 +67,7 @@
                         ?>
                         <label for="nickname" class="title-input">Apelido:<span class="text-danger">*</span></label>
                         <input type="text" name="nickname" class="input-adm" id="nickname"
-                            placeholder="Digite o apelido" value="<?php echo $name ?>" required>
+                            placeholder="Digite o apelido" value="<?php echo $nickname ?>" required>
                     </div>
 
                 </div>

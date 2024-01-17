@@ -98,7 +98,7 @@ class AdmsPagination
         if($this->totalPages >= $this->page){
             $this->layoutPagination();
         }else{
-            $_SESSION['msg'] = "<p class= 'alert-danger'>Erro: Página não encontrada!</p>";
+            $_SESSION['msg'] = "<p class= 'alert-danger'>Erro: Olá!! Página não encontrada !</p>";
             header("Location: {$this->link}");
         }
     }
