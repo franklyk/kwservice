@@ -34,6 +34,9 @@
     /** @var array|null $resultPage Carrega um array com as páginas*/
     private array|null $resultPage;
 
+    /** @var array|null $resultLevelPage Recebe os dados da permissão de acesso*/
+    private array|null $resultLevelPage;
+
 
 
        /**
@@ -59,10 +62,12 @@
         private function searchPage(): void
         {
             $serachPage = new \App\adms\Models\helper\AdmsRead();
-            $serachPage->fullRead("SELECT id, publish 
-                                    FROM adms_pages
-                                    WHERE controller =:controller
-                                    AND metodo =:metodo
+            $serachPage->fullRead("SELECT pgs.id, pgs.publish,
+                                    typ.type
+                                    FROM adms_pages AS pgs
+                                    INNER JOIN adms_type_pgs AS typ ON typ.id=pgs.adms_types_pgs_id
+                                    WHERE pgs.controller =:controller
+                                    AND pgs.metodo =:metodo
                                     LIMIT :limit", 
                                     "controller={$this->urlController}&metodo={$this->urlMetodo}&limit=1
                                     ");
@@ -70,17 +75,17 @@
             if($this->resultPage){
                 // var_dump($this->resultPage);
                 if($this->resultPage[0]['publish'] == 1){
-                    $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
+                    $this->classLoad = "\\App\\".$this->resultPage[0]['type']."\\Controllers\\" . $this->urlController;
                     $this->loadMetodo();
                 }else{
-                    echo "Verificar se o usuário está logado";
+                    $this->verifyLogin();
                 }
             }else{
-                // $_SESSION['msg'] = "<p style='color:#f00;'>Grupo de páginas não encontrada!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Página não encontrada!</p><br>";
 
-                // $urlRedirect = URLADM . "login/index";
-                // header("Location: $urlRedirect");
-                die("Erro: 004 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM); 
+                $urlRedirect = URLADM . "login/index";
+                header("Location: $urlRedirect");
+                // die("Erro: 004 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM); 
             }
         }
 
@@ -96,6 +101,45 @@
                 $classLoad->{$this->urlMetodo}($this->urlParameter);
             }else{
                 die("Erro: 007 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM); 
+            }
+        }
+
+        
+        private function verifyLogin() :void
+        {
+            if((isset($_SESSION['user_id'])) and (isset($_SESSION['user_name'])) and (isset($_SESSION['user_email'])) and ($_SESSION['adms_access_level_id']) and ($_SESSION['order_level'])){
+                // $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
+                $this->searchLevelPage();
+            }else{
+                $_SESSION['msg'] = "<p class='alert-danger'>Necessário realizar o login para acessar esta página!</p><br>";
+
+                $urlRedirect = URLADM . "login/index";
+                header("Location: $urlRedirect");
+            }
+        }
+
+        private function searchLevelPage(): void
+        {
+            
+            $serachLevelPage = new \App\adms\Models\helper\AdmsRead();
+            $serachLevelPage->fullRead("SELECT id, permission 
+                                    FROM adms_levels_pages
+                                    WHERE adms_page_id =:adms_page_id
+                                    AND adms_access_level_id =:adms_access_level_id 
+                                    AND permission =:permission
+                                    LIMIT :limit", 
+                                    "adms_page_id={$this->resultPage[0]['id']}&adms_access_level_id=".$_SESSION['adms_access_level_id']."&permission=1&limit=1
+                                    ");
+            $this->resultLevelPage = $serachLevelPage->getResult();
+            if($this->resultLevelPage){
+                $this->classLoad = "\\App\\".$this->resultPage[0]['type']."\\Controllers\\" . $this->urlController;
+                $this->loadMetodo();
+            }else{
+                $_SESSION['msg'] = "<p class='alert-danger'>Página restrita Realize o Login!</p><br>";
+
+                $urlRedirect = URLADM . "login/index";
+                header("Location: $urlRedirect");
+
             }
         }
 
