@@ -32,7 +32,7 @@
                 <tr>
                     <th class="list-head-content">ID</th>
                     <th class="list-head-content">Nome</th>
-                    <th class="list-head-content"><?php echo ICON_SETTINGS ?>-Ações</th>
+                    <th class="list-head-content"><?php echo ICON_SETTINGS ?> Ações</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -47,7 +47,7 @@
                         </td>
                         <td class="list-body-content">
                             <div class="dropdown-action">
-                                <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?>-Ações</button>
+                                <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
                                     echo "<a href='" . URLADM . "view-sits-users/index/$id'>".ICON_VIEW."-Visualizar</a>";

@@ -30,11 +30,11 @@
             if (!empty($id)){
                 $this->id = (int) $id;
 
-                $deleteUser = new \App\adms\Models\AdmsDeletePages();
-                $deleteUser->deletePages($this->id);
+                $deletePage = new \App\adms\Models\AdmsDeletePages();
+                $deletePage->deletePages($this->id);
                 
             } else {
-                $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Necessário selecionar uma cor!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma página!</p><br>";
             }
         }
        

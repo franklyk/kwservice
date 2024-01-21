@@ -51,6 +51,8 @@
             $this->data['pag'] = $this->page;
             $this->data['sidebarActive'] = "list-access-levels"; 
 
+            $this->data['sidebarButton'] = "list-access-levels"; 
+
             $loadView = new \Core\ConfigView("adms/Views/accessLevels/listAcessLevels", $this->data);
             $loadView->loadView();
         }

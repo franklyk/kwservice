@@ -43,6 +43,8 @@
 
             $this->data['sidebarActive'] = 'list-conf-emails';
 
+            $this->data['sidebarButton'] = 'list-conf-emails';
+
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/confEmails/listConfEmails", $this->data);

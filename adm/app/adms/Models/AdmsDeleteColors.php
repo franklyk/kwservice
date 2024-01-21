@@ -68,7 +68,7 @@ class AdmsDeleteColors
         if ($this->resultBd) {
             return true;
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Cor não encontrada!</p>";
             return false;
         }
     }

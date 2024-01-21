@@ -350,6 +350,10 @@ body {
 
 /* Inicio listar */
 
+.hover{
+    border: 1px solid black;
+}
+
 .row .top-list {
     width: 100%;
     overflow: hidden;
@@ -380,9 +384,13 @@ body {
 }
 
 .table-list .list-body .list-body-content {
-    background-color: var(--fourth-color);
+    /* background-color: var(--fourth-color); */
     color: var(--fourth-bg-color);
     padding: 8px;
+}
+
+.table-list .list-body tr:hover {
+    background: var(--info-color-second);
 }
 
 @media (max-width: 540px) {

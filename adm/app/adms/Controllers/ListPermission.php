@@ -67,6 +67,8 @@
         private function viewPermission(): void
         {
             $this->data['sidebarActive'] = "list-access-levels"; 
+            
+            $this->data['sidebarButton'] = "list-access-levels"; 
 
             $loadView = new \Core\ConfigView("adms/Views/permission/listPermission", $this->data);
             $loadView->loadView();

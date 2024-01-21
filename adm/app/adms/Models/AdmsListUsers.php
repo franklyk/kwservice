@@ -74,6 +74,8 @@ class AdmsListUsers
      */
     public function listUsers(int $page = null): void
     {
+
+
         $this->page = (int) $page ? $page : 1;
 
         $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-users/index');

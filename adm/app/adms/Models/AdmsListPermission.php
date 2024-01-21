@@ -93,7 +93,7 @@ class AdmsListPermission
                         FROM adms_levels_pages AS lev_pag
                         LEFT JOIN adms_pages AS pgs ON pgs.id=lev_pag.adms_page_id
                         WHERE lev_pag.adms_access_level_id =:adms_access_level_id
-                        ORDER BY lev_pag.order_level_page ASC
+                        ORDER BY pgs.name_page ASC
                         LIMIT :limit OFFSET :offset", "adms_access_level_id={$this->level}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
             $this->resultBd = $listPermission->getResult();

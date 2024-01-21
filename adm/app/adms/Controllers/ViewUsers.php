@@ -53,9 +53,26 @@ class ViewUsers
             header("Location: $urlRedirect");
         }
         $this->data = [];
+
+        
     }
     private function viewUser(): void
     {
+
+
+        $button = [
+            'list_users' => ['menu_controller' => 'list-users', 'menu_metodo' => 'index'],
+            'edit_users' => ['menu_controller' => 'edit-users', 'menu_metodo' => 'index'],
+            'edit_users_password' => ['menu_controller' => 'edit-users-password', 'menu_metodo' => 'index'],
+            'edit_users_image' => ['menu_controller' => 'edit-users-image', 'menu_metodo' => 'index'],
+            'delete_users' => ['menu_controller' => 'delete-users', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+            // var_dump($this->data['button']);
+            $this->data['sidebarActive'] = "list-users";
+
         $loadView = new \Core\ConfigView("adms/Views/users/viewUser", $this->data);
         $loadView->loadView();
     }

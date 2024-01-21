@@ -129,9 +129,5 @@
                 </div>
             </form>
         </div>
-        <?php 
-        echo $_SESSION['adms_access_level_id'] . "<br>";
-        echo $_SESSION['order_level'] . "<br>";
-        ?>
     </div>
 </div>

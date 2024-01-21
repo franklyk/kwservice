@@ -47,6 +47,7 @@ class AdmsDashboard
      */
     public function countUsers(): void
     {
+        // var_dump($_SESSION['logado']);
 
         $countUsers = new \App\adms\Models\helper\AdmsRead();
         $countUsers->fullRead("SELECT COUNT(id) AS qnt_users

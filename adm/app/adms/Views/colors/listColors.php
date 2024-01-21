@@ -51,9 +51,9 @@
                                 <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?>-Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
-                                    echo "<a href='" . URLADM . "view-colors/index/$id'>".ICON_VIEW."-Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-colors/index/$id'>".ICON_EDIT."-Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-colors/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE."-Apagar</a>";
+                                    echo "<a href='" . URLADM . "view-colors/index/$id'>".ICON_VIEW." Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-colors/index/$id'>".ICON_EDIT." Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-colors/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE." Apagar</a>";
                                     ?>
                                 </div>
                             </div>

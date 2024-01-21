@@ -35,6 +35,8 @@
                 $this->data['listPages'] = [];
             }
             $this->data['sidebarActive'] = 'list-pages';
+
+            $this->data['sidebarButton'] = 'list-pages';
             $loadView = new \Core\ConfigView("adms/Views/pages/listPages", $this->data);
             $loadView->loadView();
         }

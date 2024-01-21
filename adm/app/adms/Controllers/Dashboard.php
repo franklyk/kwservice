@@ -40,6 +40,8 @@
 
 
         $this->data['sidebarActive'] = "dashboard";
+        
+        $this->data['sidebarButton'] = "dashboard";
 
         $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
         $loadView->loadView();

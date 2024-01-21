@@ -19,3 +19,29 @@ fa-regular fa-pen-to-square
 ".ICON_VIEW." Visualizar</a>";
 ".ICON_EDIT." Editar</a>";
 ".ICON_DELETE." Apagar</a>";
+
+
+
+
+
+Dados da VIEWS listPermission
+
+<th class="list-head-content"><?php echo ICON_SETTINGS ?> Ações</th>
+
+
+<td class="list-body-content">
+                        <div class="dropdown-action">
+                            <button onclick="actionDropdown(<?php echo $id; ?>)"
+                                class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
+                            <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
+                                <?php
+                                   echo "<a href='" . URLADM . "order-access-levels/index/$id?pag=" . $this->data['pag'] . "'>". ICON_ORDER." Ordem</a>";
+                                        
+                                    echo "<a href='" . URLADM . "list-permission/index?level=$id'>". ICON_PERMISSION." Permissão</a>";
+                                    echo "<a href='" . URLADM . "view-access-levels/index/$id'>". ICON_VIEW." Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-access-levels/index/$id'>". ICON_EDIT." Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-access-levels/index/$id' onclick='return confirm(\"Tem certeza que deseja excuir este Registro?\")'>". ICON_DELETE." Apagar</a>";
+                                ?>
+                            </div>
+                        </div>
+                    </td>

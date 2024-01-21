@@ -42,6 +42,8 @@
             }
 
             $this->data['sidebarActive'] =  'list-sits-pages';
+
+            $this->data['sidebarButton'] =  'list-sits-pages';
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/sitsPages/listSitsPages", $this->data);

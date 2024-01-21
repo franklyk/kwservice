@@ -26,7 +26,7 @@
          */
         public function index():void
         {
-            unset($_SESSION['user_id'], $_SESSION['user_name'], $_SESSION['user_nickname'], $_SESSION['user_email'], $_SESSION['user_image']);
+            unset($_SESSION['user_id'], $_SESSION['user_name'], $_SESSION['user_nickname'], $_SESSION['user_email'], $_SESSION['user_image'], $_SESSION['adms_access_level_id'], $_SESSION['adms_access_level_id'], $_SESSION['order_level'], $_SESSION['logado']);
 
             $_SESSION['msg'] = "<p class='alert-success'>Logout realizado com sucesso!</p><br>";
 

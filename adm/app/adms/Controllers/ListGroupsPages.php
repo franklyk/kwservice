@@ -54,6 +54,8 @@
             $this->data['pag'] = $this->page;
             $this->data['sidebarActive'] = "list-groups-pages"; 
 
+            $this->data['sidebarButton'] = "list-groups-pages"; 
+
             $loadView = new \Core\ConfigView("adms/Views/groupsPages/listGroupsPages", $this->data);
             $loadView->loadView();
         }

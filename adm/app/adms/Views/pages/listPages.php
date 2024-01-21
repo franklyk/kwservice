@@ -41,7 +41,6 @@
             <tbody class="list-body">
                 <?php
                 foreach ($this->data['listPages'] as $pages) {
-
                     extract($pages);
                 ?>
                     <tr>
@@ -58,9 +57,9 @@
                                 <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
-                                    echo "<a href='" . URLADM . "view-pages/index/$id'>".ICON_VIEW."-Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-pages/index/$id'>".ICON_EDIT."-Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE."-Apagar</a>";
+                                    echo "<a href='" . URLADM . "view-pages/index/$id'>".ICON_VIEW." Visualizar</a>";
+                                    echo "<a href='" . URLADM . "edit-pages/index/$id'>".ICON_EDIT." Editar</a>";
+                                    echo "<a href='" . URLADM . "delete-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE." Apagar</a>";
                                     ?>
                                 </div>
                             </div>

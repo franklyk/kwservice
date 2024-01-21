@@ -11,8 +11,8 @@
         <div class="notification">
             <div class="avatar">
                 <?php
-                    if ((!empty($_SESSION['user_image'])) and (file_exists("app/adms/assets/image/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
-                        echo "<img src='" . URLADM . "app/adms/assets/images/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image'] . "' width='40' height='40'>";
+                    if ((!empty($_SESSION['user_image'])) and (file_exists("app/adms/assets/images/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image']))) {
+                        echo "<img src='" . URLADM . "app/adms/assets/images/users/" . $_SESSION['user_id'] . "/" . $_SESSION['user_image'] . "' width='40'>";
                     } else {
                         echo "<img src='" . URLADM . "app/adms/assets/images/users/usuario.png' width='40' height='40'>";
                     }

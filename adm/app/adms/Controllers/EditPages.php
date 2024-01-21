@@ -78,7 +78,7 @@
                     $this->viewEditPages();
                 }
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Página não encontrada!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Página não encontrada!</p>";
                 $urlRedirect = URLADM . "list-pages/index";
                 header("Location: $urlRedirect");
             }

@@ -55,6 +55,8 @@
             $this->data['pag'] = $this->page;
             $this->data['sidebarActive'] = "list-types-pages"; 
 
+            $this->data['sidebarButton'] = "list-types-pages"; 
+
             $loadView = new \Core\ConfigView("adms/Views/typesPages/listTypesPages", $this->data);
             $loadView->loadView();
         }

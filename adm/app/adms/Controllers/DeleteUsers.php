@@ -18,6 +18,9 @@
         
         /** @var array|string|null $id Recebe o id do registro */
         private int|string|null $id;
+        
+        /** @var array|string|null $deleteId Recebe o id do registro */
+        private int|string|null $deleteId;
 
         /**
         * Instanciar a classe responsável em carregar a View e enviar os dados para a View
@@ -27,8 +30,11 @@
         public function index(int|string|null $id = null): void
         {
             
-            if (!empty($id)){
-                $this->id = (int) $id;
+
+            $this->id = (int) $id;
+            var_dump($this->id);
+            
+            if (!empty($this->id)){
                 $deleteUser = new \App\adms\Models\AdmsDeleteUsers();
                 $deleteUser->deleteUser($this->id);
                 

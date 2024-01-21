@@ -72,10 +72,8 @@ class AdmsSyncPagesLevels
         $listLevel->fullRead("SELECT id FROM adms_access_levels");
 
         $this->resultBdLevels = $listLevel->getResult();
-        // var_dump($this->resultBdLevels);
         if ($this->resultBdLevels) {
-            // $this->result = true;
-            // var_dump($this->resultBdLevels);
+            
             $this->listPages();
         } else {
             $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Nível de acesso não encontrado!</p>";
@@ -91,8 +89,7 @@ class AdmsSyncPagesLevels
 
         $this->resultBdPages = $listPages->getResult();
         if ($this->resultBdPages) {
-            // $this->result = true;
-            // var_dump($this->resultBdPages);
+            
             $this->readLevels();
         } else {
             $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Nenhuma página encontrada!</p>";
@@ -130,17 +127,11 @@ class AdmsSyncPagesLevels
 
         $this->resultBdLevelPage = $listLevelPage->getResult();
         if ($this->resultBdLevelPage) {
-            // $this->result = true;
-            // var_dump($this->resultBdPages);
-            // $this->readLevels();
-            // echo "O nível de acesso tem cadastro para a página {$this->pageId}<br>";
-            $_SESSION['msg'] = "<p class='alert-success'>Todas a permissões já estão sicronizadas!</p>";
+            
+            $_SESSION['msg'] = "<p class='alert-success'>Todas a permissões já estão sincronizadas!</p>";
             $this->result = true;
         } else {
-            //echo "O nível de acesso não tem cadastro para a página {$this->pageId}<br>";
-
-            //$_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Nenhuma página encontrada!</p>";
-            // $this->result = false;
+            
             $this->addLevelPermission();
         }
     }
@@ -158,10 +149,10 @@ class AdmsSyncPagesLevels
         $addAccessLevel->exeCreate("adms_levels_pages", $this->dataLevelPage);
 
         if($addAccessLevel->getResult()){
-            $_SESSION['msg'] = "<p class='alert-success'>Permissões sicronizadas com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Permissões sincronizadas com sucesso!</p>";
             $this->result = true;
         }else{
-            $_SESSION['msg'] = "<p class='alert-danger'>Permissões não sicronizadas com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Permissões não sincronizadas com sucesso!</p>";
             $this->result = false;
         }
 

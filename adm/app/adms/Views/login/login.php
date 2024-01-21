@@ -46,7 +46,7 @@ namespace App\adms\Views\login;
             ?>
             <div class="row">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" name="password" id="password" placeholder="Digite a Senha" autocomplete="on"
+                <input type="text" name="password" id="password" placeholder="Digite a Senha" autocomplete="on"
                     value="<?php echo $password ?>">
             </div>
             <div class="row button ">

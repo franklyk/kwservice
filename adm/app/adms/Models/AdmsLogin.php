@@ -26,7 +26,6 @@
             $this->data = $data;
             // var_dump($this->data);
 
-
             $viewUser = new \App\adms\Models\helper\AdmsRead();
 
             //Retorna somente as colunas indicadas
@@ -42,6 +41,8 @@
             $this->resultBd = $viewUser->getResult();
             if($this->resultBd){
                 $this->valEmailPerm();
+                $this->permissPages();
+
             }else{
                 $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuario e/ou Senha incoretos!</p>";
                 $this->result = false;
@@ -77,12 +78,42 @@
                 $_SESSION['user_image'] = $this->resultBd[0]['image'];
                 $_SESSION['adms_access_level_id'] = $this->resultBd[0]['adms_access_level_id'];
                 $_SESSION['order_level'] = $this->resultBd[0]['order_level'];
+                
                 $this->result = true;
             }else{
                 $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuario e/ou Senha incoretos!</p>";
                 $this->result = false;
             }
+
+            
         }
+
+        private function permissPages(){
+            
+            $viewPermission = new \App\adms\Models\helper\AdmsRead();
+            $viewPermission->fullRead("SELECT pgs.name_page, pgs.menu_controller
+                                    FROM adms_pages AS pgs
+                                    INNER JOIN adms_levels_pages AS lev_pgs ON lev_pgs.adms_page_id=pgs.id
+                                    INNER JOIN adms_access_levels AS acl ON acl.id=lev_pgs.adms_access_level_id
+                                    INNER JOIN adms_users AS usr ON usr.adms_access_level_id=acl.id
+                                    INNER JOIN adms_groups_pgs AS grps ON grps.id=pgs.adms_groups_pgs_id
+                                    WHERE acl.id=lev_pgs.adms_access_level_id 
+                                    AND lev_pgs.permission=1
+                                    AND usr.adms_access_level_id=:adms_access_level_id
+                                    AND usr.id=:id
+                                    AND pgs.adms_groups_pgs_id=:adms_groups_pgs_id
+                                    AND pgs.name_page !='Permissões'
+                                    ORDER BY lev_pgs.order_level_page ASC",
+                                    "adms_access_level_id={$this->resultBd[0]['adms_access_level_id']}&id={$this->resultBd[0]['id']}&adms_groups_pgs_id=1
+                                        ");
+            if($viewPermission->getResult()){
+                $_SESSION['loger'] = $viewPermission->getResult();
+            }else{
+                $_SESSION['loger'] = [];
+            }
+            
+        }
+        
     }
 
 ?>

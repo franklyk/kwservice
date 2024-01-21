@@ -56,6 +56,21 @@ class ViewTypesPages
     }
     private function viewType(): void
     {
+
+
+        $button = [
+            'list_types_pages' => ['menu_controller' => 'list-types-pages', 'menu_metodo' => 'index'],
+            'edit_types_pages' => ['menu_controller' => 'edit-types-pages', 'menu_metodo' => 'index'],
+            'delete_types_pages' => ['menu_controller' => 'delete-types-pages', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+            var_dump($this->data['button']);
+            $this->data['sidebarActive'] = "list-users";
+
+
+
         $loadView = new \Core\ConfigView("adms/Views/typesPages/viewTypesPages", $this->data);
         $loadView->loadView();
     }

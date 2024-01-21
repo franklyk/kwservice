@@ -39,10 +39,10 @@ class AdmsDeletePages
         $this->id = (int) $id;
 
         if($this->viewPages()){
-            $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteSitUser->exeDelete("adms_pages", "WHERE id =:id", "id={$this->id}");
-    
-            if($deleteSitUser->getResult()){
+            $deletePage= new \App\adms\Models\helper\AdmsDelete();
+            $deletePage->exeDelete("adms_pages", "WHERE id =:id", "id={$this->id}");
+            
+            if($deletePage->getResult()){
                 $_SESSION['msg'] = "<p class='alert-success'>Página apagada com sucesso!</p><br>";
                 $this->result = true;
             }else{
@@ -61,10 +61,15 @@ class AdmsDeletePages
     private function viewPages(): bool
     {
 
-        $viewcolor = new \App\adms\Models\helper\AdmsRead();
-        $viewcolor->fullRead("SELECT id FROM adms_pages WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewPage = new \App\adms\Models\helper\AdmsRead();
+        $viewPage->fullRead("SELECT id 
+                            FROM adms_pages 
+                            WHERE id=:id 
+                            LIMIT :limit", 
+                            "id={$this->id}&limit=1");
 
-        $this->resultBd = $viewcolor->getResult();
+        var_dump($viewPage);
+        $this->resultBd = $viewPage->getResult();
         if ($this->resultBd) {
             return true;
         } else {

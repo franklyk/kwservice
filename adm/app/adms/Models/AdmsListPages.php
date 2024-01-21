@@ -77,7 +77,7 @@ class AdmsListPages
                         INNER JOIN adms_type_pgs AS tpg ON tpg.id=pg.adms_types_pgs_id
                         INNER JOIN adms_sits_pgs AS sit ON sit.id=pg.adms_sits_pgs_id
                         INNER JOIN adms_color AS col ON col.id=sit.adms_color_id
-                        ORDER BY pg.id DESC
+                        ORDER BY pg.name_page ASC
                         LIMIT :limit
                         OFFSET :offset", "limit={$this->limitResult}&offset={$pagination->getOffset()}");                          
         $this->resultBd = $listPages->getResult();

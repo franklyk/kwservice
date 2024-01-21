@@ -81,7 +81,7 @@
                     $this->verifyLogin();
                 }
             }else{
-                $_SESSION['msg'] = "<p class='alert-danger'>Página não encontrada!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Página não encontrada2!</p><br>";
 
                 $urlRedirect = URLADM . "login/index";
                 header("Location: $urlRedirect");
