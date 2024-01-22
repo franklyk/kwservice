@@ -66,9 +66,18 @@
 
         private function viewPermission(): void
         {
-            $this->data['sidebarActive'] = "list-access-levels"; 
-            
-            $this->data['sidebarButton'] = "list-access-levels"; 
+            $this->data['sidebarActive'] = "list-access-levels";
+        
+            $button = [
+                'list_access_levels' => ['menu_controller' => 'list-access-levels', 'menu_metodo' => 'index']];
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+                var_dump($this->data['button']);
+    
+                $this->data['sidebarActive'] = "list-sits-users";
+    
+    
 
             $loadView = new \Core\ConfigView("adms/Views/permission/listPermission", $this->data);
             $loadView->loadView();

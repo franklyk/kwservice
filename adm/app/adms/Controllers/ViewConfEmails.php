@@ -46,14 +46,27 @@ class ViewConfEmails
                 header("Location: $urlRedirect");
             }
         } else {
-            $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Email não encontrado!</p><br>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Email não encontrado!</p><br>";
 
-            $urlRedirect = URLADM . "list-users/index";
+            $urlRedirect = URLADM . "list-conf-emails/index";
             header("Location: $urlRedirect");
         }
     }
     private function viewConfEmail(): void
     {
+        
+        $button = [
+            'list_conf_emails' => ['menu_controller' => 'list-conf-emails', 'menu_metodo' => 'index'],
+            'edit_conf_emails' => ['menu_controller' => 'edit-conf-emails', 'menu_metodo' => 'index'],
+            'edit_conf_emails_password' => ['menu_controller' => 'edit-conf-emails-password', 'menu_metodo' => 'index'],
+            'delete_conf_emails' => ['menu_controller' => 'delete-conf-emails', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+
+            $this->data['sidebarActive'] = "list-colors";
+
         $loadView = new \Core\ConfigView("adms/Views/confEmails/viewConfEmails", $this->data);
         $loadView->loadView();
     }

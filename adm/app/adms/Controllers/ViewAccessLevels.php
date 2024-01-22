@@ -59,6 +59,18 @@ class ViewAccessLevels
     }
     private function viewAccessLevels(): void
     {
+        
+        $button = [
+            'list_access_levels' => ['menu_controller' => 'list-access-levels', 'menu_metodo' => 'index'],
+            'edit_access_levels' => ['menu_controller' => 'edit-access-levels', 'menu_metodo' => 'index'],
+            'delete_access_levels' => ['menu_controller' => 'delete-access-levels', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+        $this->data['sidebarActive'] = "list-access-levels"; 
+
+
         $loadView = new \Core\ConfigView("adms/Views/accessLevels/viewAccessLevels", $this->data);
         $loadView->loadView();
     }

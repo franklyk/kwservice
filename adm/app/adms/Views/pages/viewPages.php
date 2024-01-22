@@ -14,11 +14,22 @@
             <span class="title-content">Detalhes da Página</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";
-                if (!empty($this->data['viewPages'])) {
-                    echo "<a href='" . URLADM . "edit-pages/index/" . $this->data['viewPages'][0]['id'] . "' class='btn-warning'>".ICON_EDIT." Editar</a>";
-                    echo "<a href='" . URLADM . "delete-pages/index/" . $this->data['viewPages'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a>";
+                if($this->data['button']['list_pages']){
+
+                    echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";
                 }
+                if (!empty($this->data['viewPages'])) {
+                    if($this->data['button']['edit_pages']){
+
+                        echo "<a href='" . URLADM . "edit-pages/index/" . $this->data['viewPages'][0]['id'] . "' class='btn-warning'>".ICON_EDIT." Editar</a>";
+                    }
+
+                    if($this->data['button']['delete_pages']){
+
+                        echo "<a href='" . URLADM . "delete-pages/index/" . $this->data['viewPages'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a>";
+                    }
+
+                    }
                 ?>
 
 

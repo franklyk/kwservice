@@ -15,7 +15,9 @@
             <span class="title-content">Listar Situações de Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "add-sits-pages/index' class='btn-success'>Cadastrar</a>";
+                if($this->data['button']['add_sits_pages']){
+                    echo "<a href='" . URLADM . "add-sits-pages/index' class='btn-success'>".ICON_ADD." Cadastrar</a>";
+                }
                 ?>
             </div>
         </div>
@@ -50,9 +52,15 @@
                                 <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
-                                    echo "<a href='" . URLADM . "view-sits-pages/index/$id'>".ICON_VIEW."-Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-sits-pages/index/$id'>".ICON_EDIT."-Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-sits-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE."-Apagar</a>";
+                                    if($this->data['button']['view_sits_pages']){
+                                        echo "<a href='" . URLADM . "view-sits-pages/index/$id'>".ICON_VIEW." Visualizar</a>";
+                                    }
+                                    if($this->data['button']['edit_sits_pages']){
+                                        echo "<a href='" . URLADM . "edit-sits-pages/index/$id'>".ICON_EDIT." Editar</a>";
+                                    }
+                                    if($this->data['button']['delete_sits_pages']){
+                                        echo "<a href='" . URLADM . "delete-sits-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE." Apagar</a>";
+                                    }
                                     ?>
                                 </div>
                             </div>

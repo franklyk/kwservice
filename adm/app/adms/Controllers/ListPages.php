@@ -35,8 +35,20 @@
                 $this->data['listPages'] = [];
             }
             $this->data['sidebarActive'] = 'list-pages';
-
-            $this->data['sidebarButton'] = 'list-pages';
+        
+            $button = [
+                'add_pages' => ['menu_controller' => 'add-pages', 'menu_metodo' => 'index'],
+                'sync_pages_levels' => ['menu_controller' => 'sync-pages-levels', 'menu_metodo' => 'index'],
+                'list_pages' => ['menu_controller' => 'list-pages', 'menu_metodo' => 'index'],
+                'edit_pages' => ['menu_controller' => 'edit-pages', 'menu_metodo' => 'index'],
+                'delete_pages' => ['menu_controller' => 'delete-pages', 'menu_metodo' => 'index']];
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+    
+                $this->data['sidebarActive'] = "list-pages";
+    
+    
             $loadView = new \Core\ConfigView("adms/Views/pages/listPages", $this->data);
             $loadView->loadView();
         }

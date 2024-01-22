@@ -39,7 +39,7 @@ class AdmsButton
             // var_dump($button);
             extract($button);
             $viewButton = new \App\adms\Models\helper\AdmsRead();
-            $viewButton->fullRead("SELECT pag.id 
+            $viewButton->fullRead("SELECT pag.id, pag.icon
                                     FROM adms_pages AS pag 
                                     INNER JOIN adms_levels_pages AS lev_pag ON lev_pag.adms_page_id=pag.id
                                     WHERE pag.menu_controller =:menu_controller 
@@ -49,14 +49,20 @@ class AdmsButton
                                     LIMIT :limit",
                                     "menu_controller={$menu_controller}&menu_metodo={$menu_metodo}&permission=1&adms_access_level_id={$_SESSION['adms_access_level_id']}&limit=1");
             if($viewButton->getResult()){
-                // var_dump($viewButton->getResult());
+                extract($viewButton->getResult());
+                // var_dump($this->data);
                 $this->result[$key] = true;
+                // var_dump($this->result[$key]);
             } else{
                 $this->result[$key] = false;
             }
+
         }
         return $this->result;
+       
+
 
     }
+    
 
 }

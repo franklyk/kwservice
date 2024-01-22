@@ -14,10 +14,16 @@
             <span class="title-content">Detalhes da Cor</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-colors/index' class='btn-info'>Listar</a> ";
-                if (!empty($this->data['viewColors'])) {
-                    echo "<a href='" . URLADM . "edit-colors/index/" . $this->data['viewColors'][0]['id'] . "' class='btn-warning'>Editar</a> ";
-                    echo "<a href='" . URLADM . "delete-colors/index/" . $this->data['viewColors'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                if($this->data['button']['list_colors']){
+                    echo "<a href='" . URLADM . "list-colors/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
+                if (!empty($this->data['viewColor'])) {
+                    if($this->data['button']['edit_colors']){
+                        echo "<a href='" . URLADM . "edit-colors/index/" . $this->data['viewColor'][0]['id'] . "' class='btn-warning'>".ICON_EDIT." Editar</a> ";
+                    }
+                    if($this->data['button']['delete_colors']){
+                        echo "<a href='" . URLADM . "delete-colors/index/" . $this->data['viewColor'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a> ";
+                    }
                 }
                 ?>
             </div>

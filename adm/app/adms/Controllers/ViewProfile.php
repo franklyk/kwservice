@@ -46,6 +46,18 @@ class ViewProfile
     }
     private function loadViewProfile(): void
     {
+        
+        $button = [
+            'edit_profile' => ['menu_controller' => 'edit-profile', 'menu_metodo' => 'index'],
+            'edit_profile_password' => ['menu_controller' => 'edit-profile-password', 'menu_metodo' => 'index'],
+            'edit_profile_image' => ['menu_controller' => 'edit-profile-image', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+            $this->data['sidebarActive'] = "list-users";
+
+
         $loadView = new \Core\ConfigView("adms/Views/users/viewProfile", $this->data);
         $loadView->loadView();
     }

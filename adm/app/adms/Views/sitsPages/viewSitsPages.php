@@ -14,10 +14,19 @@
             <span class="title-content">Detalhes da Situação de Página</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-sits-pages/index' class='btn-info'>Listar</a> ";
-                if (!empty($this->data['viewSitUser'])) {
-                    echo "<a href='" . URLADM . "edit-sits-pages/index/" . $this->data['viewSitPages'][0]['id'] . "' class='btn-warning'>Editar</a> ";
-                    echo "<a href='" . URLADM . "delete-sits-pages/index/" . $this->data['viewSitUser'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                if($this->data['button']['list_sits_pages']){
+
+                    echo "<a href='" . URLADM . "list-sits-pages/index' class='btn-info'>Listar</a> ";
+                }
+                if (!empty($this->data['viewSitPages'])) {
+                    if($this->data['button']['edit_sits_pages']){
+
+                        echo "<a href='" . URLADM . "edit-sits-pages/index/" . $this->data['viewSitPages'][0]['id'] . "' class='btn-warning'>Editar</a> ";
+                    }
+                    if($this->data['button']['delete_sits_pages']){
+
+                        echo "<a href='" . URLADM . "delete-sits-pages/index/" . $this->data['viewSitPages'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                    }
                 }
                 ?>
             </div>

@@ -57,7 +57,7 @@
                 <span class="view-adm-title">Tipo: </span>
                 <span class="view-adm-info"><?php echo $type; ?></span>
             </div>
-            
+
             <div class="view-det-adm">
                 <span class="view-adm-title">Nome: </span>
                 <span class="view-adm-info"><?php echo $name; ?></span>

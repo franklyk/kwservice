@@ -14,9 +14,17 @@
             <div class="top-list-right">
                 <?php
                     if (!empty($this->data['viewProfile'])) {
-                        echo "<a href='" . URLADM . "edit-profile/index/' class='btn-warning'>Editar</a> ";
-                        echo "<a href='" . URLADM . "edit-profile-password/index/' class='btn-warning'>Editar Senha</a> ";
-                        echo "<a href='" . URLADM . "edit-profile-image/index/' class='btn-warning'>Editar Imagem</a> ";
+                        if($this->data['button']['edit_profile']){
+
+                            echo "<a href='" . URLADM . "edit-profile/index/' class='btn-warning'>Editar</a> ";
+                        }
+                        if($this->data['button']['edit_profile_password']){
+                            echo "<a href='" . URLADM . "edit-profile-password/index/' class='btn-warning'>Editar Senha</a> ";
+                        }
+                        if($this->data['button']['edit_profile_image']){
+                            echo "<a href='" . URLADM . "edit-profile-image/index/' class='btn-warning'>Editar Imagem</a> ";
+                        }
+
                     }
                 ?>
             </div>

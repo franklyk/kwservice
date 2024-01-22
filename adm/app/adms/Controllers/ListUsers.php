@@ -42,7 +42,6 @@
 
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             
-            
 
             if(!empty($this->dataForm['SendSearchUser'])){
                 $listSearchUsers = new \App\adms\Models\AdmsListUsers();
@@ -85,7 +84,6 @@
 
             $this->data['sidebarActive'] = "list-users"; 
 
-            // $this->data['sidebarButton'] = "list-users";
 
             $loadView = new \Core\ConfigView("adms/Views/users/listUsers", $this->data);
             $loadView->loadView();

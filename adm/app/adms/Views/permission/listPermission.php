@@ -12,7 +12,9 @@
                 <?php echo $this->data['viewAccessLevels'][0]['name']; ?></span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-access-levels/index' class='btn btn-info'>".ICON_LIST." Listar Níveis de Acesso</a> ";
+                if($this->data['button']){
+                    echo "<a href='" . URLADM . "list-access-levels/index' class='btn btn-info'>".ICON_LIST." Listar Níveis de Acesso</a> ";
+                }
                 ?>
             </div>
         </div>

@@ -32,7 +32,6 @@
         public function index(int|string|null $id = null): void
         {
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-            
             if ((!empty($id)) and (empty($this->dataForm['SendEditUserPass']))) {
                 $this->id = (int) $id;
                 $viewUserPass = new \App\adms\Models\AdmsEditUsersPassword();
@@ -52,6 +51,19 @@
         }
         private function viewEditUserPass() :void
         {
+        
+            /*$button = [
+                'list_sits_users' => ['menu_controller' => 'list-sits-users', 'menu_metodo' => 'index'],
+                'edit_sits_users' => ['menu_controller' => 'edit-sits-users', 'menu_metodo' => 'index'],
+                'delete_sits_users' => ['menu_controller' => 'delete-sits-users', 'menu_metodo' => 'index']];
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+                var_dump($this->data['button']);*/
+    
+            $this->data['sidebarActive'] = "list-users";
+    
+    
             $loadView = new \Core\ConfigView("adms/Views/users/editUserPass", $this->data);
             $loadView->loadView();
             
@@ -70,10 +82,11 @@
                     header("Location: $urlRedirect");
                 }else{
                     $this->data['form'] = $this->dataForm;
+                    var_dump($this->dataForm);
                     $this->viewEditUserPass();
                 }
             } else{
-                $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Usuário não encontrado!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não encontrado!</p><br>";
                 $urlRedirect = URLADM . "list-users/index";
                 header("Location: $urlRedirect");
             }

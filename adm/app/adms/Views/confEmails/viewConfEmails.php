@@ -13,11 +13,23 @@
             <span class="title-content">Detalhes do E-mail</span>
             <div class="top-list-right">
                 <?php
-                    echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>Listar</a> ";
+                        
+                    if($this->data['button']['list_conf_emails']){
+                        echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                    }
                     if (!empty($this->data['viewConfEmails'])) {
-                        echo "<a href='" . URLADM . "edit-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "' class='btn-warning'>Editar</a> ";
-                        echo "<a href='" . URLADM . "edit-conf-emails-password/index/" . $this->data['viewConfEmails'][0]['id'] . "' class='btn-warning'>Editar Senha</a> ";
-                        echo "<a href='" . URLADM . "delete-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                        if($this->data['button']['edit_conf_emails']){
+                            
+                            echo "<a href='" . URLADM . "edit-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "' class='btn-warning'>".ICON_EDIT." Editar</a> ";
+                        }
+                        if($this->data['button']['edit_conf_emails_password']){
+                            
+                            echo "<a href='" . URLADM . "edit-conf-emails-password/index/" . $this->data['viewConfEmails'][0]['id'] . "' class='btn-warning'>".ICON_EDIT." Editar Senha</a> ";
+                        }
+                        if($this->data['button']['delete_conf_emails']){
+                            
+                            echo "<a href='" . URLADM . "delete-conf-emails/index/" . $this->data['viewConfEmails'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a> ";
+                        }
                     }
                     ?>
             </div>

@@ -52,9 +52,21 @@
                 $this->data['listGroupsPages'] = [];
             }
             $this->data['pag'] = $this->page;
-            $this->data['sidebarActive'] = "list-groups-pages"; 
-
-            $this->data['sidebarButton'] = "list-groups-pages"; 
+            $this->data['sidebarActive'] = "list-groups-pages";
+        
+            $button = [
+                'add_groups_pages' => ['menu_controller' => 'add-groups-pages', 'menu_metodo' => 'index'],
+                'order_groups_pages' => ['menu_controller' => 'order-groups-pages', 'menu_metodo' => 'index'],
+                'list_groups_pages' => ['menu_controller' => 'list-groups-pages', 'menu_metodo' => 'index'],
+                'edit_groups_pages' => ['menu_controller' => 'edit-groups-pages', 'menu_metodo' => 'index'],
+                'delete_groups_pages' => ['menu_controller' => 'delete-groups-pages', 'menu_metodo' => 'index']];
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+    
+                $this->data['sidebarActive'] = "list-groups-pages";
+    
+     
 
             $loadView = new \Core\ConfigView("adms/Views/groupsPages/listGroupsPages", $this->data);
             $loadView->loadView();

@@ -91,7 +91,7 @@
         private function permissPages(){
             
             $viewPermission = new \App\adms\Models\helper\AdmsRead();
-            $viewPermission->fullRead("SELECT pgs.name_page, pgs.menu_controller
+            $viewPermission->fullRead("SELECT pgs.name_page, pgs.menu_controller, pgs.icon
                                     FROM adms_pages AS pgs
                                     INNER JOIN adms_levels_pages AS lev_pgs ON lev_pgs.adms_page_id=pgs.id
                                     INNER JOIN adms_access_levels AS acl ON acl.id=lev_pgs.adms_access_level_id

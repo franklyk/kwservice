@@ -41,10 +41,18 @@
                 $this->data['listSitsUsers'] = [];
             }
 
-            $this->data['sidebarActive'] =  'list-sits-users';
 
-            $this->data['sidebarButton'] =  'list-sits-users';
-            // var_dump($this->data);
+            $button = [
+                'add_sits_users' => ['menu_controller' => 'add-sits-users', 'menu_metodo' => 'index'],
+                'view_sits_users' => ['menu_controller' => 'view-sits-users', 'menu_metodo' => 'index'],
+                'edit_sits_users' => ['menu_controller' => 'edit-sits-users', 'menu_metodo' => 'index'],
+                'delete_sits_users' => ['menu_controller' => 'delete-sits-users', 'menu_metodo' => 'index']];
+
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+                
+                $this->data['sidebarActive'] = "list-sits-users";
 
             $loadView = new \Core\ConfigView("adms/Views/sitsUser/listSitsUsers", $this->data);
             $loadView->loadView();

@@ -42,8 +42,19 @@
             }
 
             $this->data['sidebarActive'] = 'list-colors';
-
-            $this->data['sidebarButton'] = 'list-colors';
+        
+            $button = [
+                'add_colors' => ['menu_controller' => 'add-colors', 'menu_metodo' => 'index'],
+                'view_colors' => ['menu_controller' => 'view-colors', 'menu_metodo' => 'index'],
+                'edit_colors' => ['menu_controller' => 'edit-colors', 'menu_metodo' => 'index'],
+                'delete_colors' => ['menu_controller' => 'delete-colors', 'menu_metodo' => 'index']];
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+    
+                $this->data['sidebarActive'] = "list-colors";
+    
+    
 
             // var_dump($this->data);
 

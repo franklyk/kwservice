@@ -12,19 +12,8 @@ if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
     // var_dump($this->data['sidebarActive']);
 }
-/*var_dump($_SESSION['loger']);
-if($_SESSION['loger']){
-                    
-    foreach($_SESSION['loger'] as $loger){
-        extract($loger);
-        var_dump($loger);
-        echo "<a href='".URLADM. "{$menu_controller}/index' class='sidebar-nav'><i
-        class='icon fa-solid fa-house'></i><span>$name_page</span></a>";
-    }
-}else{
-    $_SESSION['loger'];
-}*/
-   
+
+//    var_dump($_SESSION['loger']);
 ?>
 
 
@@ -52,7 +41,7 @@ if($_SESSION['loger']){
                             $active = 'active';
                         }
                         echo "<a href='".URLADM. "{$menu_controller}/index' class='sidebar-nav $active'><i
-                        class='icon fa-solid fa-house'></i><span>$name_page</span></a>";
+                        class='icon $icon'></i><span>$name_page</span></a>";
                     }
                 }else{
                     echo "";

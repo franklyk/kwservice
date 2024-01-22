@@ -55,6 +55,15 @@ class ViewColors
      */
     private function viewColors(): void
     {
+        
+        $button = [
+            'list_colors' => ['menu_controller' => 'list-colors', 'menu_metodo' => 'index'],
+            'edit_colors' => ['menu_controller' => 'edit-colors', 'menu_metodo' => 'index'],
+            'delete_colors' => ['menu_controller' => 'delete-colors', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
         $this->data['sidebarActive'] = "list-colors"; 
 
         $loadView = new \Core\ConfigView("adms/Views/colors/viewColors", $this->data);

@@ -33,7 +33,6 @@
         function getResult(): bool
         {
             return $this->result;
-            var_dump($this->result);
         }
         public function index(string|int|null $page = null)
         {
@@ -52,10 +51,20 @@
                 
             }
 
+            $button = [
+                'order_types_pages' => ['menu_controller' => 'order-types-pages', 'menu_metodo' => 'index'],
+                'view_types_pages' => ['menu_controller' => 'view-types-pages', 'menu_metodo' => 'index'],
+                'edit_types_pages' => ['menu_controller' => 'edit-types-pages', 'menu_metodo' => 'index'],
+                'delete_types_pages' => ['menu_controller' => 'delete-types-pages', 'menu_metodo' => 'index']];
+    
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+                
+                
             $this->data['pag'] = $this->page;
             $this->data['sidebarActive'] = "list-types-pages"; 
 
-            $this->data['sidebarButton'] = "list-types-pages"; 
 
             $loadView = new \Core\ConfigView("adms/Views/typesPages/listTypesPages", $this->data);
             $loadView->loadView();

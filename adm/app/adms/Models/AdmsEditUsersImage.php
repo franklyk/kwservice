@@ -65,7 +65,7 @@ class AdmsEditUsersImage
         $viewUser = new \App\adms\Models\helper\AdmsRead();
         $viewUser->fullRead("SELECT usr.id, usr.image
 
-                                        FROM adms_users AS usrusr.
+                                        FROM adms_users AS usr
                                         INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
                                         WHERE usr.id=:id AND acl.order_level >:order_level 
                                         LIMIT :limit", "id={$this->id}&order_level={$_SESSION['order_level']}&limit=1");

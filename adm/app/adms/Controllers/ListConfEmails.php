@@ -41,10 +41,18 @@
                 $this->data['listConfEmails'] = [];
             }
 
-            $this->data['sidebarActive'] = 'list-conf-emails';
-
-            $this->data['sidebarButton'] = 'list-conf-emails';
-
+        
+            $button = [
+                'add_conf_emails' => ['menu_controller' => 'add-conf-emails', 'menu_metodo' => 'index'],
+                'view_conf_emails' => ['menu_controller' => 'view-conf-emails', 'menu_metodo' => 'index'],
+                'edit_conf_emails' => ['menu_controller' => 'edit-conf-emails', 'menu_metodo' => 'index'],
+                'delete_conf_emails' => ['menu_controller' => 'delete-conf-emails', 'menu_metodo' => 'index']];
+    
+                $listButton = new \App\adms\Models\helper\AdmsButton();
+                $this->data['button'] = $listButton->buttonPermission($button);
+    
+            $this->data['sidebarActive'] = "list-conf-emails";
+    
             // var_dump($this->data);
 
             $loadView = new \Core\ConfigView("adms/Views/confEmails/listConfEmails", $this->data);

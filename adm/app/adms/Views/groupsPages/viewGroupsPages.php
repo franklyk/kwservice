@@ -11,13 +11,23 @@
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Detalhes do Usuário</span>
+            <span class="title-content">Detalhes do Grupo de Páginas</span>
             <div class="top-list-right">
                 <?php
-                    echo "<a href='" . URLADM . "list-groups-pages/index' class='btn-info'>Listar</a> ";
-                    if (!empty($this->data['viewUser'])) {
-                        echo "<a href='" . URLADM . "edit-groups-pages/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar</a> ";
-                        echo "<a href='" . URLADM . "delete-groups-pages/index/" . $this->data['viewUser'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                    if($this->data['button']['list_groups_pages']){
+                        echo "<a href='" . URLADM . "list-groups-pages/index' class='btn-info'>Listar</a> ";
+                    }
+                    if (!empty($this->data['viewGroupsPages'])) {
+                        if($this->data['button']['edit_groups_pages']){
+
+                            echo "<a href='" . URLADM . "edit-groups-pages/index/" . $this->data['viewGroupsPages'][0]['id'] . "' class='btn-warning'>Editar</a> ";
+                        }
+
+                        if($this->data['button']['delete_groups_pages']){
+
+                            echo "<a href='" . URLADM . "delete-groups-pages/index/" . $this->data['viewGroupsPages'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                        }
+
                     }
                     ?>
             </div>

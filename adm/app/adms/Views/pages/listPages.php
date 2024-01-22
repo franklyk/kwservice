@@ -14,9 +14,14 @@
             <span class="title-content">Listar Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "add-pages/index' class='btn-success'>".ICON_ADD." Cadastrar</a> ";
-                echo "<a href='" .URLADM . "sync-pages-levels/index' class='btn-warning'>Sincronizar</a>";
+                    if($this->data['button']['add_pages']){
+                        echo "<a href='" . URLADM . "add-pages/index' class='btn-success'>".ICON_ADD." Cadastrar</a> ";
 
+                    }
+                    if($this->data['button']['sync_pages_levels']){
+                        echo "<a href='" .URLADM . "sync-pages-levels/index' class='btn-warning'> Sincronizar</a>";
+
+                    }
                 ?>
             </div>
         </div>
@@ -57,9 +62,18 @@
                                 <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
-                                    echo "<a href='" . URLADM . "view-pages/index/$id'>".ICON_VIEW." Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-pages/index/$id'>".ICON_EDIT." Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE." Apagar</a>";
+                                    if($this->data['button']['view_pages']){
+                                        echo "<a href='" . URLADM . "view-pages/index/$id'>".ICON_VIEW." Visualizar</a>";
+
+                                    }
+                                    if($this->data['button']['edit_pages']){
+                                        echo "<a href='" . URLADM . "edit-pages/index/$id'>".ICON_EDIT." Editar</a>";
+
+                                    }
+                                    if($this->data['button']['delete_pages']){
+                                        echo "<a href='" . URLADM . "delete-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE." Apagar</a>";
+
+                                    }
                                     ?>
                                 </div>
                             </div>

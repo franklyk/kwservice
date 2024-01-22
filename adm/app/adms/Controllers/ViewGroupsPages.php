@@ -56,6 +56,18 @@ class ViewGroupsPages
     }
     private function viewUser(): void
     {
+        
+        $button = [
+            'list_groups_pages' => ['menu_controller' => 'list-groups-pages', 'menu_metodo' => 'index'],
+            'edit_groups_pages' => ['menu_controller' => 'edit-groups-pages', 'menu_metodo' => 'index'],
+            'delete_groups_pages' => ['menu_controller' => 'delete-groups-pages', 'menu_metodo' => 'index']];
+
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
+
+            $this->data['sidebarActive'] = "list-groups-pages";
+
+
         $loadView = new \Core\ConfigView("adms/Views/groupsPages/viewGroupsPages", $this->data);
         $loadView->loadView();
     }

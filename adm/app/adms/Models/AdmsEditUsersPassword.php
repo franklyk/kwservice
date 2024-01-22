@@ -54,10 +54,15 @@ class AdmsEditUsersPassword
         $viewUser = new \App\adms\Models\helper\AdmsRead();
         $viewUser->fullRead("SELECT usr.id
                                     FROM adms_users AS usr
-                                    WHERE usr.id=:id 
-                                    INNER JOIN adms_access_levels AS acl ON acl.id=usr.adms_access_level_id
-                                    WHERE usr.id=:id AND acl.order_level >:order_level
-                                    LIMIT :limit", "id={$this->id}&order_level={$_SESSION['order_level']}&limit=1");
+                                    INNER JOIN adms_access_levels AS lev ON lev.id=usr.adms_access_level_id
+                                    WHERE usr.id=:id AND lev.order_level >:order_level
+                                    LIMIT :limit", "id={$this->id}&order_level=" .$_SESSION['order_level'] . "&limit=1");
+        /*$viewUser = new \App\adms\Models\helper\AdmsRead();
+        $viewUser->fullRead("SELECT usr.id
+                            FROM adms_users AS usr
+                            INNER JOIN adms_access_levels AS lev ON lev.id=usr.adms_access_level_id
+                            WHERE usr.id=:id AND lev.order_levels >:order_levels
+                            LIMIT :limit", "id={$this->id}&order_levels=" . $_SESSION['order_levels'] . "&limit=1");*/
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd) {
