@@ -23,8 +23,10 @@ if (isset($this->data['form'][0])) {
             <span class="title-content">Editar Página</span>
             <div class="top-list-right">
                 <?php
+                if($this->data['button']['list_pages']){}
                 echo "<a href='" . URLADM . "list-pages/index' class='btn-info'>".ICON_LIST."Listar</a> ";
                 if (isset($valorForm['id'])) {
+                    if($this->data['button']['view_pages']){}
                     echo "<a href='" . URLADM . "view-pages/index/" . $valorForm['id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a>";
                 }
                 ?>

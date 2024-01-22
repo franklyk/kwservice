@@ -9,16 +9,10 @@
     //Verifica se existe dados no formulário, se houver mantém os dados no INPUT
     if(isset($this->data['form'])){
         $valorForm = $this->data['form'];
-        // var_dump($this->data['form']);
     }
     if(isset($this->data['form'][0])){
         $valorForm = $this->data['form'][0];
-        // var_dump($this->data['form']);
     }
-    
-    //Criptografar a senha
-    //echo password_hash("123456a", PASSWORD_DEFAULT);
-    // var_dump($this->data['form']);
 
 ?>
 
@@ -28,10 +22,16 @@
         <div class="top-list">
             <span class="title-content">Editar Situação</span>
             <div class="top-list-right">
-                <?php
-                echo "<a href='" . URLADM . "list-sits-users/index' class='btn-info'>Listar</a> ";
-                if (isset($valorForm['id'])) {
-                    echo "<a href='" . URLADM . "view-sits-users/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                <?php 
+                if($this->data['button']['list_sits_users']){
+                    echo "<a href='" . URLADM . "list-sits-users/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+
+                }
+                if (isset($valorForm['id'])) { 
+                    if($this->data['button']['view_sits_users']){
+                        echo "<a href='" . URLADM . "view-sits-users/index/" . $valorForm['id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a> ";
+
+                    }
                 }
                 ?>
             </div>

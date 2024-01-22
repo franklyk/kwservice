@@ -15,10 +15,12 @@ if (isset($this->data['form'])) {
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Cadastrar Novo Nível</span>
+            <span class="title-content">Cadastrar Nível de Acesso</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                if($this->data['button']['list_access_levels']){
+                    echo "<a href='" . URLADM . "list-access-levels/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
                 ?>
             </div>
         </div>

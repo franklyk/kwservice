@@ -18,7 +18,8 @@
             <span class="title-content">Editar Imagem</span>
             <div class="top-list-right">
                 <?php 
-                    echo "<a href='" . URLADM ."view-profile/index/' class='btn-primary'>Perfil</a><br><br>";
+                if($this->data['button']['view_profile']){}
+                    echo "<a href='" . URLADM ."view-profile/index/' class='btn-primary'>".ICON_VIEW." Perfil</a> ";
                 ?>
 
             </div>

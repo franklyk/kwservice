@@ -24,10 +24,14 @@
         <div class="top-list">
             <span class="title-content">Editar Situação de Página</span>
             <div class="top-list-right">
-                <?php
-                echo "<a href='" . URLADM . "list-sits-pages/index' class='btn-info'>Listar</a> ";
-                if (isset($valorForm['id'])) {
-                    echo "<a href='" . URLADM . "view-sits-pages/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                <?php 
+                if($this->data['button']['list_sits_pages']){
+                    echo "<a href='" . URLADM . "list-sits-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
+                if (isset($valorForm['id'])) { 
+                    if($this->data['button']['view_sits_pages']){
+                        echo "<a href='" . URLADM . "view-sits-pages/index/" . $valorForm['id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a> ";
+                    }
                 }
                 ?>
             </div>

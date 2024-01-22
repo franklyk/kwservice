@@ -20,7 +20,9 @@
             <span class="title-content">Cadastrar E-mail</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>Listar</a> ";
+                if($this->data['button']['list_conf_emails']){
+                    echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
                 ?>
             </div>
         </div>

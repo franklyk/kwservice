@@ -39,6 +39,7 @@
             $button = [
                 'add_pages' => ['menu_controller' => 'add-pages', 'menu_metodo' => 'index'],
                 'sync_pages_levels' => ['menu_controller' => 'sync-pages-levels', 'menu_metodo' => 'index'],
+                'view_pages' => ['menu_controller' => 'view-pages', 'menu_metodo' => 'index'],
                 'list_pages' => ['menu_controller' => 'list-pages', 'menu_metodo' => 'index'],
                 'edit_pages' => ['menu_controller' => 'edit-pages', 'menu_metodo' => 'index'],
                 'delete_pages' => ['menu_controller' => 'delete-pages', 'menu_metodo' => 'index']];

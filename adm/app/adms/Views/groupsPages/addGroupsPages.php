@@ -18,7 +18,9 @@ if (isset($this->data['form'])) {
             <span class="title-content">Cadastrar Grupos Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-groups-pages/index' class='btn-info'>Listar</a> ";
+                if($this->data['button']['list_groups_pages']){
+                    echo "<a href='" . URLADM . "list-groups-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
                 ?>
             </div>
         </div>

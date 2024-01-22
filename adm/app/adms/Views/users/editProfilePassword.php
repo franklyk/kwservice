@@ -18,9 +18,11 @@
             <span class="title-content">Editar Senha</span>
             <div class="top-list-right">
                 <?php 
-                // echo "<a href='" . URLADM . "list-profile/index' class='btn-info'>Listar</a>";
                 if(isset($_SESSION['user_id'])){
-                    echo "<a href='" . URLADM ."view-profile/index/" . $_SESSION['user_id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                    if($this->data['button']['view_profile']){
+                        echo "<a href='" . URLADM ."view-profile/index/" . $_SESSION['user_id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a> ";
+
+                    }
                 }
                 ?>
 

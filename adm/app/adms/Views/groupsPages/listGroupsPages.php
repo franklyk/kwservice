@@ -15,7 +15,10 @@
             <span class="title-content">Listar Grupos de Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "add-groups-pages/index' class='btn-success'>".ICON_ADD." Cadastrar</a>";
+                if($this->data['button']['add_groups_pages']){
+                    echo "<a href='" . URLADM . "add-groups-pages/index' class='btn-success'>".ICON_ADD." Cadastrar</a>";
+                    
+                }
                 ?>
             </div>
         </div>
@@ -52,17 +55,17 @@
                                 class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
                             <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                 <?php
-                                if($this->data['button']['']){
-                                    echo "<a href='" . URLADM . "order-groups-pages/index/$id?pag=" . $this->data['pag'] . "'>".ICON_ORDER."-Ordem</a>";
+                                if($this->data['button']['order_groups_pages']){
+                                    echo "<a href='" . URLADM . "order-groups-pages/index/$id?pag=" . $this->data['pag'] . "'>".ICON_ORDER." Ordem</a>";
 
                                 }
-                                    if($this->data['button']['']){
+                                    if($this->data['button']['view_groups_pages']){
                                         echo "<a href='" . URLADM . "view-groups-pages/index/$id'>".ICON_VIEW." Visualizar</a>";
                                     }
-                                    if($this->data['button']['']){
+                                    if($this->data['button']['edit_groups_pages']){
                                         echo "<a href='" . URLADM . "edit-groups-pages/index/$id'>".ICON_EDIT." Editar</a>";
                                     }
-                                    if($this->data['button']['']){
+                                    if($this->data['button']['delete_groups_pages']){
                                         echo "<a href='" . URLADM . "delete-groups-pages/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>".ICON_DELETE." Apagar</a>";
                                     }
                                     ?>

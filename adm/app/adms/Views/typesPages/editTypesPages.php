@@ -24,9 +24,11 @@ if (isset($this->data['form'][0])) {
             <span class="title-content">Editar Tipos de Páginas</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-types-pages/index' class='btn-info'>Listar</a> ";
+                if($this->data['button']['list_types_pages']){}
+                echo "<a href='" . URLADM . "list-types-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";
                 if (isset($valorForm['id'])) {
-                    echo "<a href='" . URLADM . "view-types-pages/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a><br><br>";
+                    if($this->data['button']['view_types_pages']){}
+                    echo "<a href='" . URLADM . "view-types-pages/index/" . $valorForm['id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a> ";
                 }
                 ?>
             </div>

@@ -48,16 +48,14 @@
         private function viewEditProfPass() :void
         {
         
-            /*$button = [
-                'list_sits_users' => ['menu_controller' => 'list-sits-users', 'menu_metodo' => 'index'],
-                'edit_sits_users' => ['menu_controller' => 'edit-sits-users', 'menu_metodo' => 'index'],
-                'delete_sits_users' => ['menu_controller' => 'delete-sits-users', 'menu_metodo' => 'index']];
+            $button = [
+                'view_profile' => ['menu_controller' => 'view-profile', 'menu_metodo' => 'index']];
     
                 $listButton = new \App\adms\Models\helper\AdmsButton();
                 $this->data['button'] = $listButton->buttonPermission($button);
                 var_dump($this->data['button']);
     
-                $this->data['sidebarActive'] = "list-sits-users";*/
+                $this->data['sidebarActive'] = "list-users";
     
     
 

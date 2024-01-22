@@ -19,7 +19,10 @@ if(isset($this->data['form'][0])){
             <span class="title-content">Editar Perfil</span>
             <div class="top-list-right">
                 <?php 
-            echo "<a href='" . URLADM . "view-profile/index' class='btn-info'>Perfil</a>";
+                if($this->data['button']['view_profile']){
+                    echo "<a href='" . URLADM . "view-profile/index' class='btn-info'>".ICON_VIEW." Perfil</a> ";
+
+                }
             ?>
 
             </div>

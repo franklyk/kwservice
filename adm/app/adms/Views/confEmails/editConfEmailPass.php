@@ -22,11 +22,19 @@
             <span class="title-content">Editar Senha</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>Listar</a> ";
+                if($this->data['button']['list_conf_emails']){
+                    echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
                 if (isset($valorForm['id'])) {
-                    echo "<a href='" . URLADM . "view-conf-emails/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a> ";
-                    echo "<a href='" . URLADM . "edit-conf-emails/index/" . $valorForm['id'] . "' class='btn-warning'>Editar</a> ";
-                    echo "<a href='" . URLADM . "delete-conf-emails/index/" . $valorForm['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                    if($this->data['button']['view_conf_emails']){
+                        echo "<a href='" . URLADM . "view-conf-emails/index/" . $valorForm['id'] . "' class='btn-primary'>".ICON_VIEW." Visualizar</a> ";
+                    }
+                    if($this->data['button']['edit_conf_emails']){
+                        echo "<a href='" . URLADM . "edit-conf-emails/index/" . $valorForm['id'] . "' class='btn-warning'>".ICON_EDIT." Editar</a> ";
+                    }
+                    if($this->data['button']['delete_conf_emails']){
+                        echo "<a href='" . URLADM . "delete-conf-emails/index/" . $valorForm['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a> ";
+                    }
                 }
                 ?>
             </div>

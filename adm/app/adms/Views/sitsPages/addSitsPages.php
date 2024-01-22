@@ -16,7 +16,9 @@
             <span class="title-content">Cadastrar Situação de Página</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-sits-pages/index' class='btn-info'>Listar</a> ";
+                if($this->data['button']['list_sits_pages']){
+                    echo "<a href='" . URLADM . "list-sits-pages/index' class='btn-info'>".ICON_LIST." Listar</a> ";
+                }
                 ?>
             </div>
         </div>
