@@ -22,11 +22,11 @@
             <span class="title-content">Editar E-mail</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>Listar</a> ";
+                echo "<a href='" . URLADM . "list-conf-emails/index' class='btn-info'>".ICON_LIST." Listar</a> ";
                 if (isset($valorForm['id'])) {
                     echo "<a href='" . URLADM . "view-conf-emails/index/" . $valorForm['id'] . "' class='btn-primary'>Visualizar</a> ";
-                    echo "<a href='" . URLADM . "edit-conf-emails-password/index/" . $valorForm['id'] . "' class='btn-warning'>Editar Senha</a> ";
-                    echo "<a href='" . URLADM . "delete-conf-emails/index/" . $valorForm['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                    echo "<a href='" . URLADM . "edit-conf-emails-password/index/" . $valorForm['id'] . "' class='btn-warning'>".ICON_EDIT." Editar Senha</a> ";
+                    echo "<a href='" . URLADM . "delete-conf-emails/index/" . $valorForm['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>".ICON_DELETE." Apagar</a> ";
                 }
                 ?>
             </div>

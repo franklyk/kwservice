@@ -32,8 +32,9 @@
                 <tr>
                     <th class="list-head-content">ID</th>
                     <th class="list-head-content">Página</th>
-                    <th class="list-head-content table-sm-none">Ordem</th>
-                    <th class="list-head-content">Permissões</th>
+                    <th class="list-head-content table-md-none">Ordem</th>
+                    <th class="list-head-content table-md-none">Permissões</th>
+                    <th class="list-head-content table-md-none">Menu</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -41,17 +42,29 @@
                 foreach ($this->data['listPermission'] as $Permission) {
                     extract($Permission);
                 ?>
-                <tr >
+                <tr>
                     <td class="list-body-content"><?php echo $id; ?></td>
                     <td class="list-body-content"><?php echo $name_page; ?></td>
-                    <td class="list-body-content"><?php echo $order_level_page; ?></td>
-                    <td class="list-body-content">
+                    <td class="list-body-content table-md-none"><?php echo $order_level_page; ?></td>
+                    <td class="list-body-content table-md-none">
                         <?php 
                             if($permission == 1){
                                 echo "<a href='".URLADM."edit-permission/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-success'>Liberado</span></a>";
                             }else{
                                 echo "<a href='".URLADM."edit-permission/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-danger'>Bloqueado</span></a>";
                             }
+
+                        ?>
+                    </td>
+                    <td class="list-body-content table-md-none">
+                        <?php 
+
+                            if($print_menu == 1){
+                                echo "<a href='".URLADM."edit-print-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-success'>Liberado</span></a>";
+                            }else{
+                                echo "<a href='".URLADM."edit-print-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-danger'>Bloqueado</span></a>";
+                            }
+
                         ?>
                     </td>
                 </tr>

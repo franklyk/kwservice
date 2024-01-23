@@ -34,7 +34,7 @@
                 $deleteAccess->deleteAccess($this->id);
                 
             } else {
-                $_SESSION['msg'] = "<p style='color:#f00;'>Erro: Necessário selecionar uma cor!</p><br>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma cor!</p><br>";
             }
         }
        

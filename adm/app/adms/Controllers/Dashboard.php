@@ -40,6 +40,7 @@
 
             $countUsers = new \App\adms\Models\helper\AdmsMenu();
             $this->data['menu'] = $countUsers->itemMenu();
+            
             $this->data['sidebarActive'] = "dashboard";
             
 

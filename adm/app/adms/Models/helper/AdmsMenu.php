@@ -28,7 +28,7 @@ class AdmsMenu
                             WHERE ((lev_pgs.adms_access_level_id =:adms_access_level_id) 
                             AND (lev_pgs.permission = 1))
                             AND print_menu = 1
-                            ORDER BY lev_pgs.order_level_page ASC",
+                            ORDER BY lev_pgs.id ASC",
                             "adms_access_level_id=" . $_SESSION['adms_access_level_id']
                             );
         $this->resultBd = $listMenu->getResult();

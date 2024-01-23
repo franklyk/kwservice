@@ -70,7 +70,9 @@ class ViewUsers
             $listButton = new \App\adms\Models\helper\AdmsButton();
             $this->data['button'] = $listButton->buttonPermission($button);
 
-            // var_dump($this->data['button']);
+            $countUsers = new \App\adms\Models\helper\AdmsMenu();
+            $this->data['menu'] = $countUsers->itemMenu();
+
             $this->data['sidebarActive'] = "list-users";
 
         $loadView = new \Core\ConfigView("adms/Views/users/viewUser", $this->data);

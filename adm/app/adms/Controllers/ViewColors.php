@@ -64,6 +64,9 @@ class ViewColors
             $listButton = new \App\adms\Models\helper\AdmsButton();
             $this->data['button'] = $listButton->buttonPermission($button);
 
+            $countUsers = new \App\adms\Models\helper\AdmsMenu();
+            $this->data['menu'] = $countUsers->itemMenu();
+
         $this->data['sidebarActive'] = "list-colors"; 
 
         $loadView = new \Core\ConfigView("adms/Views/colors/viewColors", $this->data);

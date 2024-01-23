@@ -14,7 +14,7 @@ if(!defined('KLKSK8')){
  *
  * @author Franklin
  */
-class AdmsEditPermission
+class AdmsEditPrintMenu
 {
 
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
@@ -45,18 +45,18 @@ class AdmsEditPermission
         return $this->resultBd;
     }
 
-    public function editPermission(int $id): void
+    public function editPrintMenu(int $id): void
     {
         $this->id = $id;
 
-        $viewPermissão = new \App\adms\Models\helper\AdmsRead();
-        $viewPermissão->fullRead(
-            "SELECT lev_pag.id, lev_pag.permission
+        $viewPrintMenu = new \App\adms\Models\helper\AdmsRead();
+        $viewPrintMenu->fullRead(
+            "SELECT lev_pag.id, lev_pag.print_menu
                             FROM adms_levels_pages lev_pag
                             INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id
                             LEFT JOIN adms_pages AS pgs ON pgs.id=lev_pag.adms_page_id
                             WHERE lev_pag.id =:id
-                            AND lev.order_level >:order_level 
+                            AND lev.order_level >:order_level
                             AND (((SELECT permission 
                             FROM adms_levels_pages
                             WHERE adms_page_id =lev_pag.adms_page_id
@@ -66,11 +66,11 @@ class AdmsEditPermission
             "id={$this->id}&order_level=".$_SESSION['order_level']."&limit=1"
         );
 
-        $this->resultBd = $viewPermissão->getResult();
+        $this->resultBd = $viewPrintMenu->getResult();
         if ($this->resultBd) {
             $this->edit();
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma permissão válida!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar um ítem de menu!</p>";
             $this->result = false;
         }
     }
@@ -78,10 +78,10 @@ class AdmsEditPermission
     private function edit(): void
     {
         
-        if($this->resultBd[0]['permission'] == 1){
-            $this->data['permission'] = 2;
+        if($this->resultBd[0]['print_menu'] == 1){
+            $this->data['print_menu'] = 2;
         }else{
-            $this->data['permission'] = 1;
+            $this->data['print_menu'] = 1;
         }
         $this->data['modified'] = date("Y-m-d H:i:s");
 
@@ -89,10 +89,10 @@ class AdmsEditPermission
         $upPrintMenu->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->id}");
 
         if ($upPrintMenu->getResult()) {
-            $_SESSION['msg'] = "<p class='alert-success'>Permissão editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Ítem de menu editado com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Permissão não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Ítem de menu editado não editado com sucesso!</p>";
             $this->result = false;
         }
     }
