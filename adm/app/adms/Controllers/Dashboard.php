@@ -30,20 +30,21 @@
         {
 
             $countUsers = new \App\adms\Models\AdmsDashboard();
-        $countUsers->countUsers();
-        if ($countUsers->getResult()) {
-            // var_dump($countUsers->getResultBd());
-            $this->data['countUsers'] = $countUsers->getResultBd();
-        } else {
-            $this->data['countUsers'] = false;
-        }
+            $countUsers->countUsers();
+            if ($countUsers->getResult()) {
+                // var_dump($countUsers->getResultBd());
+                $this->data['countUsers'] = $countUsers->getResultBd();
+            } else {
+                $this->data['countUsers'] = false;
+            }
 
+            $countUsers = new \App\adms\Models\helper\AdmsMenu();
+            $this->data['menu'] = $countUsers->itemMenu();
+            $this->data['sidebarActive'] = "dashboard";
+            
 
-        $this->data['sidebarActive'] = "dashboard";
-        
-
-        $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
-        $loadView->loadView();
+            $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
+            $loadView->loadView();
         }
     }
 

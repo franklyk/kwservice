@@ -107,8 +107,7 @@
         
         private function verifyLogin() :void
         {
-            if((isset($_SESSION['user_id'])) and (isset($_SESSION['user_name'])) and (isset($_SESSION['user_email'])) and ($_SESSION['adms_access_level_id']) and ($_SESSION['order_level'])){
-                // $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
+            if((isset($_SESSION['user_id'])) and (isset($_SESSION['user_name'])) and (isset($_SESSION['user_email'])) and (isset($_SESSION['adms_access_level_id'])) and (isset($_SESSION['order_level']))){
                 $this->searchLevelPage();
             }else{
                 $_SESSION['msg'] = "<p class='alert-danger'>Necessário realizar o login para acessar esta página!</p><br>";
