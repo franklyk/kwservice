@@ -39,10 +39,15 @@ class AdmsDeleteAccessLevels
         $this->id = (int) $id;
 
         if(($this->viewAccess()) and ($this->checkStatusLevels())){
-            $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteSitUser->exeDelete("adms_access_levels", "WHERE id =:id", "id={$this->id}");
+            
+
+            /*$deleteLevelPage= new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPage->exeDelete("adms_level_pages", "WHERE adms_access_level_id  =:adms_access_level_id ", "adms_access_level_id={$this->id}");*/
+            
+            $deleteAccessLevels = new \App\adms\Models\helper\AdmsDelete();
+            $deleteAccessLevels->exeDelete("adms_access_levels", "WHERE id =:id", "id={$this->id}");
     
-            if($deleteSitUser->getResult()){
+            if($deleteAccessLevels->getResult()){
                 $_SESSION['msg'] = "<p class='alert-success'>Nível de acesso apagado com sucesso!</p><br>";
                 $this->result = true;
             }else{

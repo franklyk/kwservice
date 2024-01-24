@@ -41,11 +41,11 @@
 
 
                 //Envia os dados do formulário para a AdmsnewUser
-                $createColor = new \App\adms\Models\AdmsAddPages();
-                $createColor->create($this->dataForm);
+                $createPage = new \App\adms\Models\AdmsAddPages();
+                $createPage->create($this->dataForm);
 
                 //Recebe os dados que vêm da AdmsLogin
-                if($createColor->getResult()){
+                if($createPage->getResult()){
                     $urlRedirect = URLADM . "list-pages/index";
                     header("Location: $urlRedirect");
                 }else{

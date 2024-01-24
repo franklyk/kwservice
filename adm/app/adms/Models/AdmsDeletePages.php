@@ -39,6 +39,10 @@ class AdmsDeletePages
         $this->id = (int) $id;
 
         if($this->viewPages()){
+
+            $deleteLevelPage= new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPage->exeDelete("adms_level_pages", "WHERE adms_pages_id =:adms_pages_id", "adms_pages_id={$this->id}");
+
             $deletePage= new \App\adms\Models\helper\AdmsDelete();
             $deletePage->exeDelete("adms_pages", "WHERE id =:id", "id={$this->id}");
             
@@ -68,7 +72,6 @@ class AdmsDeletePages
                             LIMIT :limit", 
                             "id={$this->id}&limit=1");
 
-        var_dump($viewPage);
         $this->resultBd = $viewPage->getResult();
         if ($this->resultBd) {
             return true;

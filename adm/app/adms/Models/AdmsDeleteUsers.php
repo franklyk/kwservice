@@ -43,7 +43,6 @@ class AdmsDeleteUsers
     public function deleteUser(int $id): void
     {
         $this->id = (int) $id;
-        var_dump($this->id);
 
         if($this->viewUser()){
             $deleteUser = new \App\adms\Models\helper\AdmsDelete();

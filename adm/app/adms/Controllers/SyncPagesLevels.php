@@ -18,9 +18,6 @@
 
     class SyncPagesLevels
     {
-        /** @var array|string|null $data Recebe os dados que serão enviados para a VIEW */
-        private array|string|null $data;
-
         /**Metodo SyncPagesLevels
          * 
          * Instanciar a classe responsavel por sincronizar o nível de acesso e a página

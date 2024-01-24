@@ -39,10 +39,15 @@ class AdmsDeleteGroupsPages
         $this->id = (int) $id;
 
         if(($this->viewGroupsPages()) and ($this->checkStatusUser())){
-            $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteSitUser->exeDelete("adms_groups_pgs", "WHERE id =:id", "id={$this->id}");
+            
+
+            /*$deleteLevelPage= new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPage->exeDelete("adms_level_pages", "WHERE adms_pages_id =:adms_pages_id", "adms_pages_id={$this->id}");*/
+            
+            $deleteGroupPages = new \App\adms\Models\helper\AdmsDelete();
+            $deleteGroupPages->exeDelete("adms_groups_pgs", "WHERE id =:id", "id={$this->id}");
     
-            if($deleteSitUser->getResult()){
+            if($deleteGroupPages->getResult()){
                 $_SESSION['msg'] = "<p class='alert-success'>Grupo de páginas apagado com sucesso!</p><br>";
                 $this->result = true;
             }else{

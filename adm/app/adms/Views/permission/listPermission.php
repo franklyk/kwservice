@@ -35,6 +35,7 @@
                     <th class="list-head-content table-md-none">Ordem</th>
                     <th class="list-head-content table-md-none">Permissões</th>
                     <th class="list-head-content table-md-none">Menu</th>
+                    <th class="list-head-content table-md-none">Ações</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -43,9 +44,15 @@
                     extract($Permission);
                 ?>
                 <tr>
-                    <td class="list-body-content"><?php echo $id; ?></td>
-                    <td class="list-body-content"><?php echo $name_page; ?></td>
-                    <td class="list-body-content table-md-none"><?php echo $order_level_page; ?></td>
+                    <td class="list-body-content">
+                        <?php echo $id; ?>
+                    </td>
+                    <td class="list-body-content">
+                        <?php echo $name_page; ?>
+                    </td>
+                    <td class="list-body-content table-md-none">
+                        <?php  echo $order_level_page; ?>
+                    </td>
                     <td class="list-body-content table-md-none">
                         <?php 
                             if($permission == 1){
@@ -66,6 +73,35 @@
                             }
 
                         ?>
+                    </td>
+                    <td class="list-body-content table-md-none">
+                        <button onclick="actionDropdown(<?php echo $id; ?>)"
+                            class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
+                        <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
+                            <?php
+                                echo "<a href='" . URLADM . "order-page-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'>". ICON_ORDER." Ordem</a>";
+
+
+                                /*if($this->data['button']['order_access_levels']){
+                                    echo "<a href='" . URLADM . "order-access-levels/index/$id?pag=" . $this->data['pag'] . "'>". ICON_ORDER." Ordem</a>";
+                                }
+                                if($this->data['button']['list_permission']){
+                                    echo "<a href='" . URLADM . "list-permission/index?level=$id'>". ICON_PERMISSION." Permissão</a>";
+                                }
+                                if($this->data['button']['view_access_levels']){
+                                    echo "<a href='" . URLADM . "view-access-levels/index/$id'>". ICON_VIEW." Visualizar</a>";
+
+                                }
+                                if($this->data['button']['edit_access_levels']){
+                                    echo "<a href='" . URLADM . "edit-access-levels/index/$id'>". ICON_EDIT." Editar</a>";
+
+                                }
+                                if($this->data['button']['delete_access_levels']){
+                                    echo "<a href='" . URLADM . "delete-access-levels/index/$id' onclick='return confirm(\"Tem certeza que deseja excuir este Registro?\")'>". ICON_DELETE." Apagar</a>";
+
+                                }*/
+                            ?>
+                        </div>
                     </td>
                 </tr>
                 <?php

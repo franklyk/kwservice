@@ -49,19 +49,15 @@ class AdmsAddPages
     {
         
         $this->data = $data;
-        var_dump($this->data);
 
         $this->dataExitVal['icon'] = $this->data['icon'];
         $this->dataExitVal['obs'] = $this->data['obs'];
-        var_dump($this->dataExitVal);
 
         unset($this->data['icon'], $this->data['obs']);
-        var_dump($this->data);
 
         
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
-        var_dump($valEmptyField);
 
         if ($valEmptyField->getResult()) {
             $this->valInput();
@@ -105,13 +101,12 @@ class AdmsAddPages
         $this->data['obs'] = $this->dataExitVal['obs'];
         
         $this->data['created'] = date("Y-m-d H:i:s");
-        var_dump($this->data);
 
 
-        $createColor = new \App\adms\Models\helper\AdmsCreate();
-        $createColor->exeCreate("adms_pages", $this->data);
+        $createPage = new \App\adms\Models\helper\AdmsCreate();
+        $createPage->exeCreate("adms_pages", $this->data);
 
-        if ($createColor->getResult()) {
+        if ($createPage->getResult()) {
             $_SESSION['msg'] = "<p class='alert-success'>Página cadastrada com sucesso!</p>";
             $this->result = true;
         } else {

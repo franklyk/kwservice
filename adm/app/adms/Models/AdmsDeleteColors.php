@@ -39,10 +39,16 @@ class AdmsDeleteColors
         $this->id = (int) $id;
 
         if(($this->viewColor()) and ($this->checkStatusUser())){
-            $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteSitUser->exeDelete("adms_color", "WHERE id =:id", "id={$this->id}");
+            
+
+            /*$deleteLevelPage= new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPage->exeDelete("adms_level_pages", "WHERE adms_pages_id =:adms_pages_id", "adms_pages_id={$this->id}");*/
+            
+           
+            $deleteColor = new \App\adms\Models\helper\AdmsDelete();
+            $deleteColor->exeDelete("adms_color", "WHERE id =:id", "id={$this->id}");
     
-            if($deleteSitUser->getResult()){
+            if($deleteColor->getResult()){
                 $_SESSION['msg'] = "<p class='alert-success'>Cor apagada com sucesso!</p><br>";
                 $this->result = true;
             }else{
@@ -61,10 +67,10 @@ class AdmsDeleteColors
     private function viewColor(): bool
     {
 
-        $viewcolor = new \App\adms\Models\helper\AdmsRead();
-        $viewcolor->fullRead("SELECT id FROM adms_color WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewColor = new \App\adms\Models\helper\AdmsRead();
+        $viewColor->fullRead("SELECT id FROM adms_color WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
 
-        $this->resultBd = $viewcolor->getResult();
+        $this->resultBd = $viewColor->getResult();
         if ($this->resultBd) {
             return true;
         } else {

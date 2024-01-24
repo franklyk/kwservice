@@ -39,6 +39,11 @@ class AdmsDeleteSitsPages
         $this->id = (int) $id;
 
         if(($this->viewSitsPages()) and ($this->checkStatusPages())){
+
+           /*$deleteLevelPage= new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPage->exeDelete("adms_level_pages", "WHERE adms_pages_id =:adms_pages_id", "adms_pages_id={$this->id}");*/
+
+           
             $deleteSitPage = new \App\adms\Models\helper\AdmsDelete();
             $deleteSitPage->exeDelete("adms_sits_pgs", "WHERE id =:id", "id={$this->id}");
     

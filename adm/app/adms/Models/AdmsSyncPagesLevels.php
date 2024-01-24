@@ -171,6 +171,6 @@ class AdmsSyncPagesLevels
         if(!$this->resultBdLastOrder){
             $this->resultBdLastOrder[0]['order_level_page'] = 0;
         }
-        // var_dump($this->resultBdLastOrder);
+        
     }
 }

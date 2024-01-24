@@ -39,6 +39,11 @@ class AdmsDeleteConfEmails
         $this->id = (int) $id;
 
         if($this->viewConfEmail()){
+            
+
+            /*$deleteLevelPage= new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPage->exeDelete("adms_level_pages", "WHERE adms_pages_id =:adms_pages_id", "adms_pages_id={$this->id}");*/
+            
             $deleteConfEmail = new \App\adms\Models\helper\AdmsDelete();
             $deleteConfEmail->exeDelete("adms_confs_emails", "WHERE id=:id", "id={$this->id}");
     

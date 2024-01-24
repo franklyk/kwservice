@@ -39,10 +39,12 @@ class AdmsDeleteTypesPages
         $this->id = (int) $id;
 
         if(($this->viewTypesPages()) and ($this->checkStatusUser())){
-            $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
-            $deleteSitUser->exeDelete("adms_type_pgs", "WHERE id =:id", "id={$this->id}");
+
+           
+            $deleteTypesPages = new \App\adms\Models\helper\AdmsDelete();
+            $deleteTypesPages->exeDelete("adms_type_pgs", "WHERE id =:id", "id={$this->id}");
     
-            if($deleteSitUser->getResult()){
+            if($deleteTypesPages->getResult()){
                 $_SESSION['msg'] = "<p class='alert-success'>Tipo de páginas apagado com sucesso!</p><br>";
                 $this->result = true;
             }else{
