@@ -22,6 +22,9 @@ class AdmsNewUser
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result;
 
+    /** @var array|null $resultBD Recebe o valor retornado do banco de dados*/
+    private array|null $resultBd;
+
     /** @var string $fromEmail Recebe o e-mail do remetente */
     private string $fromEmail;
 
@@ -103,21 +106,43 @@ class AdmsNewUser
      */
     private function add(): void
     {
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
-        $this->data['user'] = $this->data['email'];
-        $this->data['conf_email'] = password_hash($this->data['password']. date("Y-m-d H-i-s"), PASSWORD_DEFAULT);
-        $this->data['created'] = date("Y-m-d H:i:s");
+        if($this->accessLevel()){
 
-        $createUser = new \App\adms\Models\helper\AdmsCreate();
-        $createUser->exeCreate("adms_users", $this->data);
+            $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+            $this->data['user'] = $this->data['email'];
+            $this->data['conf_email'] = password_hash($this->data['password']. date("Y-m-d H-i-s"), PASSWORD_DEFAULT);
+            $this->data['created'] = date("Y-m-d H:i:s");
 
-        if ($createUser->getResult()) {
-            $_SESSION['msg'] = "<p class='alert-success'>Usuário cadastrado com sucesso!</p>";
-            $this->result = true;
-            $this->sendEmail();
-        } else {
+            $createUser = new \App\adms\Models\helper\AdmsCreate();
+            $createUser->exeCreate("adms_users", $this->data);
+
+            if ($createUser->getResult()) {
+                $_SESSION['msg'] = "<p class='alert-success'>Usuário cadastrado com sucesso!</p>";
+                $this->result = true;
+                $this->sendEmail();
+            } else {
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não cadastrado com sucesso!</p>";
+                $this->result = false;
+            }
+        }else{
             $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não cadastrado com sucesso!</p>";
             $this->result = false;
+        }
+
+    }
+
+    private function accessLevel(): bool
+    {
+        $viewAccessLevel = new \App\adms\Models\helper\AdmsRead();
+        $viewAccessLevel->fullRead("SELECT adms_access_level_id, adms_sits_user_id FROM adms_levels_forms ORDER BY id ASC LIMIT :limit", "limit=1");
+        $this->resultBd = $viewAccessLevel->getResult();
+        var_dump($this->resultBd);
+        if($this->resultBd){
+            $this->data['adms_access_level_id'] = $this->resultBd[0]['adms_access_level_id'];
+            $this->data['adms_sits_user_id'] = $this->resultBd[0]['adms_sits_user_id'];
+            return true;
+        }else{
+            return false;
         }
     }
 

@@ -57,7 +57,7 @@
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
                 <div class="column btn-complete">
-                    <button type="submit" name="SendEditUser" class="btn btn-warning " value="Salvar">Salvar</button>
+                    <button type="submit" name="SendEditProfPass" class="btn btn-warning " value="Salvar">Salvar</button>
                 </div>
             </form>
         </div>

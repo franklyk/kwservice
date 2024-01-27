@@ -49,7 +49,7 @@ class AdmsEditProfile
     public function viewProfile(): void
     {
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id, name, nickname, email,  user
+        $viewUser->fullRead("SELECT id, name, nickname, email, user
                                                     FROM adms_users WHERE id=:id 
                                                     LIMIT :limit", "id=" . $_SESSION['user_id'] ."&limit=1");
 
@@ -100,7 +100,7 @@ class AdmsEditProfile
 
         $this->data['nickname'] = $this->dataExitVal['nickname'];
         
-        $this->result = false;
+        // $this->result = false;
         $upUser = new \App\adms\Models\helper\AdmsUpdate();
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id=" . $_SESSION['user_id']);
 

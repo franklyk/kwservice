@@ -68,7 +68,7 @@ class ViewConfEmails
             $this->data['menu'] = $countUsers->itemMenu();
 
 
-            $this->data['sidebarActive'] = "list-colors";
+            $this->data['sidebarActive'] = "list-conf-emails";
 
         $loadView = new \Core\ConfigView("adms/Views/confEmails/viewConfEmails", $this->data);
         $loadView->loadView();
