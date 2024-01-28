@@ -56,7 +56,8 @@ class AdmsEditPrintMenu
                             INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id
                             LEFT JOIN adms_pages AS pgs ON pgs.id=lev_pag.adms_page_id
                             WHERE lev_pag.id =:id
-                            AND lev.order_level >=:order_level
+                            AND (lev.order_level >:order_level 
+                            OR (lev.order_level = ({$_SESSION['adms_access_level_id']}) = 1))
                             AND (((SELECT permission 
                             FROM adms_levels_pages
                             WHERE adms_page_id =lev_pag.adms_page_id

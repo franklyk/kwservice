@@ -1024,6 +1024,33 @@ if (formAccessLevels) {
     })
 
 }
+
+const formItemMenu = document.getElementById("form-item-menu");
+if (formItemMenu) {
+    formItemMenu.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo Nome
+        var name = document.querySelector('#name').value;
+        if (name === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Nome!</p>";
+
+            return;
+        }
+        
+        //Recebe o valor do campo Nome
+        var icon = document.querySelector('#icon').value;
+        if (icon === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Ícone!</p>";
+
+            return;
+        }
+    })
+
+}
 /* Inicio Dropdown Navbar */
 let notification = document.querySelector(".notification");
 let avatar = document.querySelector(".avatar");

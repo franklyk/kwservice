@@ -31,7 +31,7 @@
 
             define('ICON_PERMISSION', '<i class="icon fa-solid fa-house-lock"></i>');
 
-            define('ICON_SETTINGS', '<i class="fa-solid fa-screwdriver-wrench"></i>');
+            define('ICON_SETTINGS', '<i class="fa-solid fa-gears"></i>');
 
             define('ICON_ADD', '<i class="fa-solid fa-plus"></i>');
 

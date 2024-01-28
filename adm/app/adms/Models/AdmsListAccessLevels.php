@@ -68,13 +68,15 @@ class AdmsListAccessLevels
         $pagination->condition($this->page, $this->limitResult);
         $pagination->pagination("SELECT COUNT(id) AS num_result 
                                     FROM adms_access_levels 
-                                    WHERE order_level >=:order_level", "order_level=" . $_SESSION['order_level']);
+                                    WHERE order_level >:order_level
+                                    OR ({$_SESSION['order_level'] } = 1)", "order_level=" . $_SESSION['order_level']);
         $this->resultPg = $pagination->getResult();
 
         $listAccess = new \App\adms\Models\helper\AdmsRead();
         $listAccess->fullRead("SELECT id, name, order_level 
                     FROM adms_access_levels
-                    WHERE order_level >=:order_level
+                    WHERE order_level >:order_level
+                    OR ({$_SESSION['order_level'] } = 1)
                     ORDER BY order_level ASC
                     LIMIT :limit OFFSET :offset", "order_level={$_SESSION['order_level']}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 

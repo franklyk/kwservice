@@ -130,9 +130,9 @@ class AdmsListPermission
         $viewAccessLevels->fullRead(
                             "SELECT name 
                             FROM adms_access_levels
-                            WHERE id=:id
+                            WHERE id=:id AND order_level >=:order_level
                             LIMIT :limit",
-            "id={$this->level}&limit=1");
+                            "id={$this->level}&order_level=" . $_SESSION['order_level'] . "&limit=1");
 
         $this->resultBdLevel = $viewAccessLevels->getResult();
         if ($this->resultBdLevel) {

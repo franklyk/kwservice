@@ -73,7 +73,6 @@ class AdmsSyncPagesLevels
 
         $this->resultBdLevels = $listLevel->getResult();
         if ($this->resultBdLevels) {
-            
             $this->listPages();
         } else {
             $_SESSION['msg'] = "<p class='alert-danger'>Erro 006: Nível de acesso não encontrado!</p>";
@@ -163,7 +162,7 @@ class AdmsSyncPagesLevels
         $searchLastOrder = new \App\adms\Models\helper\AdmsRead();        
         $searchLastOrder->fullRead("SELECT order_level_page, adms_access_level_id 
                                     FROM adms_levels_pages
-                                    WHERE adms_access_level_id=:adms_access_level_id
+                                    WHERE adms_access_level_id =:adms_access_level_id
                                     ORDER BY order_level_page DESC
                                     LIMIT :limit", "adms_access_level_id={$this->levelId}&limit=1");
 
