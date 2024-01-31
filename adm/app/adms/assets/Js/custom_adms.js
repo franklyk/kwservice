@@ -1118,4 +1118,16 @@ for (i = 0; i < dropdownSidebar.length; i++) {
         }
     });
 }
+/* Inicio dropdown sidebar ativo */
+
+var sidebarNav = document.getElementsByClassName("sidebar-nav");
+
+for(var i = 0; i < sidebarNav.length; i++){
+    if(sidebarNav[i].classList.contains("active")){
+        document.querySelector(".btn-" + sidebarNav[i].classList[1]).classList.add("active");
+        document.querySelector(".cont-" + sidebarNav[i].classList[1]).classList.add("active");
+    }
+}
+
+/* Fim dropdown sidebar ativo */
 /* Fim dropdown sidebar */

@@ -43,7 +43,7 @@ class ViewLevelsForms
             'edit_levels_forms' => ['menu_controller' => 'edit-levels-forms', 'menu_metodo' => 'index']];
             $listButton = new \App\adms\Models\helper\AdmsButton();
             $this->data['button'] = $listButton->buttonPermission($button);
-            var_dump($this->data['button']);
+            // var_dump($this->data['button']);
 
             $countUsers = new \App\adms\Models\helper\AdmsMenu();
             $this->data['menu'] = $countUsers->itemMenu();

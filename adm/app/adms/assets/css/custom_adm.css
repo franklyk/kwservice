@@ -138,7 +138,7 @@ body {
     position: sticky;
     top: 0px;
     transition: 0.3s width ease-in-out;
-    width: 250px;
+    width: 60px;
     z-index: 1;
 }
 @media(max-width: 768px) {
@@ -329,7 +329,7 @@ body {
 }
 
 .table-list .list-head .list-head-content {
-    background-color: var(--main-color);
+    background-color: var(--info-color-second);
     color: var(--fourth-bg-color);
     padding: 10px;
 }
@@ -337,7 +337,7 @@ body {
 .table-list .list-body .list-body-content {
     /* background-color: var(--fourth-color); */
     color: var(--fourth-bg-color);
-    padding: 8px;
+    /* padding: 8px; */
 }
 
 .table-list .list-body tr:hover {

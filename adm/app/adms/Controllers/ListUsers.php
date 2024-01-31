@@ -82,8 +82,17 @@
             $listButton = new \App\adms\Models\helper\AdmsButton();
             $this->data['button'] = $listButton->buttonPermission($button);
 
-            $countUsers = new \App\adms\Models\helper\AdmsMenu();
-            $this->data['menu'] = $countUsers->itemMenu();
+            
+            $listMenu = new \App\adms\Models\helper\AdmsMenu();
+            $this->data['menu'] = $listMenu->itemMenu();
+
+            // var_dump($this->data['menu']);
+
+            // $listDropdown = new \App\adms\Models\helper\AdmsMenu();
+            // $this->data['dropdown'] = $listDropdown->itemDropdown();
+            
+            // var_dump($this->data['dropdown']);
+            
 
             $this->data['sidebarActive'] = "list-users"; 
 

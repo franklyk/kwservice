@@ -13,7 +13,7 @@
 <div class="wrapper">
     <div class="row">
         <div class="top-list">
-            <span class="title-content">Detalhes da Cor</span>
+            <span class="title-content">Detalhes do Nível de Acesso</span>
             <div class="top-list-right">
                 <?php
                 if($this->data['button']['edit_levels_forms']){

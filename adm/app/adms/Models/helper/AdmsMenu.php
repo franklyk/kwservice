@@ -21,58 +21,25 @@ class AdmsMenu
     public function itemMenu(): array|null|bool
     {
         $listMenu = new \App\adms\Models\helper\AdmsRead();
-        $listMenu->fullRead("SELECT menu.id menu_id, menu.name menu_name, menu.icon icon_menu FROM adms_items_menus AS menu
-                            ");
+        $listMenu->fullRead(
+            "SELECT lev_pag.id AS id_lev_pag, lev_pag.dropdown, lev_pag.adms_page_id,
+                        pag.id AS id_pag, pag.menu_controller, pag.menu_metodo, pag.name_page, pag.icon,
+                        itm_men.id AS id_itm_men, itm_men.name name_itm_men, itm_men.icon icon_itm_men
+                        FROM adms_levels_pages AS lev_pag
+                        INNER JOIN adms_pages AS pag ON pag.id=lev_pag.adms_page_id
+                        INNER JOIN adms_items_menus AS itm_men ON itm_men.id=lev_pag.adms_items_menu_id 
+                        WHERE ((lev_pag.adms_access_level_id =:adms_access_level_id) 
+                        AND (lev_pag.permission = 1))
+                        AND print_menu = 1
+                        ORDER BY itm_men.order_item_menu, lev_pag.order_level_page ASC",
+            "adms_access_level_id=" . $_SESSION['adms_access_level_id']
+        );
 
-                            /* SELECT lev_pgs.id AS id_lev_pgs, lev_pgs.dropdown, lev_pgs.adms_page_id, lev_pgs.adms_items_menu_id,
-                            pgs.id AS id_pgs, pgs.menu_controller, pgs.menu_metodo, pgs.name_page, pgs.icon,
-                            menu.id AS id_menu, menu.name AS name_menu, menu.icon AS icon_menu
-                            FROM adms_levels_pages AS lev_pgs
-                            INNER JOIN adms_pages AS pgs ON pgs.id=lev_pgs.adms_page_id
-                            INNER JOIN adms_items_menus as menu ON menu.id=lev_pgs.adms_items_menu_id
-                            WHERE ((lev_pgs.adms_access_level_id =:adms_access_level_id) 
-                            AND (lev_pgs.permission = 1))
-                            AND print_menu = 1
-                            ORDER BY menu.order_item_menu, lev_pgs.order_level_page ASC
-                            ",
-                            "adms_access_level_id=" . $_SESSION['adms_access_level_id'] */
         $this->resultBd = $listMenu->getResult();
-
-
-        if($this->resultBd){
+        if ($this->resultBd) {
             return $this->resultBd;
-
-        }else{
+        } else {
             return false;
-
-        }
-
-    }
-    public function itemDropdown(): array|null|bool
-    {
-
-        $listDropDown = new \App\adms\Models\helper\AdmsRead();
-        $listDropDown->fullRead("SELECT pgs.id id_pgs, pgs.menu_controller, pgs.menu_metodo, pgs.name_page, pgs.icon, lev_pgs.print_menu, lev_pgs.dropdown, lev_pgs.adms_items_menu_id, lev_pgs.adms_access_level_id
-                                FROM adms_pages AS pgs
-                                INNER JOIN adms_levels_pages AS lev_pgs ON lev_pgs.adms_page_id=pgs.id
-                                INNER JOIN adms_items_menus AS menu ON menu.order_item_menu=lev_pgs.adms_items_menu_id
-                                WHERE print_menu = 1 
-                                AND permission = 1 
-                                AND pgs.adms_groups_pgs_id = 1
-                                OR pgs.adms_groups_pgs_id = 8
-                                OR pgs.adms_groups_pgs_id = 7
-                                AND lev_pgs.adms_access_level_id =:adms_access_level_id
-                                ORDER BY lev_pgs.adms_items_menu_id ASC",
-                                "adms_access_level_id=" . $_SESSION['adms_access_level_id']
-                                );
-        $this->resultBd = $listDropDown->getResult();
-        
-        if($this->resultBd){
-            return $this->resultBd;
-
-        }else{
-            return false;
-
         }
     }
 
