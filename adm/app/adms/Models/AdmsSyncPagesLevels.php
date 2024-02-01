@@ -37,6 +37,9 @@ class AdmsSyncPagesLevels
 
     /** @var array|null $resultBdLastOrder Recebe o valor retornado do banco de dados*/
     private array|null $resultBdLastOrder;
+    
+    /** @var array|null $resultBdLevelDefault Recebe o valor retornado do banco de dados*/
+    private array|null $resultBdLevelDefault;
 
     /** @var string|null $levelId Recebe o id do nível de acesso */
     private string|null $levelId;
@@ -139,6 +142,8 @@ class AdmsSyncPagesLevels
     {
         $this->searchLastOrder();
         $this->dataLevelPage['permission'] = (($this->levelId == 1) OR ($this->publish == 1)) ? 1 : 2;
+        var_dump($this->levelId);
+        $this->searchLevelDefault();
         $this->dataLevelPage['order_level_page'] = $this->resultBdLastOrder[0]['order_level_page'] + 1;
         $this->dataLevelPage['adms_access_level_id'] = $this->levelId;
         $this->dataLevelPage['adms_page_id'] = $this->pageId;
@@ -159,17 +164,36 @@ class AdmsSyncPagesLevels
 
     private function searchLastOrder(): void
     {
-        $searchLastOrder = new \App\adms\Models\helper\AdmsRead();        
-        $searchLastOrder->fullRead("SELECT order_level_page, adms_access_level_id 
+        $viewLastOrder = new \App\adms\Models\helper\AdmsRead();        
+        $viewLastOrder->fullRead("SELECT order_level_page, adms_access_level_id 
                                     FROM adms_levels_pages
                                     WHERE adms_access_level_id =:adms_access_level_id
                                     ORDER BY order_level_page DESC
                                     LIMIT :limit", "adms_access_level_id={$this->levelId}&limit=1");
 
-        $this->resultBdLastOrder = $searchLastOrder->getResult();
+        $this->resultBdLastOrder = $viewLastOrder->getResult();
         if(!$this->resultBdLastOrder){
             $this->resultBdLastOrder[0]['order_level_page'] = 0;
         }
         
+    }
+    private function searchLevelDefault(): void
+    {
+        $viewLevelDefault= new \App\adms\Models\helper\AdmsRead();        
+        $viewLevelDefault->fullRead("SELECT permission, print_menu, dropdown, adms_items_menu_id  
+                                    FROM adms_levels_pages
+                                    WHERE adms_page_id =:adms_page_id
+                                    AND adms_access_level_id = 7
+                                    LIMIT :limit", 
+                                    "adms_page_id={$this->pageId}&limit=1");
+
+        $this->resultBdLevelDefault = $viewLevelDefault->getResult();
+        if($this->resultBdLevelDefault){
+            $this->dataLevelPage['permission'] = $this->resultBdLevelDefault[0]['permission'];
+            $this->dataLevelPage['print_menu'] = $this->resultBdLevelDefault[0]['print_menu'];
+            $this->dataLevelPage['dropdown'] = $this->resultBdLevelDefault[0]['dropdown'];
+            $this->dataLevelPage['adms_items_menu_id'] = $this->resultBdLevelDefault[0]['adms_items_menu_id'];
+
+        }
     }
 }

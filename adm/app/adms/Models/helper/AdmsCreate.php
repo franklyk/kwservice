@@ -48,8 +48,8 @@ use PDOException;
         {
             $this->table = $table;
             $this->data = $data;
-            var_dump($this->table);
-            var_dump($this->data);
+            // var_dump($this->table);
+            // var_dump($this->data);
             $this->exeReplaceValues();
         }
         /**
