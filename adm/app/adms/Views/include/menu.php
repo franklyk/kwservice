@@ -12,22 +12,10 @@ if (isset($this->data['sidebarActive'])) {
     $sidebar_active = $this->data['sidebarActive'];
 }
 ?>
-
 <!-- Inicio Conteudo -->
 <!-- Inicio da Sidebar -->
 <div class="sidebar">
     <?php
-        /*if ((isset($this->data['menu'])) and ($this->data['menu'])) {
-            foreach ($this->data['menu'] as $item_menu) {
-                extract($item_menu);
-                $active_item_menu = "";
-                if ($sidebar_active == $menu_controller) {
-                    $active_item_menu = "active";
-                }
-                echo "<a href='" . URLADM . "$menu_controller/$menu_metodo' class='sidebar-nav $active_item_menu'><i class='icon $icon'></i><span></span>$name_page</a>";
-            }
-        }*/
-
         if ((isset($this->data['menu'])) and ($this->data['menu'])) {
             $count_drop_start = 0;
             $count_drop_end = 0;

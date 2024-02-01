@@ -69,10 +69,13 @@
             $this->data['sidebarActive'] = "list-access-levels";
         
             $button = [
-                'list_access_levels' => ['menu_controller' => 'list-access-levels', 'menu_metodo' => 'index']];
+                'list_access_levels' => ['menu_controller' => 'list-access-levels', 'menu_metodo' => 'index'],
+                'order_page_menu' => ['menu_controller' => 'order-page-menu', 'menu_metodo' => 'index'],
+                'edit_page_menu' => ['menu_controller' => 'edit-page-menu', 'menu_metodo' => 'index']];
     
                 $listButton = new \App\adms\Models\helper\AdmsButton();
                 $this->data['button'] = $listButton->buttonPermission($button);
+                // var_dump($this->data['button']);
 
                 $countUsers = new \App\adms\Models\helper\AdmsMenu();
                 $this->data['menu'] = $countUsers->itemMenu();

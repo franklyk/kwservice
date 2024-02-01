@@ -1051,6 +1051,25 @@ if (formItemMenu) {
     })
 
 }
+
+
+const formEditPageMenu = document.getElementById("form-edit-page-menu");
+if (formEditPageMenu) {
+    formEditPageMenu.addEventListener("submit", async (e) => {
+
+        //Recebe o valor do campo Nome
+        var adms_items_menu_id = document.querySelector('#adms_items_menu_id').value;
+        if (adms_items_menu_id === "") {
+            e.preventDefault();
+
+            document.getElementById("msg").innerHTML = "<p class=' alert-danger'>Necessário preencher campo Item de Menu!</p>";
+
+            return;
+        }
+    })
+
+}
+
 /* Inicio Dropdown Navbar */
 let notification = document.querySelector(".notification");
 let avatar = document.querySelector(".avatar");

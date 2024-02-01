@@ -12,7 +12,7 @@
                 <?php echo $this->data['viewAccessLevels'][0]['name']; ?></span>
             <div class="top-list-right">
                 <?php
-                if($this->data['button']){
+                if($this->data['button']['list_access_levels']){
                     echo "<a href='" . URLADM . "list-access-levels/index' class='btn btn-info'>".ICON_LIST." Listar Níveis de Acesso</a> ";
                 }
                 ?>
@@ -35,7 +35,8 @@
                     <th class="list-head-content table-md-none">Ordem</th>
                     <th class="list-head-content table-md-none">Permissões</th>
                     <th class="list-head-content table-md-none">Menu</th>
-                    <th class="list-head-content table-md-none">Ações</th>
+                    <th class="list-head-content table-md-none">Dropdown</th>
+                    <th class="list-head-content">Ações</th>
                 </tr>
             </thead>
             <tbody class="list-body">
@@ -73,33 +74,30 @@
                             }
 
                         ?>
+                    <td class="list-body-content table-md-none">
+                        <?php 
+
+                            if($dropdown == 1){
+                                echo "<a href='".URLADM."edit-dropdown-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-success'>Sim</span></a>";
+                            }else{
+                                echo "<a href='".URLADM."edit-dropdown-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'><span class='text-danger'>Não</span></a>";
+                            }
+
+                        ?>
                     </td>
                     <td class="list-body-content table-md-none">
                         <button onclick="actionDropdown(<?php echo $id; ?>)"
                             class="dropdown-btn-action"><?php echo ICON_SETTINGS ?> Ações</button>
                         <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                             <?php
-                                echo "<a href='" . URLADM . "order-page-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'>". ICON_ORDER." Ordem</a>";
-
-
-                                /*if($this->data['button']['order_access_levels']){
-                                    echo "<a href='" . URLADM . "order-access-levels/index/$id?pag=" . $this->data['pag'] . "'>". ICON_ORDER." Ordem</a>";
-                                }
-                                if($this->data['button']['list_permission']){
-                                    echo "<a href='" . URLADM . "list-permission/index?level=$id'>". ICON_PERMISSION." Permissão</a>";
-                                }
-                                if($this->data['button']['view_access_levels']){
-                                    echo "<a href='" . URLADM . "view-access-levels/index/$id'>". ICON_VIEW." Visualizar</a>";
+                                if($this->data['button']['order_page_menu']){
+                                    echo "<a href='" . URLADM . "order-page-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'>". ICON_ORDER." Ordem</a>";
 
                                 }
-                                if($this->data['button']['edit_access_levels']){
-                                    echo "<a href='" . URLADM . "edit-access-levels/index/$id'>". ICON_EDIT." Editar</a>";
+                                if($this->data['button']['edit_page_menu']){
+                                    echo "<a href='" . URLADM . "edit-page-menu/index/$id?&level=$adms_access_level_id&pag=".$this->data['pag']."'>". ICON_EDIT." Editar</a>";
 
                                 }
-                                if($this->data['button']['delete_access_levels']){
-                                    echo "<a href='" . URLADM . "delete-access-levels/index/$id' onclick='return confirm(\"Tem certeza que deseja excuir este Registro?\")'>". ICON_DELETE." Apagar</a>";
-
-                                }*/
                             ?>
                         </div>
                     </td>
