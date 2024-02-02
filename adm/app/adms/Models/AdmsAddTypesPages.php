@@ -24,6 +24,9 @@ class AdmsAddTypesPages
 
     /** @var array|null $resultBD Recebe o valor retornado do banco de dados*/
     private array|null $resultQuery;
+    
+    /** @var array|null $dataExitVal Recebe os campos que devem ser tirados da validação */
+    private array|null $dataExitVal;
 
     /** @var array|string|null $id Recebe o id do registro */
     private int|string|null $id;
@@ -52,6 +55,11 @@ class AdmsAddTypesPages
     {
         $this->data = $data;
 
+        $this->dataExitVal['obs'] = $this->data['obs'];
+
+        unset($this->data['obs']);
+
+
         $valEmptyField = new \App\adms\Models\helper\AdmsValEmptyField();
         $valEmptyField->valField($this->data);
         if ($valEmptyField->getResult()) {
@@ -71,9 +79,11 @@ class AdmsAddTypesPages
     private function add(): void
     {
         if($this->viewlastTypesPages()){
+            
+            $this->data['obs'] = $this->dataExitVal['obs'];
 
             $this->data['created'] = date("Y-m-d H:i:s");
-    
+
             $createAccessLevels = new \App\adms\Models\helper\AdmsCreate();
             $createAccessLevels->exeCreate("adms_type_pgs", $this->data);
     

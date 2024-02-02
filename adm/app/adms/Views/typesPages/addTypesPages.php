@@ -42,6 +42,20 @@ if (isset($this->data['form'])) {
                 <div class="row-input">
                     <div class="column">
                         <?php
+                        $type = "";
+                        if (isset($valorForm['type'])) {
+                            $type = $valorForm['type'];
+                        }
+                        ?>
+                        <label class="title-input">Tipo:<span class="text-danger">*</span></label>
+                        <input type="text" name="type" id="type" class="input-adm"
+                            placeholder="Nome do Tipo de Página" value="<?php echo $type; ?>"
+                            required>
+                    </div>
+                </div>
+                <div class="row-input">
+                    <div class="column">
+                        <?php
                         $name = "";
                         if (isset($valorForm['name'])) {
                             $name = $valorForm['name'];
@@ -51,6 +65,20 @@ if (isset($this->data['form'])) {
                         <input type="text" name="name" id="name" class="input-adm"
                             placeholder="Nome do Tipo de Página" value="<?php echo $name; ?>"
                             required>
+                    </div>
+                </div>
+                <div class="row-input">
+                    <div class="column">
+                        <?php
+                        $obs = "";
+                        if (isset($valorForm['obs'])) {
+                            $obs = $valorForm['obs'];
+                        }
+                        ?>
+                        <label class="title-input">Observações:</label>
+                        <input type="text" name="obs" id="obs" class="input-adm"
+                            placeholder="Observações" value="<?php echo $obs; ?>"
+                            >
                     </div>
                 </div>
                 

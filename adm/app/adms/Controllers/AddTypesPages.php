@@ -50,7 +50,7 @@
                 }else{
                     // Mantém os dados no formulário se não for redirecinado
                     $this->data['form'] = $this->dataForm;
-                    var_dump($this->data['form']);
+                    // var_dump($this->data['form']);
                     $this->viewAddGroupsPages();
                 }
             }else{
@@ -64,11 +64,11 @@
             $button = [
                 'list_types_pages' => ['menu_controller' => 'list-types-pages', 'menu_metodo' => 'index']];
     
-                $listButton = new \App\adms\Models\helper\AdmsButton();
-                $this->data['button'] = $listButton->buttonPermission($button);
+            $listButton = new \App\adms\Models\helper\AdmsButton();
+            $this->data['button'] = $listButton->buttonPermission($button);
 
-                $countUsers = new \App\adms\Models\helper\AdmsMenu();
-                $this->data['menu'] = $countUsers->itemMenu();
+            $countUsers = new \App\adms\Models\helper\AdmsMenu();
+            $this->data['menu'] = $countUsers->itemMenu();
 
             $this->data['sidebarActive'] = "list-types-pages";
 

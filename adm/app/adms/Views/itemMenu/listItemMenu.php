@@ -45,7 +45,7 @@
                 ?>
                     <tr>
                         <td class="list-body-content"> <?php echo  $id ?></td>
-                        <td class="list-body-content"><?php echo "<i class='icon $icom_item'></i> ". $name_item; ?></td>
+                        <td class="list-body-content"><?php echo "<i class='icon". $icom_item. "'></i> ". $name_item; ?></td>
                         <td class="list-body-content table-sm-none"><?php echo $icom_item; ?></td>
                         <td class="list-body-content table-sm-none"><?php echo $order_item_menu; ?></td>
                         <td class="list-body-content">
