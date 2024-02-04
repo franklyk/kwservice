@@ -58,9 +58,12 @@
                 // var_dump($this->urlArray);
                 //Verificar a URL Digitada pelo usuario, se for nullo valerá o padrão
                 if(isset($this->urlArray[0])){
+                    // var_dump($this->urlArray[0]);
                     $this->urlController = $this->slugController($this->urlArray[0]);
+                    // var_dump($this->urlController);
                 }else{
-                    $this->urlController =  CONTROLLER;
+                    $this->urlController = CONTROLLER;
+                    // var_dump($this->urlController);
                 }
                 if(isset($this->urlArray[1])){
                     $this->urlMetodo = $this->slugMetodo($this->urlArray[1]);
@@ -73,7 +76,7 @@
                     $this->urlParameter = "";
                 }
             }else{
-                $this->urlController = $this->slugController(CONTROLLERERRO);
+                $this->urlController = $this->slugController(CONTROLLER);
                 $this->urlMetodo = $this->slugMetodo(METODO);
                 $this->urlParameter = "";
             }

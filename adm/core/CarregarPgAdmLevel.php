@@ -63,27 +63,32 @@
         {
             $serachPage = new \App\adms\Models\helper\AdmsRead();
             $serachPage->fullRead("SELECT pgs.id, pgs.publish,
-                                    typ.type
+                                    typ.type, sit.id sit_id, sit.name sit_name
                                     FROM adms_pages AS pgs
                                     INNER JOIN adms_type_pgs AS typ ON typ.id=pgs.adms_types_pgs_id
+                                    INNER JOIN adms_sits_pgs as sit ON sit.id=pgs.adms_sits_pgs_id
                                     WHERE pgs.controller =:controller
                                     AND pgs.metodo =:metodo
                                     LIMIT :limit", 
                                     "controller={$this->urlController}&metodo={$this->urlMetodo}&limit=1
                                     ");
             $this->resultPage = $serachPage->getResult();
+            // var_dump($this->resultPage);
             if($this->resultPage){
                 // var_dump($this->resultPage);
-                if($this->resultPage[0]['publish'] == 1){
-                    $this->classLoad = "\\App\\".$this->resultPage[0]['type']."\\Controllers\\" . $this->urlController;
-                    $this->loadMetodo();
-                }else{
-                    $this->verifyLogin();
+                if($this->resultPage[0]['sit_id'] == 1){
+                    // var_dump($this->resultPage[0]['sit_id']);
+                    if($this->resultPage[0]['publish'] == 1){
+                        $this->classLoad = "\\App\\".$this->resultPage[0]['type']."\\Controllers\\" . $this->urlController;
+                        $this->loadMetodo();
+                    }else{
+                        $this->verifyLogin();
+                    }
                 }
             }else{
                 $_SESSION['msg'] = "<p class='alert-danger'>Página não encontrada!</p><br>";
 
-                $urlRedirect = URLADM . "login/index";
+                $urlRedirect = URLADM . "erro/index";
                 header("Location: $urlRedirect");
                 // die("Erro: 004 - Por Favor tente novamente! Se o problema persistir, entre em contato com o administrador em " . EMAILADM); 
             }

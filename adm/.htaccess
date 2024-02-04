@@ -51,7 +51,7 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 #http://localhost/kwservice/adm/view-users/index?id=2&sit=2
 
 # Quando houver o erro 403 redirecionar o usuario 
-ErrorDocument 403 http://localhost/kwservice/adm/login/index
+ErrorDocument 403 http://localhost/kwservice/adm/erro/index
 
 
 <Files 403.shtml>

@@ -17,7 +17,7 @@
 
             define('CONTROLLER', 'Login');
             define('METODO', 'index');
-            define('CONTROLLERERRO', 'Login');
+            define('CONTROLLERERRO', 'Erro');
 
             define('HOST', 'localhost');
             define('USER', 'root');

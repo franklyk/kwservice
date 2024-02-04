@@ -10,10 +10,12 @@
         "psr-4": {
             "Core\\": "core",
             "App\\": "app",
-            "Adms\\": "app/adms"
+            "Adms\\": "app/adms",
+            "Cpms\\": "app/cpms"    
         }
     },
     "require": {
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "dompdf/dompdf": "^2.0"
     }
 }
