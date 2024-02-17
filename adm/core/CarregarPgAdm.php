@@ -79,6 +79,7 @@
         private function loadMetodo():void
         {
             $classLoad = new $this->classLoad();
+            var_dump($classLoad);
             if(method_exists($classLoad, $this->urlMetodo)){
                 $classLoad->{$this->urlMetodo}($this->urlParameter);
             }else{

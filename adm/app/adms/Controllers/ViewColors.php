@@ -37,12 +37,12 @@ class ViewColors
                 $this->data['viewColor'] = $viewColors->getResultBd();
                 $this->viewColors();
             } else {
-                $urlRedirect = URLADM . "list-colors/index";
+                $urlRedirect = URL . "list-colors/index";
                 header("Location: $urlRedirect");
             }
         } else {
             $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não encontrada!</p>";
-            $urlRedirect = URLADM . "list-colors/index";
+            $urlRedirect = URL . "list-colors/index";
             header("Location: $urlRedirect");
             
 

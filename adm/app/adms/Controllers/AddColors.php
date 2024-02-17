@@ -36,7 +36,7 @@
                 // var_dump($this->dataForm);
                 //Destroi a posiçao do botao submit
                 unset($this->dataForm["SendAddColor"]);
-                var_dump($this->dataForm);
+                // var_dump($this->dataForm);
 
 
                 //Envia os dados do formulário para a AdmsnewUser

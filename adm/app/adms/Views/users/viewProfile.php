@@ -53,7 +53,7 @@
                         } else {
                             echo "<img src='" . URLADM . "app/adms/assets/images/users/usuario.png' width='100' height='100'><br><br>";
                         }
-                        ?>
+                    ?>
                 </span>
             </div>
 

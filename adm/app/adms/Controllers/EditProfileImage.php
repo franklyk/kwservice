@@ -29,7 +29,6 @@
         public function index(): void
         {
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-            
             if (!empty($this->dataForm['SendEditProfImage'])) {
                 $this->editProfileImage();
             } else {
